@@ -1,0 +1,4 @@
+chaji 120 60
+shafa fushou 65 40 kaobei 80 60 zuowei 80 75 ta 150 100~80
+dianshi 195 60
+yifujia 70
