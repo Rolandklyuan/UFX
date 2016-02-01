@@ -630,7 +630,7 @@ int CBusiness::funcSubscribePush(int nFUnctionNo, int nIssueType){
 		lpBizMessage->AddRef();
 		
 		
-		IBizMessage* lpBizMessageRecv = NULL;
+		// IBizMessage* lpBizMessageRecv = NULL;
 		
 	
 		//功能号
@@ -1142,7 +1142,9 @@ int main()
     // not working
     iRet = lpConfig->SetString("t2sdk", "lang", "1033");
     if (0 != iRet)
+    {
         std::cout << "SetSring error" << std::endl;
+    }
 
     g_szBusiness.SetConfig(lpConfig);
     // 通过T2SDK的引出函数，来获取一个新的CConnection对象指针
@@ -1161,7 +1163,7 @@ int main()
     {
         // 开启断开重连线程，由于在非断开情况下，该线程处于Wait状态，故对应用性能影响甚微
         // 正式开始连接，参数5000为超时参数，单位毫秒
-        if (iRet = g_pConnection->Connect(5000))
+        if (0 != (iRet = g_pConnection->Connect(5000)))
         {
             printf("连接服务器失败, 错误号: %d, 原因: %s!\r\n", iRet, g_pConnection->GetErrorMsg(iRet));
         }
@@ -1179,7 +1181,7 @@ int main()
                 printf("1.证券委托 2.持仓查询 3.资金查询 4:证券股东信息查询 5.委托订阅 0.退出该系统!\n请输入你的操作:");
                 while(scanf("%d", &chose),0 != chose)
                 {
-                    getchar();
+                    // getchar();
                     switch (chose)
                     {
                         // SecuEnbtrust
