@@ -500,125 +500,117 @@ int CBusiness::ClientStkacctQry(int iSystemNo)
 //持仓查询 333104
 int CBusiness::SecuStockQry(int iSystemNo /* = 2 */)
 {
+    printf("--------------------------->m_cUserToken[%s]\n",m_cUserToken);
+    int hSend = 0;
 
-		printf("--------------------------->m_cUserToken[%s]\n",m_cUserToken);
-		int hSend = 0;
-	
-		IBizMessage* lpBizMessage = NewBizMessage();
-		lpBizMessage->AddRef();
-		
-		
-		IBizMessage* lpBizMessageRecv = NULL;
-		
-		//功能号
-		lpBizMessage->SetFunction(333104);
-		//请求类型
-		lpBizMessage->SetPacketType(REQUEST_PACKET);
-		//设置营业部号
-		lpBizMessage->SetBranchNo(1);
-		 lpBizMessage->SetCompanyID(91000);
-	//设置SenderCompanyID
-	lpBizMessage->SetSenderCompanyID(91000);
-		//设置系统号
-		lpBizMessage->SetSystemNo(iSystemNo);
-	
-		
-		
-		///获取版本为2类型的pack打包器
-		IF2Packer *pPacker = NewPacker(2);
-		if(!pPacker)
-		{
-			printf("取打包器失败!\r\n");
-			return -1;
-		}
-		pPacker->AddRef();
-		
-		///开始打包
-		pPacker->BeginPack();
-		
-		///加入字段名
-		pPacker->AddField("op_branch_no", 'I', 5);
-		pPacker->AddField("op_entrust_way", 'C', 1);
-		pPacker->AddField("op_station", 'S', 255);
-		pPacker->AddField("branch_no", 'I', 5); 		
-		pPacker->AddField("client_id", 'S', 18);			
-		pPacker->AddField("fund_account", 'S', 18); 	
-		pPacker->AddField("password", 'S', 10); 					
-		pPacker->AddField("password_type", 'C', 1); 	
-		pPacker->AddField("user_token", 'S', 512);		
-		
-		///加入对应的字段值
-		pPacker->AddInt(0); 			//	op_branch_no	
-		pPacker->AddChar('7');			//		op_entrust_way
-		pPacker->AddStr("hs");		//op_station
-		pPacker->AddInt(m_branch_no);	//	branch_no		
-		pPacker->AddStr(m_client_id);	//		client_id
-		pPacker->AddStr(m_fund_account);	//	fund_account	
-		pPacker->AddStr("111111");		//	password	
-		pPacker->AddChar('1');				//	password_type
-		pPacker->AddStr(m_cUserToken);	//user_token
+    IBizMessage* lpBizMessage = NewBizMessage();
+    lpBizMessage->AddRef();
 
-	
-		///结束打包
-		pPacker->EndPack();
-	
-		lpBizMessage->SetContent(pPacker->GetPackBuf(),pPacker->GetPackLen());
-	
-	
-		
-		///同步发送资金查询请求，应答在RecvBizEx中处理。
-		if(/*(hSend = g_pConnection->SendBizEx(332255,pPacker,NULL,SYNCSEND,iSystemNo,0,1,NULL)) < 0*/(hSend = g_pConnection->SendBizMsg(lpBizMessage,0)) < 0)
-		{
-			printf("发送功能333104失败, 错误号: %d, 原因: %s!\r\n", hSend, g_pConnection->GetErrorMsg(hSend));
-			hSend=-2;
-			goto EXIT;
-		}
-		
-		printf("发送功能333104成功, 返回接收句柄: %d!\r\n", hSend);
-		
-		//iRet = g_pConnection->RecvBizEx(hSend,(void **)&pUnPacker,&pRetData,1000);
-		hSend = g_pConnection->RecvBizMsg(hSend,&lpBizMessageRecv,1000);
-		if(hSend != 0)
-		{
-			printf("接收功能333104失败, 错误号: %d, 原因: %s!\r\n", hSend, g_pConnection->GetErrorMsg(hSend));
-			goto EXIT;
-		}else{
-			int iReturnCode = lpBizMessageRecv->GetReturnCode();
-			if(iReturnCode!= 0) //错误
-			{
-				printf("接收功能333104失败,errorNo:%d,errorInfo:%s\n",lpBizMessageRecv->GetErrorNo(),lpBizMessageRecv->GetErrorInfo()); 			
-			}
-			else if(iReturnCode==0) // 正确
-			{
-							//如果要把消息放到其他线程处理，必须自行拷贝，操作如下：
-							//int iMsgLen = 0;
-							//void * lpMsgBuffer = lpBizMessageRecv->GetBuff(iMsgLen);
-							//将lpMsgBuffer拷贝走，然后在其他线程中恢复成消息可进行如下操作：
-							//lpBizMessageRecv->SetBuff(lpMsgBuffer,iMsgLen);
-							//没有错误信息
-				puts("业务操作成功");
-				int iLen = 0;
-				const void * lpBuffer = lpBizMessageRecv->GetContent(iLen);
-				IF2UnPacker * lpUnPacker = NewUnPacker((void *)lpBuffer,iLen);
-				ShowPacket(0,lpUnPacker);
-			}
-	
-		}
-		
-	EXIT:
-		///释放pack中申请的内存，如果不释放就直接release可能会内存泄漏
-		if(pPacker)
-		{
-			pPacker->FreeMem(pPacker->GetPackBuf());
-			///释放申请的pack
-			pPacker->Release();
-		}
-		if(lpBizMessage){
-			lpBizMessage->Release();
-		}
-		
-		return hSend;
-		
+    IBizMessage* lpBizMessageRecv = NULL;
+
+    // 功能号
+    lpBizMessage->SetFunction(333104);
+    // 请求类型
+    lpBizMessage->SetPacketType(REQUEST_PACKET);
+    // 设置营业部号
+    lpBizMessage->SetBranchNo(1);
+    lpBizMessage->SetCompanyID(91000);
+    // 设置SenderCompanyID
+    lpBizMessage->SetSenderCompanyID(91000);
+    // 设置系统号
+    lpBizMessage->SetSystemNo(iSystemNo);
+
+    // 获取版本为2类型的pack打包器
+    IF2Packer* pPacker = NewPacker(2);
+    if(!pPacker)
+    {
+        printf("取打包器失败!\r\n");
+        return -1;
+    }
+    pPacker->AddRef();
+
+    // 开始打包
+    pPacker->BeginPack();
+
+    // 加入字段名
+    pPacker->AddField("op_branch_no", 'I', 5);
+    pPacker->AddField("op_entrust_way", 'C', 1);
+    pPacker->AddField("op_station", 'S', 255);
+    pPacker->AddField("branch_no", 'I', 5);
+    pPacker->AddField("client_id", 'S', 18);
+    pPacker->AddField("fund_account", 'S', 18);
+    pPacker->AddField("password", 'S', 10);
+    pPacker->AddField("password_type", 'C', 1);
+    pPacker->AddField("user_token", 'S', 512);
+
+    // 加入对应的字段值
+    pPacker->AddInt(0);              // op_branch_no
+    pPacker->AddChar('7');           // op_entrust_way
+    pPacker->AddStr("hs");           // op_station
+    pPacker->AddInt(m_branch_no);    // branch_no
+    pPacker->AddStr(m_client_id);    // client_id
+    pPacker->AddStr(m_fund_account); // fund_account
+    pPacker->AddStr("111111");       // password
+    pPacker->AddChar('1');           // password_type
+    pPacker->AddStr(m_cUserToken);   // user_token
+
+    ///结束打包
+    pPacker->EndPack();
+
+    lpBizMessage->SetContent(pPacker->GetPackBuf(),pPacker->GetPackLen());
+
+    ///同步发送资金查询请求，应答在RecvBizEx中处理。
+    if(/*(hSend = g_pConnection->SendBizEx(332255,pPacker,NULL,SYNCSEND,iSystemNo,0,1,NULL)) < 0*/(hSend = g_pConnection->SendBizMsg(lpBizMessage,0)) < 0)
+    {
+        printf("发送功能333104失败, 错误号: %d, 原因: %s!\r\n", hSend, g_pConnection->GetErrorMsg(hSend));
+        hSend=-2;
+        goto EXIT;
+    }
+
+    printf("发送功能333104成功, 返回接收句柄: %d!\r\n", hSend);
+
+    //iRet = g_pConnection->RecvBizEx(hSend,(void **)&pUnPacker,&pRetData,1000);
+    hSend = g_pConnection->RecvBizMsg(hSend,&lpBizMessageRecv,1000);
+    if(hSend != 0)
+    {
+        printf("接收功能333104失败, 错误号: %d, 原因: %s!\r\n", hSend, g_pConnection->GetErrorMsg(hSend));
+        goto EXIT;
+    }else{
+        int iReturnCode = lpBizMessageRecv->GetReturnCode();
+        if(iReturnCode!= 0) //错误
+        {
+            printf("接收功能333104失败,errorNo:%d,errorInfo:%s\n",lpBizMessageRecv->GetErrorNo(),lpBizMessageRecv->GetErrorInfo()); 			
+        }
+        else if(iReturnCode==0) // 正确
+        {
+            //如果要把消息放到其他线程处理，必须自行拷贝，操作如下：
+            //int iMsgLen = 0;
+            //void * lpMsgBuffer = lpBizMessageRecv->GetBuff(iMsgLen);
+            //将lpMsgBuffer拷贝走，然后在其他线程中恢复成消息可进行如下操作：
+            //lpBizMessageRecv->SetBuff(lpMsgBuffer,iMsgLen);
+            //没有错误信息
+            puts("业务操作成功");
+            int iLen = 0;
+            const void * lpBuffer = lpBizMessageRecv->GetContent(iLen);
+            IF2UnPacker * lpUnPacker = NewUnPacker((void *)lpBuffer,iLen);
+            ShowPacket(0,lpUnPacker);
+        }
+
+    }
+
+EXIT:
+    ///释放pack中申请的内存，如果不释放就直接release可能会内存泄漏
+    if(pPacker)
+    {
+        pPacker->FreeMem(pPacker->GetPackBuf());
+        ///释放申请的pack
+        pPacker->Release();
+    }
+    if(lpBizMessage){
+        lpBizMessage->Release();
+    }
+
+    return hSend;
 }
 
 //订阅
@@ -1181,7 +1173,7 @@ int main()
                 printf("1.证券委托 2.持仓查询 3.资金查询 4:证券股东信息查询 5.委托订阅 0.退出该系统!\n请输入你的操作:");
                 while(scanf("%d", &chose),0 != chose)
                 {
-                    // getchar();
+                    getchar();
                     switch (chose)
                     {
                         // SecuEnbtrust
