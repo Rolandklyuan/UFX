@@ -1,0 +1,11 @@
+*.log
+ZQDemo/demo/Debug/demo.exe
+*.ilk
+*.suo
+ZQDemo/demo/Debug/demo.tlog/CL.read.1.tlog
+*.tlog
+*.obj
+ZQDemo/demo/Debug/vc140.idb
+*.pdb
+*.opensdf
+ZQDemo/demo/demo.sdf

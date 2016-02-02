@@ -12,7 +12,7 @@ class CMdRequestMode;
 // 连接断开、发送完成、收到数据等）发生时的回调方法
 class CMdCallback : public CCallbackInterface
 {
-    public:
+public:
     // 因为CCallbackInterface的最终纯虚基类是IKnown，所以需要实现一下这3个方法
     unsigned long  FUNCTION_CALL_MODE QueryInterface(const char *iid, IKnown **ppv);
     unsigned long  FUNCTION_CALL_MODE AddRef();
@@ -33,74 +33,74 @@ class CMdCallback : public CCallbackInterface
     void FUNCTION_CALL_MODE Reserved6();
     void FUNCTION_CALL_MODE Reserved7();
     void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface *lpConnection, int hSend, const void *lpUnPackerOrStr, int nResult);
-	void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
-	void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
+    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
 public:
-	void SetRequestMode(CMdRequestMode* lpMode);
-	//331100 登入
-	void OnResponse_331100(IF2UnPacker *lpUnPacker);
+    void SetRequestMode(CMdRequestMode* lpMode);
+    //331100 登入
+    void OnResponse_331100(IF2UnPacker *lpUnPacker);
 private:
-	CMdRequestMode* lpReqMode;
+    CMdRequestMode* lpReqMode;
 };
 
 class CMdRequestMode
 {
 public:
-	CMdRequestMode()
-	{
-		lpConfig = NULL;
-		lpConnection = NULL;
-		callback.SetRequestMode(this);
+    CMdRequestMode()
+    {
+        lpConfig = NULL;
+        lpConnection = NULL;
+        callback.SetRequestMode(this);
 
-		lpConfig = NewConfig();
-		lpConfig->AddRef();
-		memset(m_client_id,0,sizeof(m_client_id));
-		m_opUserToken="0";
-	    m_BranchNo=0;
-	    memset(m_client_id,0,sizeof(m_client_id));
-	    iSystemNo=0;
-		m_op_branch_no=0;
-		memset(m_AccountName,0,sizeof(m_AccountName));
-	    memset(m_Password,0,sizeof(m_Password));
-	    m_EntrustWay='\0';
-	    m_FuturesAccount="0";
-	    m_opStation="0";
-	};
+        lpConfig = NewConfig();
+        lpConfig->AddRef();
+        memset(m_client_id, 0, sizeof(m_client_id));
+        m_opUserToken = "0";
+        m_BranchNo = 0;
+        memset(m_client_id, 0, sizeof(m_client_id));
+        iSystemNo = 0;
+        m_op_branch_no = 0;
+        memset(m_AccountName, 0, sizeof(m_AccountName));
+        memset(m_Password, 0, sizeof(m_Password));
+        m_EntrustWay = '\0';
+        m_FuturesAccount = "0";
+        m_opStation = "0";
+    };
 
-	~CMdRequestMode()
-	{
-		lpConnection->Release();
-		lpConfig->Release();
-	};
+    ~CMdRequestMode()
+    {
+        lpConnection->Release();
+        lpConfig->Release();
+    };
 
-	int InitConn();
-	unsigned long Release();
+    int InitConn();
+    unsigned long Release();
 public:
-	string m_opUserToken;
-	int m_BranchNo;
-	char m_client_id[18];
-	int iSystemNo;
-	int m_op_branch_no;
-	//维护心跳
-	void OnHeartbeat(IBizMessage* lpMsg);
-	//331100 登入
-	int ReqFunction331100();
-	//620001_12订阅证券成交回报功能
-	int SubFunction12(int issue_type);
-	//62001_23 订阅证券委托回报
-	int SunFunction23(int issue_type);
-	//333002 普通委托 
-	int ReqFunction333002();
+    string m_opUserToken;
+    int m_BranchNo;
+    char m_client_id[18];
+    int iSystemNo;
+    int m_op_branch_no;
+    //维护心跳
+    void OnHeartbeat(IBizMessage* lpMsg);
+    //331100 登入
+    int ReqFunction331100();
+    //620001_12订阅证券成交回报功能
+    int SubFunction12(int issue_type);
+    //62001_23 订阅证券委托回报
+    int SunFunction23(int issue_type);
+    //333002 普通委托 
+    int ReqFunction333002();
 private:
-	CConfigInterface* lpConfig;
-	CConnectionInterface *lpConnection;
-	CMdCallback callback;
+    CConfigInterface* lpConfig;
+    CConnectionInterface *lpConnection;
+    CMdCallback callback;
 
-	char m_AccountName[12];
-	char m_Password[8];
-	char m_EntrustWay;
-	string m_FuturesAccount;
-	string m_opStation;
-	
-	int m_SubSystemNo;
+    char m_AccountName[12];
+    char m_Password[8];
+    char m_EntrustWay;
+    string m_FuturesAccount;
+    string m_opStation;
+
+    int m_SubSystemNo;
 };

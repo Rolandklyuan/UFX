@@ -26,77 +26,77 @@ public:
     void FUNCTION_CALL_MODE Reserved6();
     void FUNCTION_CALL_MODE Reserved7();
     void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface *lpConnection, int hSend, const void *lpUnPackerOrStr, int nResult);
-	void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
-	void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
+    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
 public:
-	void SetRequestMode(SecuRequestMode* lpMode);
-	//331100 登入
-	void OnResponse_331100(IF2UnPacker *lpUnPacker);
-	
+    void SetRequestMode(SecuRequestMode* lpMode);
+    //331100 登入
+    void OnResponse_331100(IF2UnPacker *lpUnPacker);
+
 private:
-	SecuRequestMode* lpReqMode;
+    SecuRequestMode* lpReqMode;
 };
 
 class SecuRequestMode
 {
 public:
-	SecuRequestMode()
-	{
-		lpConfig = NULL;
-		lpConnection = NULL;
-		callback.SetRequestMode(this);
+    SecuRequestMode()
+    {
+        lpConfig = NULL;
+        lpConnection = NULL;
+        callback.SetRequestMode(this);
 
-		lpConfig = NewConfig();
-		lpConfig->AddRef();
-		m_opUserToken="0";
-	    m_BranchNo=0;
-	    memset(m_client_id,0,sizeof(m_client_id));
-	    iSystemNo=0;
-		m_op_branch_no=0;
-		memset(m_AccountName,0,sizeof(m_AccountName));
-	    memset(m_Password,0,sizeof(m_Password));
-	    m_EntrustWay='\0';
-	    m_FuturesAccount="0";
-	    m_opStation="0";
-	};
+        lpConfig = NewConfig();
+        lpConfig->AddRef();
+        m_opUserToken = "0";
+        m_BranchNo = 0;
+        memset(m_client_id, 0, sizeof(m_client_id));
+        iSystemNo = 0;
+        m_op_branch_no = 0;
+        memset(m_AccountName, 0, sizeof(m_AccountName));
+        memset(m_Password, 0, sizeof(m_Password));
+        m_EntrustWay = '\0';
+        m_FuturesAccount = "0";
+        m_opStation = "0";
+    };
 
-	~SecuRequestMode()
-	{
-		lpConnection->Release();
-		lpConfig->Release();
-	};
+    ~SecuRequestMode()
+    {
+        lpConnection->Release();
+        lpConfig->Release();
+    };
 
-	int InitConn();
-	unsigned long Release();
+    int InitConn();
+    unsigned long Release();
 public:
-	string m_opUserToken;
-	int m_BranchNo;
-	char m_client_id[18];
-	int iSystemNo;
-	int m_op_branch_no;
+    string m_opUserToken;
+    int m_BranchNo;
+    char m_client_id[18];
+    int iSystemNo;
+    int m_op_branch_no;
 
-	//331100 登入
-	int ReqFunction331100();
-	//400 证券行情查询
-	int ReqFunction400(char* exchange_type, char* stock_code);
-	//330300 证券代码信息查询
-	int ReqFunction330300();
-	//333000 证券代码输入确认
-	int ReqFunction333000(char* stock_code);
-	//333001 大约可买获取
-	int ReqFunction333001(char* exchange_type, char* stock_code,double entrust_price);
-	//333002 普通委托 
-	int ReqFunction333002(char* exchange_type,char* stock_code, double entrust_amount,double entrust_price,char entrust_bs);
-	//
+    //331100 登入
+    int ReqFunction331100();
+    //400 证券行情查询
+    int ReqFunction400(char* exchange_type, char* stock_code);
+    //330300 证券代码信息查询
+    int ReqFunction330300();
+    //333000 证券代码输入确认
+    int ReqFunction333000(char* stock_code);
+    //333001 大约可买获取
+    int ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price);
+    //333002 普通委托 
+    int ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs);
+    //
 private:
-	CConfigInterface* lpConfig;
-	CConnectionInterface *lpConnection;
-	CTradeCallback callback;
+    CConfigInterface* lpConfig;
+    CConnectionInterface *lpConnection;
+    CTradeCallback callback;
 
-	char m_AccountName[12];
-	char m_Password[8];
-	char m_EntrustWay;
-	string m_FuturesAccount;
-	string m_opStation;
-	
+    char m_AccountName[12];
+    char m_Password[8];
+    char m_EntrustWay;
+    string m_FuturesAccount;
+    string m_opStation;
+
 };
