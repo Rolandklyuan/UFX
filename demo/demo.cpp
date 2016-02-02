@@ -154,8 +154,6 @@ int CBusiness::Login()
 
     printf("发送功能331100成功, 返回接收句柄: %d!\r\n", hSend);
 
-
-
     // iRet = g_pConnection->RecvBizEx(hSend, (void **)&pUnPacker, &pRetData, 1000);
     // int a;  int &ra=a;  //定义引用ra,它是变量a的引用，即别名
 
@@ -171,8 +169,8 @@ int CBusiness::Login()
         int iReturnCode = lpBizMessageRecv->GetReturnCode();
         if(0 != iReturnCode) // 错误
         {
-            printf("接收功能331100失败, errorNo:%d, errorInfo:%s\n", lpBizMessageRecv->GetErrorNo(),lpBizMessageRecv->GetErrorInfo());
-
+            printf("接收功能331100失败, errorNo:%d, errorInfo:%s\n", lpBizMessageRecv->GetErrorNo(),
+                    lpBizMessageRecv->GetErrorInfo());
         }
         else // 正确
         {
@@ -185,31 +183,34 @@ int CBusiness::Login()
             puts("业务操作成功");
             int iLen = 0;
             // 接收包体 "包头|功能码|签名|包体";   例如“12|331100|XyIxtt..|username=sundsun,password=123456,”;
-            const void * lpBuffer = lpBizMessageRecv->GetContent(iLen);
+            const void* lpBuffer = lpBizMessageRecv->GetContent(iLen);
 
-            IF2UnPacker * lpUnPacker = NewUnPacker((void *)lpBuffer,iLen);
+            IF2UnPacker* lpUnPacker = NewUnPacker((void*)lpBuffer, iLen);
             // 设置系统号
             iSystemNo = lpUnPacker->GetInt("sysnode_id");
             // 分支机构
             m_branch_no = lpUnPacker->GetInt("branch_no");
-            const char *pUserToken = lpUnPacker->GetStr("user_token");
-            if(pUserToken){
+            const char* pUserToken = lpUnPacker->GetStr("user_token");
+            if(pUserToken)
+            {
                 strcpy(m_cUserToken, pUserToken);
                 // printf("\r\nuser_token[%s]\r\n",m_cUserToken);
             }
             // 客户编号
             pUserToken = lpUnPacker->GetStr("client_id");
-            if(pUserToken){
+            if(pUserToken)
+            {
                 strcpy(m_client_id, pUserToken);
                 // printf("\r\nclient_id[%s]\r\n",m_client_id);
             }
             // 资产账户
             pUserToken = lpUnPacker->GetStr("fund_account");
-            if(pUserToken){
+            if(pUserToken)
+            {
                 strcpy(m_fund_account, pUserToken);
                 // printf("\r\nfund_account[%s]\r\n",m_fund_account);
             }
-            ShowPacket(0,lpUnPacker);
+            ShowPacket(0, lpUnPacker);
         }
     }
 
