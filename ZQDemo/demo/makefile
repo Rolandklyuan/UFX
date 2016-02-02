@@ -11,6 +11,6 @@ SecuTrade.o : SecuTrade.cpp
 tool.o : ../Common/tool.cpp
 	g++ $(CFLAGS) ../Common/tool.cpp  -I ../Include -I ../Common
 analyStr.o : ../Common/analyStr.cpp
-	g++ $(CFLAGS) -Wwrite-strings ../Common/analyStr.cpp -I ../Include -I ../Common
+	g++ $(CFLAGS) ../Common/analyStr.cpp -I ../Include -I ../Common
 clean:
 	rm -rf *.o ZQDemo

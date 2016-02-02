@@ -130,19 +130,19 @@ int main()
     {
         int cmd;
         cin >> cmd;
-        switch (cmd) {
-        case 1:
-            TestSecuTrade();
-            break;
-        case 2:
-            TestSecutMd();
-            break;
-        case 0: exit(0);
+        switch (cmd)
+        {
+            case 1:
+                TestSecuTrade();
+                break;
+            case 2:
+                TestSecutMd();
+                break;
+            case 0:
+                exit(0);
         }
     }
-
     //通过getchar阻塞线程，等待服务端应答包到达
     getchar();
-
     return 0;
 }
