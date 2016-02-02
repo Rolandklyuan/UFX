@@ -1,5 +1,6 @@
 #include "SecuTrade.h"
 #include "SecuMD.h"
+
 int TestSecuTrade()
 { 
 	char exchange_type[4];
