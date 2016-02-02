@@ -439,6 +439,7 @@ timeval CurrentTimeTag()
 #endif
 }
 
+/*
 MyTimespec CurrentNTimeTag()
 {
     struct MyTimespec tv;
@@ -451,6 +452,7 @@ MyTimespec CurrentNTimeTag()
 #endif
     return tv;
 }
+*/
 
 char* hs_strncpy(char* dest, const char* src, size_t size)
 {
@@ -760,7 +762,7 @@ CEvent::EventWaitState CEvent::Wait(long timeout)
     }
     else
     {
-        MyTimespec ts;
+        timespec ts;
         clock_gettime(CLOCK_REALTIME, &ts);
         ts.tv_sec += timeout / 1000;
         ts.tv_nsec += (timeout % 1000) * 1000000;
