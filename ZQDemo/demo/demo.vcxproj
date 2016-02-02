@@ -11,13 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Common\analyStr.cpp" />
     <ClCompile Include="..\Common\tool.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SecuMD.cpp" />
     <ClCompile Include="SecuTrade.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Common\analyStr.h" />
     <ClInclude Include="..\Common\tool.h" />
+    <ClInclude Include="..\Include\data_def.h" />
+    <ClInclude Include="..\Include\t2sdk_interface.h" />
     <ClInclude Include="SecuMD.h" />
     <ClInclude Include="SecuTrade.h" />
   </ItemGroup>
@@ -27,6 +31,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8F6ED452-2D6C-46DE-94EA-0C64E3738717}</ProjectGuid>

@@ -27,6 +27,9 @@
     <ClCompile Include="SecuMD.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Common\analyStr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\tool.h">
@@ -38,5 +41,17 @@
     <ClInclude Include="SecuMD.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\analyStr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\data_def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\t2sdk_interface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
 </Project>
