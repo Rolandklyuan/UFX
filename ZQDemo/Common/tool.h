@@ -84,6 +84,10 @@ timeval CurrentTimeTag();
 MyTimespec CurrentNTimeTag();
 #endif
 
+#ifdef LINUX
+#define _strdup strdup
+#endif
+
 char* hs_strncpy(char* dest, const char* src, size_t size);
 char* strtok_t(char* instr, char* delimit, char** saveptr);
 
