@@ -7,7 +7,7 @@ int TestSecuTrade()
     char stock_code[16];
     double entrust_price = 0.0;
     memset(exchange_type, 0, sizeof(exchange_type));
-    memset(stock_code,    0, sizeof(stock_code));
+    memset(stock_code, 0, sizeof(stock_code));
     double entrust_amount = 0.0;
     char entrust_bs = '\0';
     int chose = 0;
@@ -132,14 +132,14 @@ int main()
         cin >> cmd;
         switch (cmd)
         {
-            case 1:
-                TestSecuTrade();
-                break;
-            case 2:
-                TestSecutMd();
-                break;
-            case 0:
-                exit(0);
+        case 1:
+            TestSecuTrade();
+            break;
+        case 2:
+            TestSecutMd();
+            break;
+        case 0:
+            exit(0);
         }
     }
     //通过getchar阻塞线程，等待服务端应答包到达

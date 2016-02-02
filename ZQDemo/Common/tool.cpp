@@ -428,7 +428,7 @@ timeval CurrentTimeTag()
     LONG64 ln64Sec = ln64Counter / ln64Freq;
     LONG64 ln64uSec = ln64Remainder * 1000 * 1000 / ln64Freq;
     timeval tv;
-    tv.tv_sec  = static_cast<long>(ln64Sec);
+    tv.tv_sec = static_cast<long>(ln64Sec);
     tv.tv_usec = static_cast<long>(ln64uSec);
     return tv;
 #endif

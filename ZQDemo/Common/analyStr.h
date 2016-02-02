@@ -6,46 +6,46 @@
 #define	 UDP_DELIMITE_STR  "\1"
 #define	 UDP_DELIMITE_CHAR  '\1'
 
-inline void ParseValue(double &val, int size , char* str)
+inline void ParseValue(double &val, int size, char* str)
 {
-	val = atof(str);
+    val = atof(str);
 }
 
-inline void ParseValue(char& val, int size , char* str)
+inline void ParseValue(char& val, int size, char* str)
 {
-	val = str[0];
+    val = str[0];
 }
 
-inline void ParseValue(int& val, int size , char* str)
+inline void ParseValue(int& val, int size, char* str)
 {
-	val = atoi(str);
+    val = atoi(str);
 }
 
 inline void ParseValue(float& val, int size, char* str)
 {
-	val = static_cast<float>(atof(str));
+    val = static_cast<float>(atof(str));
 }
 
-inline void ParseValue(char* val, int size , char* str)
+inline void ParseValue(char* val, int size, char* str)
 {
-	hs_strncpy(val, str, size);
+    hs_strncpy(val, str, size);
 }
 
-inline void ParseValue(unsigned int& val, int size , char* str)
+inline void ParseValue(unsigned int& val, int size, char* str)
 {
-	val = 0;
-	for(int i= 0; str[i] != 0; i++)
-	{
-		if('0' <= str[i] && str[i] <= '9')
-		{
-			val = val * 10 + str[i] - '0';
-		}
-		else
-		{
-			val = 0;
-			break;
-		}
-	}
+    val = 0;
+    for (int i = 0; str[i] != 0; i++)
+    {
+        if ('0' <= str[i] && str[i] <= '9')
+        {
+            val = val * 10 + str[i] - '0';
+        }
+        else
+        {
+            val = 0;
+            break;
+        }
+    }
 }
 
 #define BEGINPPARSE(type,outdataPtr,indataStrptr, delim) bool __packValid = true; \
