@@ -129,14 +129,14 @@ bool SaveLog(char* filename, char* strMag)
 
 void mkdirFullPath(const char* path)
 {
-    char* dupstr = strdup(path);
+    char* dupstr = _strdup(path);
     for (int i = 0; dupstr[i]; i++)
     {
         if (dupstr[i] == '\\' || dupstr[i] == '/')
         {
             char c = dupstr[i];
 #ifdef WIN32
-            mkdir(dupstr);
+            _mkdir(dupstr);
 #endif
 #ifdef LINUX
             mkdir(dupstr, S_IRWXU | S_IRWXG);
@@ -145,7 +145,7 @@ void mkdirFullPath(const char* path)
         }
     }
 #ifdef WIN32
-    mkdir(dupstr);
+    _mkdir(dupstr);
 #endif
 #ifdef LINUX
     mkdir(dupstr, S_IRWXU | S_IRWXG);

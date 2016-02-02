@@ -23,7 +23,7 @@ inline void ParseValue(int& val, int size , char* str)
 
 inline void ParseValue(float& val, int size, char* str)
 {
-	val = atof(str);
+	val = static_cast<float>(atof(str));
 }
 
 inline void ParseValue(char* val, int size , char* str)
