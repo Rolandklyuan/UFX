@@ -127,7 +127,7 @@ bool SaveLog(char* filename, char* strMag)
         return false;
 }
 
-void mkdirFullPath(char* path)
+void mkdirFullPath(const char* path)
 {
     char* dupstr = strdup(path);
     for (int i = 0; dupstr[i]; i++)
@@ -877,7 +877,7 @@ void CThread::Join()
 CLogWriter::CLogWriter(const char* szFileName)
 {
     m_lock.Lock();
-    mkdirFullPath("./Log");
+    mkdirFullPath(static_cast<const char*>("./Log"));
     m_fp = fopen(szFileName, "ab");
     m_lock.UnLock();
 }

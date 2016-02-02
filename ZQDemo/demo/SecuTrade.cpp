@@ -154,7 +154,7 @@ void CTradeCallback::OnResponse_331100(IF2UnPacker *lpUnPacker)
     //cout<<"BranchNo:"<<lpUnPacker->GetStr("branch_no")<<endl;
     iSystemNo = lpUnPacker->GetInt("sysnode_id");
     //cout<<"iSystemNo:"<<lpUnPacker->GetInt("sysnode_id")<<endl;
-    if (lpUnPacker->GetInt("op_branch_no") != NULL)
+    if (lpUnPacker->GetInt("op_branch_no") != 0)
         lpReqMode->m_op_branch_no = lpUnPacker->GetInt("op_branch_no");
     cout << "op_branch_no:" << lpReqMode->m_op_branch_no << endl;
 
