@@ -1,9 +1,12 @@
 #include "tool.h"
 
 /////////////////////////////////////////////////Function///////////////////////////////////////////////
-void ShowPacket(IF2UnPacker *lpUnPacker)
+void ShowPacket(IF2UnPacker* lpUnPacker)
 {
-    int i = 0, t = 0, j = 0, k = 0;
+    int i = 0;
+    int t = 0;
+    int j = 0;
+    int k = 0;
 
     for (i = 0; i < lpUnPacker->GetDatasetCount(); ++i)
     {
@@ -30,8 +33,7 @@ void ShowPacket(IF2UnPacker *lpUnPacker)
                     break;
 
                 case 'S':
-
-                    if (NULL != strstr((char *)lpUnPacker->GetColName(k), "password"))
+                    if (NULL != strstr((char*)lpUnPacker->GetColName(k), "password"))
                     {
                         printf("\t【字串】%20s = %35s\r\n", lpUnPacker->GetColName(k), "******");
                     }
@@ -46,18 +48,21 @@ void ShowPacket(IF2UnPacker *lpUnPacker)
                 case 'R':
                 {
                     int nLength = 0;
-                    void *lpData = lpUnPacker->GetRawByIndex(k, &nLength);
-                    switch (nLength) {
+                    void* lpData = lpUnPacker->GetRawByIndex(k, &nLength);
+                    switch (nLength)
+                    {
                     case 0:
                         printf("\t【数据】%20s = %35s\r\n", lpUnPacker->GetColName(k), "(N/A)");
                         break;
                     default:
                         printf("\t【数据】%20s = 0x", lpUnPacker->GetColName(k));
-                        for (t = nLength; t < 11; t++) {
+                        for (t = nLength; t < 11; t++)
+                        {
                             printf("   ");
                         }
-                        unsigned char *p = (unsigned char *)lpData;
-                        for (t = 0; t < nLength; t++) {
+                        unsigned char* p = (unsigned char*)lpData;
+                        for (t = 0; t < nLength; t++)
+                        {
                             printf("%3x", *p++);
                         }
                         printf("\r\n");
@@ -189,7 +194,7 @@ bool GetIpAddressByUrl(char* ip, const char* inurl)
     {
         strncpy(name, inurl, url - inurl);
     }
-    struct hostent *remoteHost;
+    struct hostent* remoteHost;
     if (isalpha(name[0]))
     {
         remoteHost = gethostbyname(name);
@@ -207,7 +212,7 @@ bool GetIpAddressByUrl(char* ip, const char* inurl)
         }
         else
         {
-            //remoteHost = gethostbyaddr((char *) &addr, 4, AF_INET);
+            // remoteHost = gethostbyaddr((char *) &addr, 4, AF_INET);
             sprintf(ip, "%s", inet_ntoa(addr));
         }
     }
@@ -229,7 +234,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
 #ifdef WIN32
 #define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
 #define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
-    //GetBestInterface取得最佳路由IP的index,szDestIp一般为登陆服务器的IP
+    // GetBestInterface取得最佳路由IP的index,szDestIp一般为登陆服务器的IP
     DWORD dwBestIndex = 0;
     DWORD dwRet = GetBestInterface(inet_addr(szDestIp), &dwBestIndex);
     if (NO_ERROR != dwRet)
@@ -237,13 +242,13 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
         dwBestIndex = -1;
     }
 
-    //通过GetAdaptersInfo获取对应index的MAC地址
+    // 通过GetAdaptersInfo获取对应index的MAC地址
     ULONG ulBufLen = sizeof(IP_ADAPTER_INFO);
     PIP_ADAPTER_INFO pAdapterInfo = (PIP_ADAPTER_INFO)MALLOC(sizeof(IP_ADAPTER_INFO));
     PIP_ADAPTER_INFO pAdapter = NULL;//记录最匹配的MAC地址
     if (NULL != pAdapterInfo)
     {
-        //先测试下需要的内存大小
+        // 先测试下需要的内存大小
         if (GetAdaptersInfo(pAdapterInfo, &ulBufLen) == ERROR_BUFFER_OVERFLOW)
         {
             FREE(pAdapterInfo);
@@ -254,12 +259,12 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
             }
         }
 
-        //OK,重新获取信息
+        // OK,重新获取信息
         if ((dwRet = GetAdaptersInfo(pAdapterInfo, &ulBufLen)) == NO_ERROR)
         {
             IP_ADAPTER_INFO* lpTemp = pAdapterInfo;
 
-            //遍历一下,找对应的index
+            // 遍历一下,找对应的index
             while (lpTemp)
             {
                 if ((dwBestIndex == lpTemp->Index) && (lpTemp->AddressLength > 0))
@@ -267,15 +272,15 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                     pAdapter = lpTemp;
                     break;
                 }
-                //下一个Adapter
+                // 下一个Adapter
                 lpTemp = lpTemp->Next;
             }
 
-            //如果符合条件有一个都没找着,就默认一个.注意MAC不能为空
+            // 如果符合条件有一个都没找着,就默认一个.注意MAC不能为空
             if (NULL == pAdapter)
             {
                 lpTemp = pAdapterInfo;
-                //找一个MAC不为0的就ok了
+                // 找一个MAC不为0的就ok了
                 while (lpTemp)
                 {
                     if (lpTemp->AddressLength > 0)
@@ -287,13 +292,13 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                 }
             }
 
-            //理论上有网卡不会一个MAC都没有的,不过还是检查一下了
+            // 理论上有网卡不会一个MAC都没有的,不过还是检查一下了
             if (NULL != pAdapter)
             {
-                //格式化MAC地址
+                // 格式化MAC地址
                 for (unsigned int i = 0; i < pAdapter->AddressLength; i++)
                 {
-                    //无格式
+                    // 无格式
                     sprintf(macAddress + i * 2, "%02X", (int)pAdapter->Address[i]);
                 }
                 sprintf(Ip, "%s", pAdapter->IpAddressList.IpAddress.String);
@@ -330,7 +335,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
             {
                 SDKDebug("net device " << buf[intrface].ifr_name);
 
-                //get flags
+                // get flags
                 if (!(ioctl(fd, SIOCGIFFLAGS, (char *)&buf[intrface])))
                 {
                     if (buf[intrface].ifr_flags & IFF_PROMISC)
@@ -339,17 +344,17 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                     }
                 }
 
-                //Jugde whether the net card status is up
+                // Jugde whether the net card status is up
                 if (buf[intrface].ifr_flags & IFF_UP)
                 {
-                    //get ip
+                    // get ip
                     if (!(ioctl(fd, SIOCGIFADDR, (char *)&buf[intrface])))
                     {
                         sprintf(Ip, "%s", inet_ntoa(((struct sockaddr_in*)(&buf[intrface].ifr_addr))->sin_addr));
                         SDKDebug("IP address is:" << Ip);
                     }
 
-                    //get mac
+                    // get mac
                     if (!(ioctl(fd, SIOCGIFHWADDR, (char *)&buf[intrface])))
                     {
                         //是否为空
@@ -392,7 +397,7 @@ char* GetDateByString()
 {
     // char szDate[9];
     time_t timer = time(NULL);
-    tm * pTmBlock = localtime(&timer);
+    tm* pTmBlock = localtime(&timer);
     sprintf(szDate, "%04d%02d%02d", pTmBlock->tm_year + 1900, pTmBlock->tm_mon + 1, pTmBlock->tm_mday);
     return szDate;
 }
@@ -401,7 +406,7 @@ char* GetTimeByString()
 {
     // char szTime[9];
     time_t timer = time(NULL);
-    tm * pTmBlock = localtime(&timer);
+    tm* pTmBlock = localtime(&timer);
     sprintf(szTime, "%02d:%02d:%02d", pTmBlock->tm_hour, pTmBlock->tm_min, pTmBlock->tm_sec);
     return szTime;
 }
@@ -410,7 +415,7 @@ int GetTimeByInt()
 {
     int iTime;
     time_t timer = time(NULL);
-    tm * pTmBlock = localtime(&timer);
+    tm* pTmBlock = localtime(&timer);
     iTime = pTmBlock->tm_hour * 10000 + pTmBlock->tm_min * 100 + pTmBlock->tm_sec;
     return iTime;
 }

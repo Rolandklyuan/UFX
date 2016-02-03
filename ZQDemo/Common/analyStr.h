@@ -3,10 +3,10 @@
 
 #include "tool.h"
 
-#define	 UDP_DELIMITE_STR  "\1"
+#define	 UDP_DELIMITE_STR   "\1"
 #define	 UDP_DELIMITE_CHAR  '\1'
 
-inline void ParseValue(double &val, int size, char* str)
+inline void ParseValue(double& val, int size, char* str)
 {
     val = atof(str);
 }
@@ -70,10 +70,10 @@ inline void ParseValue(unsigned int& val, int size, char* str)
 
 #define ISPACKValid  __packValid
 
-bool ParseMarketInfo_UFX(CMarketInfo_UFX *marketinfo, char* qhstr);
-bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX *orderinfo, char* qhstr);
-bool ParseRealRspInfo_UFX(CRealRspInfo_UFX *realinfo, char* qhstr);
-bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX *marketinfo, char* qhstr);
-bool ParseEchangeStatus_UFX(CExchangeStatus_UFX *exchstatus, char* qhstr);
+bool ParseMarketInfo_UFX(CMarketInfo_UFX*        marketinfo, char* qhstr);
+bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX*    orderinfo,  char* qhstr);
+bool ParseRealRspInfo_UFX(CRealRspInfo_UFX*      realinfo,   char* qhstr);
+bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX*  marketinfo, char* qhstr);
+bool ParseEchangeStatus_UFX(CExchangeStatus_UFX* exchstatus, char* qhstr);
 
 #endif

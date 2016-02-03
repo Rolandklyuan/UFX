@@ -80,6 +80,7 @@ char* GetDateByString();
 char* GetTimeByString();
 int GetTimeByInt();
 timeval CurrentTimeTag();
+
 #ifdef WIN32
 MyTimespec CurrentNTimeTag();
 #endif
@@ -226,6 +227,7 @@ public:
     bool IsRunning() { return isrunning; }
 };
 #endif
+
 #ifdef LINUX
 class CThread
 {

@@ -7,31 +7,31 @@ class CTradeCallback : public CCallbackInterface
 {
 public:
     // 因为CCallbackInterface的最终纯虚基类是IKnown，所以需要实现一下这3个方法
-    unsigned long  FUNCTION_CALL_MODE QueryInterface(const char *iid, IKnown **ppv);
+    unsigned long  FUNCTION_CALL_MODE QueryInterface(const char* iid, IKnown** ppv);
     unsigned long  FUNCTION_CALL_MODE AddRef();
     unsigned long  FUNCTION_CALL_MODE Release();
 
     // 各种事件发生时的回调方法，实际使用时可以根据需要来选择实现，对于不需要的事件回调方法，可直接return
     // Reserved?为保留方法，为以后扩展做准备，实现时可直接return或return 0。
-    void FUNCTION_CALL_MODE OnConnect(CConnectionInterface *lpConnection);
-    void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface *lpConnection);
-    void FUNCTION_CALL_MODE OnRegister(CConnectionInterface *lpConnection);
-    void FUNCTION_CALL_MODE OnClose(CConnectionInterface *lpConnection);
-    void FUNCTION_CALL_MODE OnSent(CConnectionInterface *lpConnection, int hSend, void *reserved1, void *reserved2, int nQueuingData);
-    void FUNCTION_CALL_MODE Reserved1(void *a, void *b, void *c, void *d);
-    void FUNCTION_CALL_MODE Reserved2(void *a, void *b, void *c, void *d);
+    void FUNCTION_CALL_MODE OnConnect(CConnectionInterface*     lpConnection);
+    void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface* lpConnection);
+    void FUNCTION_CALL_MODE OnRegister(CConnectionInterface*    lpConnection);
+    void FUNCTION_CALL_MODE OnClose(CConnectionInterface*       lpConnection);
+    void FUNCTION_CALL_MODE OnSent(CConnectionInterface*        lpConnection, int hSend, void* reserved1, void* reserved2, int nQueuingData);
+    void FUNCTION_CALL_MODE Reserved1(void* a, void* b, void* c, void* d);
+    void FUNCTION_CALL_MODE Reserved2(void* a, void* b, void* c, void* d);
     int  FUNCTION_CALL_MODE Reserved3();
     void FUNCTION_CALL_MODE Reserved4();
     void FUNCTION_CALL_MODE Reserved5();
     void FUNCTION_CALL_MODE Reserved6();
     void FUNCTION_CALL_MODE Reserved7();
-    void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface *lpConnection, int hSend, const void *lpUnPackerOrStr, int nResult);
-    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
-    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
+    void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface*    lpConnection, int hSend, const void* lpUnPackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface*  lpConnection, int hSend, LPRET_DATA lpRetData, const void* lpUnpackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend, IBizMessage* lpMsg);
 public:
     void SetRequestMode(SecuRequestMode* lpMode);
-    //331100 登入
-    void OnResponse_331100(IF2UnPacker *lpUnPacker);
+    // 331100登入
+    void OnResponse_331100(IF2UnPacker* lpUnPacker);
 
 private:
     SecuRequestMode* lpReqMode;
@@ -42,7 +42,7 @@ class SecuRequestMode
 public:
     SecuRequestMode()
     {
-        lpConfig = NULL;
+        lpConfig     = NULL;
         lpConnection = NULL;
         callback.SetRequestMode(this);
 
@@ -54,7 +54,7 @@ public:
         iSystemNo = 0;
         m_op_branch_no = 0;
         memset(m_AccountName, 0, sizeof(m_AccountName));
-        memset(m_Password, 0, sizeof(m_Password));
+        memset(m_Password,    0, sizeof(m_Password));
         m_EntrustWay = '\0';
         m_FuturesAccount = "0";
         m_opStation = "0";
@@ -70,27 +70,27 @@ public:
     unsigned long Release();
 public:
     string m_opUserToken;
-    int m_BranchNo;
-    char m_client_id[18];
-    int iSystemNo;
-    int m_op_branch_no;
+    int    m_BranchNo;
+    char   m_client_id[18];
+    int    iSystemNo;
+    int    m_op_branch_no;
 
-    //331100 登入
+    // 331100登入
     int ReqFunction331100();
-    //400 证券行情查询
+    // 400证券行情查询
     int ReqFunction400(char* exchange_type, char* stock_code);
-    //330300 证券代码信息查询
+    // 330300证券代码信息查询
     int ReqFunction330300();
-    //333000 证券代码输入确认
+    // 333000证券代码输入确认
     int ReqFunction333000(char* stock_code);
-    //333001 大约可买获取
+    // 333001大约可买获取
     int ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price);
-    //333002 普通委托 
+    // 333002普通委托 
     int ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs);
-    //
+
 private:
-    CConfigInterface* lpConfig;
-    CConnectionInterface *lpConnection;
+    CConfigInterface*     lpConfig;
+    CConnectionInterface* lpConnection;
     CTradeCallback callback;
 
     char m_AccountName[12];

@@ -1,6 +1,6 @@
 #include "analyStr.h"
 
-bool ParseMarketInfo_UFX(CMarketInfo_UFX *marketinfo, char* qhstr)
+bool ParseMarketInfo_UFX(CMarketInfo_UFX* marketinfo, char* qhstr)
 {
     memset(marketinfo, 0, sizeof(CMarketInfo_UFX));
     BEGINPPARSE(CMarketInfo_UFX, marketinfo, qhstr, UDP_DELIMITE_STR);
@@ -37,7 +37,7 @@ bool ParseMarketInfo_UFX(CMarketInfo_UFX *marketinfo, char* qhstr)
     return ISPACKValid;
 }
 
-bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX *orderinfo, char* qhstr)
+bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX* orderinfo, char* qhstr)
 {
     memset(orderinfo, 0, sizeof(COrderRspInfo_UFX));
     BEGINPPARSE(COrderRspInfo_UFX, orderinfo, qhstr, UDP_DELIMITE_STR);
@@ -76,7 +76,7 @@ bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX *orderinfo, char* qhstr)
     return ISPACKValid;
 }
 
-bool ParseRealRspInfo_UFX(CRealRspInfo_UFX *realinfo, char* qhstr)
+bool ParseRealRspInfo_UFX(CRealRspInfo_UFX* realinfo, char* qhstr)
 {
     memset(realinfo, 0, sizeof(CRealRspInfo_UFX));
     BEGINPPARSE(CRealRspInfo_UFX, realinfo, qhstr, UDP_DELIMITE_STR);
@@ -118,7 +118,7 @@ bool ParseRealRspInfo_UFX(CRealRspInfo_UFX *realinfo, char* qhstr)
     return ISPACKValid;
 }
 
-bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX *marketinfo, char* qhstr)
+bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX* marketinfo, char* qhstr)
 {
     memset(marketinfo, 0, sizeof(CArgMarketInfo_UFX));
     BEGINPPARSE(CArgMarketInfo_UFX, marketinfo, qhstr, UDP_DELIMITE_STR);
@@ -141,7 +141,7 @@ bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX *marketinfo, char* qhstr)
     return ISPACKValid;
 }
 
-bool ParseEchangeStatus_UFX(CExchangeStatus_UFX *exchstatus, char* qhstr)
+bool ParseEchangeStatus_UFX(CExchangeStatus_UFX* exchstatus, char* qhstr)
 {
     memset(exchstatus, 0, sizeof(CExchangeStatus_UFX));
     BEGINPPARSE(CExchangeStatus_UFX, exchstatus, qhstr, UDP_DELIMITE_STR);

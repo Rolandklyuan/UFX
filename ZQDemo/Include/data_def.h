@@ -1,7 +1,7 @@
 #ifndef DATA_DEF_H_
 #define DATA_DEF_H_
 
-//33100 单腿行情(内部结构体->随意改！！！)
+// 33100单腿行情(内部结构体->随意改！！！)
 struct CMarketInfo_UFX
 {
     char     quote_type;                  //行情类型(0-境内普通行情1-境外行情)                 
@@ -35,7 +35,7 @@ struct CMarketInfo_UFX
     int      actionday;                   //当前日期(yyyymmdd)                                 
 };
 
-//33101 委托回报
+// 33101委托回报
 struct COrderRspInfo_UFX
 {
     char     entrust_no[10];               //委托号                                                
@@ -74,7 +74,7 @@ struct COrderRspInfo_UFX
     //int      session_id;                   //会话编号
 };
 
-//33101 成交回报
+// 33101成交回报
 struct CRealRspInfo_UFX
 {
     char     entrust_no[10];               //委托号                                  
@@ -115,7 +115,7 @@ struct CRealRspInfo_UFX
     //int      session_id;                   //会话编号(暂时)
 };
 
-//33102 组合行情(内部结构体->随意改！！！)
+// 33102组合行情(内部结构体->随意改！！！)
 struct CArgMarketInfo_UFX
 {
     char    arbicontract_id[31];        //套利合约号           
@@ -135,7 +135,7 @@ struct CArgMarketInfo_UFX
     double  downlimited_price;          //跌停板价格  
 };
 
-//33105 交易所状态通知
+// 33105交易所状态通知
 struct CExchangeStatus_UFX
 {
     char      futu_exch_type[5];       //交易所类别（F1-郑州F2大连-F3上海-F4中?
@@ -144,4 +144,3 @@ struct CExchangeStatus_UFX
 };
 
 #endif //DATA_DEF_H_
-
