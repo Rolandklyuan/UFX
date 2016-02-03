@@ -1,25 +1,25 @@
-#include "tool.h"
+ï»¿#include "tool.h"
 
-#define  MSGCENTER_FUNC_HEART		 620000                                           // ÏûÏ¢ÖĞĞÄĞÄÌø¹¦ÄÜºÅ
-#define  MSGCENTER_FUNC_REG			 620001                                           // ÏûÏ¢ÖĞĞÄ¶©ÔÄ¹¦ÄÜºÅ
-#define  MSGCENTER_FUNC_REG_CANCLE   620002                                           // ÏûÏ¢ÖĞĞÄÈ¡Ïû¶©ÔÄ¹¦ÄÜºÅ
-#define  MSGCENTER_FUNC_SENDED		 620003                                           // ÏûÏ¢ÖĞĞÄÖ÷ÍÆ¹¦ÄÜºÅ
-# define ISSUE_TYPE_REALTIME_SECU    12                                               // ¶©ÔÄÖ¤È¯³É½»»Ø±¨
-# define ISSUE_TYPE_ENTR_BACK        23                                               // ¶©ÔÄÎ¯ÍĞ»Ø±¨
+#define  MSGCENTER_FUNC_HEART		 620000                                           // æ¶ˆæ¯ä¸­å¿ƒå¿ƒè·³åŠŸèƒ½å·
+#define  MSGCENTER_FUNC_REG			 620001                                           // æ¶ˆæ¯ä¸­å¿ƒè®¢é˜…åŠŸèƒ½å·
+#define  MSGCENTER_FUNC_REG_CANCLE   620002                                           // æ¶ˆæ¯ä¸­å¿ƒå–æ¶ˆè®¢é˜…åŠŸèƒ½å·
+#define  MSGCENTER_FUNC_SENDED		 620003                                           // æ¶ˆæ¯ä¸­å¿ƒä¸»æ¨åŠŸèƒ½å·
+# define ISSUE_TYPE_REALTIME_SECU    12                                               // è®¢é˜…è¯åˆ¸æˆäº¤å›æŠ¥
+# define ISSUE_TYPE_ENTR_BACK        23                                               // è®¢é˜…å§”æ‰˜å›æŠ¥
 
 class CMdRequestMode;
-// ×Ô¶¨ÒåÀàCCallback£¬Í¨¹ı¼Ì³Ğ£¨ÊµÏÖ£©CCallbackInterface£¬À´×Ô¶¨Òå¸÷ÖÖÊÂ¼ş£¨°üÀ¨Á¬½Ó³É¹¦¡¢
-// Á¬½Ó¶Ï¿ª¡¢·¢ËÍÍê³É¡¢ÊÕµ½Êı¾İµÈ£©·¢ÉúÊ±µÄ»Øµ÷·½·¨
+// è‡ªå®šä¹‰ç±»CCallbackï¼Œé€šè¿‡ç»§æ‰¿ï¼ˆå®ç°ï¼‰CCallbackInterfaceï¼Œæ¥è‡ªå®šä¹‰å„ç§äº‹ä»¶ï¼ˆåŒ…æ‹¬è¿æ¥æˆåŠŸã€
+// è¿æ¥æ–­å¼€ã€å‘é€å®Œæˆã€æ”¶åˆ°æ•°æ®ç­‰ï¼‰å‘ç”Ÿæ—¶çš„å›è°ƒæ–¹æ³•
 class CMdCallback : public CCallbackInterface
 {
 public:
-    // ÒòÎªCCallbackInterfaceµÄ×îÖÕ´¿Ğé»ùÀàÊÇIKnown£¬ËùÒÔĞèÒªÊµÏÖÒ»ÏÂÕâ3¸ö·½·¨
+    // å› ä¸ºCCallbackInterfaceçš„æœ€ç»ˆçº¯è™šåŸºç±»æ˜¯IKnownï¼Œæ‰€ä»¥éœ€è¦å®ç°ä¸€ä¸‹è¿™3ä¸ªæ–¹æ³•
     unsigned long  FUNCTION_CALL_MODE QueryInterface(const char* iid, IKnown** ppv);
     unsigned long  FUNCTION_CALL_MODE AddRef();
     unsigned long  FUNCTION_CALL_MODE Release();
 
-    // ¸÷ÖÖÊÂ¼ş·¢ÉúÊ±µÄ»Øµ÷·½·¨£¬Êµ¼ÊÊ¹ÓÃÊ±¿ÉÒÔ¸ù¾İĞèÒªÀ´Ñ¡ÔñÊµÏÖ£¬¶ÔÓÚ²»ĞèÒªµÄÊÂ¼ş»Øµ÷·½·¨£¬¿ÉÖ±½Óreturn
-    // Reserved?Îª±£Áô·½·¨£¬ÎªÒÔºóÀ©Õ¹×ö×¼±¸£¬ÊµÏÖÊ±¿ÉÖ±½Óreturn»òreturn 0¡£
+    // å„ç§äº‹ä»¶å‘ç”Ÿæ—¶çš„å›è°ƒæ–¹æ³•ï¼Œå®é™…ä½¿ç”¨æ—¶å¯ä»¥æ ¹æ®éœ€è¦æ¥é€‰æ‹©å®ç°ï¼Œå¯¹äºä¸éœ€è¦çš„äº‹ä»¶å›è°ƒæ–¹æ³•ï¼Œå¯ç›´æ¥return
+    // Reserved?ä¸ºä¿ç•™æ–¹æ³•ï¼Œä¸ºä»¥åæ‰©å±•åšå‡†å¤‡ï¼Œå®ç°æ—¶å¯ç›´æ¥returnæˆ–return 0ã€‚
     void FUNCTION_CALL_MODE OnConnect(CConnectionInterface*     lpConnection);
     void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface* lpConnection);
     void FUNCTION_CALL_MODE OnRegister(CConnectionInterface*    lpConnection);
@@ -37,7 +37,7 @@ public:
     void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend, IBizMessage* lpMsg);
 public:
     void SetRequestMode(CMdRequestMode* lpMode);
-    // 331100µÇÈë
+    // 331100ç™»å…¥
     void OnResponse_331100(IF2UnPacker* lpUnPacker);
 private:
     CMdRequestMode* lpReqMode;
@@ -81,15 +81,15 @@ public:
     char   m_client_id[18];
     int    iSystemNo;
     int    m_op_branch_no;
-    // Î¬»¤ĞÄÌø
+    // ç»´æŠ¤å¿ƒè·³
     void OnHeartbeat(IBizMessage* lpMsg);
-    // 331100µÇÈë
+    // 331100ç™»å…¥
     int ReqFunction331100();
-    // 620001_12¶©ÔÄÖ¤È¯³É½»»Ø±¨¹¦ÄÜ
+    // 620001_12è®¢é˜…è¯åˆ¸æˆäº¤å›æŠ¥åŠŸèƒ½
     int SubFunction12(int issue_type);
-    // 62001_23¶©ÔÄÖ¤È¯Î¯ÍĞ»Ø±¨
+    // 62001_23è®¢é˜…è¯åˆ¸å§”æ‰˜å›æŠ¥
     int SunFunction23(int issue_type);
-    // 333002ÆÕÍ¨Î¯ÍĞ 
+    // 333002æ™®é€šå§”æ‰˜ 
     int ReqFunction333002();
 private:
     CConfigInterface*     lpConfig;

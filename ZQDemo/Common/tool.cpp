@@ -1,4 +1,4 @@
-#include "tool.h"
+ï»¿#include "tool.h"
 
 /////////////////////////////////////////////////Function///////////////////////////////////////////////
 void ShowPacket(IF2UnPacker* lpUnPacker)
@@ -10,39 +10,39 @@ void ShowPacket(IF2UnPacker* lpUnPacker)
 
     for (i = 0; i < lpUnPacker->GetDatasetCount(); ++i)
     {
-        // ÉèÖÃµ±Ç°½á¹û¼¯
+        // è®¾ç½®å½“å‰ç»“æœé›†
 
-        printf("¼ÇÂ¼¼¯£º%d/%d\r\n", i + 1, lpUnPacker->GetDatasetCount());
+        printf("è®°å½•é›†ï¼š%d/%d\r\n", i + 1, lpUnPacker->GetDatasetCount());
         lpUnPacker->SetCurrentDatasetByIndex(i);
 
-        // ´òÓ¡ËùÓĞ¼ÇÂ¼
+        // æ‰“å°æ‰€æœ‰è®°å½•
         for (j = 0; j < (int)lpUnPacker->GetRowCount(); ++j)
         {
-            printf("\tµÚ%d/%dÌõ¼ÇÂ¼£º\r\n", j + 1, lpUnPacker->GetRowCount());
-            // ´òÓ¡Ã¿Ìõ¼ÇÂ¼
+            printf("\tç¬¬%d/%dæ¡è®°å½•ï¼š\r\n", j + 1, lpUnPacker->GetRowCount());
+            // æ‰“å°æ¯æ¡è®°å½•
             for (k = 0; k < lpUnPacker->GetColCount(); ++k)
             {
                 switch (lpUnPacker->GetColType(k))
                 {
                 case 'I':
-                    printf("\t¡¾ÕûÊı¡¿%20s = %35d\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetIntByIndex(k));
+                    printf("\tã€æ•´æ•°ã€‘%20s = %35d\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetIntByIndex(k));
                     break;
 
                 case 'C':
-                    printf("\t¡¾×Ö·û¡¿%20s = %35c\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetCharByIndex(k));
+                    printf("\tã€å­—ç¬¦ã€‘%20s = %35c\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetCharByIndex(k));
                     break;
 
                 case 'S':
                     if (NULL != strstr((char*)lpUnPacker->GetColName(k), "password"))
                     {
-                        printf("\t¡¾×Ö´®¡¿%20s = %35s\r\n", lpUnPacker->GetColName(k), "******");
+                        printf("\tã€å­—ä¸²ã€‘%20s = %35s\r\n", lpUnPacker->GetColName(k), "******");
                     }
                     else
-                        printf("\t¡¾×Ö´®¡¿%20s = %35s\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetStrByIndex(k));
+                        printf("\tã€å­—ä¸²ã€‘%20s = %35s\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetStrByIndex(k));
                     break;
 
                 case 'F':
-                    printf("\t¡¾ÊıÖµ¡¿%20s = %35f\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetDoubleByIndex(k));
+                    printf("\tã€æ•°å€¼ã€‘%20s = %35f\r\n", lpUnPacker->GetColName(k), lpUnPacker->GetDoubleByIndex(k));
                     break;
 
                 case 'R':
@@ -52,10 +52,10 @@ void ShowPacket(IF2UnPacker* lpUnPacker)
                     switch (nLength)
                     {
                     case 0:
-                        printf("\t¡¾Êı¾İ¡¿%20s = %35s\r\n", lpUnPacker->GetColName(k), "(N/A)");
+                        printf("\tã€æ•°æ®ã€‘%20s = %35s\r\n", lpUnPacker->GetColName(k), "(N/A)");
                         break;
                     default:
-                        printf("\t¡¾Êı¾İ¡¿%20s = 0x", lpUnPacker->GetColName(k));
+                        printf("\tã€æ•°æ®ã€‘%20s = 0x", lpUnPacker->GetColName(k));
                         for (t = nLength; t < 11; t++)
                         {
                             printf("   ");
@@ -68,13 +68,13 @@ void ShowPacket(IF2UnPacker* lpUnPacker)
                         printf("\r\n");
                         break;
                     }
-                    // ¶Ô2½øÖÆÊı¾İ½øĞĞ´¦Àí
+                    // å¯¹2è¿›åˆ¶æ•°æ®è¿›è¡Œå¤„ç†
                     break;
                 }
 
                 default:
-                    // Î´ÖªÊı¾İÀàĞÍ
-                    printf("Î´ÖªÊı¾İÀàĞÍ¡£\n");
+                    // æœªçŸ¥æ•°æ®ç±»å‹
+                    printf("æœªçŸ¥æ•°æ®ç±»å‹ã€‚\n");
                     break;
                 }
             }
@@ -234,7 +234,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
 #ifdef WIN32
 #define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
 #define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
-    // GetBestInterfaceÈ¡µÃ×î¼ÑÂ·ÓÉIPµÄindex,szDestIpÒ»°ãÎªµÇÂ½·şÎñÆ÷µÄIP
+    // GetBestInterfaceå–å¾—æœ€ä½³è·¯ç”±IPçš„index,szDestIpä¸€èˆ¬ä¸ºç™»é™†æœåŠ¡å™¨çš„IP
     DWORD dwBestIndex = 0;
     DWORD dwRet = GetBestInterface(inet_addr(szDestIp), &dwBestIndex);
     if (NO_ERROR != dwRet)
@@ -242,13 +242,13 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
         dwBestIndex = -1;
     }
 
-    // Í¨¹ıGetAdaptersInfo»ñÈ¡¶ÔÓ¦indexµÄMACµØÖ·
+    // é€šè¿‡GetAdaptersInfoè·å–å¯¹åº”indexçš„MACåœ°å€
     ULONG ulBufLen = sizeof(IP_ADAPTER_INFO);
     PIP_ADAPTER_INFO pAdapterInfo = (PIP_ADAPTER_INFO)MALLOC(sizeof(IP_ADAPTER_INFO));
-    PIP_ADAPTER_INFO pAdapter = NULL;//¼ÇÂ¼×îÆ¥ÅäµÄMACµØÖ·
+    PIP_ADAPTER_INFO pAdapter = NULL;//è®°å½•æœ€åŒ¹é…çš„MACåœ°å€
     if (NULL != pAdapterInfo)
     {
-        // ÏÈ²âÊÔÏÂĞèÒªµÄÄÚ´æ´óĞ¡
+        // å…ˆæµ‹è¯•ä¸‹éœ€è¦çš„å†…å­˜å¤§å°
         if (GetAdaptersInfo(pAdapterInfo, &ulBufLen) == ERROR_BUFFER_OVERFLOW)
         {
             FREE(pAdapterInfo);
@@ -259,12 +259,12 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
             }
         }
 
-        // OK,ÖØĞÂ»ñÈ¡ĞÅÏ¢
+        // OK,é‡æ–°è·å–ä¿¡æ¯
         if ((dwRet = GetAdaptersInfo(pAdapterInfo, &ulBufLen)) == NO_ERROR)
         {
             IP_ADAPTER_INFO* lpTemp = pAdapterInfo;
 
-            // ±éÀúÒ»ÏÂ,ÕÒ¶ÔÓ¦µÄindex
+            // éå†ä¸€ä¸‹,æ‰¾å¯¹åº”çš„index
             while (lpTemp)
             {
                 if ((dwBestIndex == lpTemp->Index) && (lpTemp->AddressLength > 0))
@@ -272,15 +272,15 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                     pAdapter = lpTemp;
                     break;
                 }
-                // ÏÂÒ»¸öAdapter
+                // ä¸‹ä¸€ä¸ªAdapter
                 lpTemp = lpTemp->Next;
             }
 
-            // Èç¹û·ûºÏÌõ¼şÓĞÒ»¸ö¶¼Ã»ÕÒ×Å,¾ÍÄ¬ÈÏÒ»¸ö.×¢ÒâMAC²»ÄÜÎª¿Õ
+            // å¦‚æœç¬¦åˆæ¡ä»¶æœ‰ä¸€ä¸ªéƒ½æ²¡æ‰¾ç€,å°±é»˜è®¤ä¸€ä¸ª.æ³¨æ„MACä¸èƒ½ä¸ºç©º
             if (NULL == pAdapter)
             {
                 lpTemp = pAdapterInfo;
-                // ÕÒÒ»¸öMAC²»Îª0µÄ¾ÍokÁË
+                // æ‰¾ä¸€ä¸ªMACä¸ä¸º0çš„å°±okäº†
                 while (lpTemp)
                 {
                     if (lpTemp->AddressLength > 0)
@@ -292,13 +292,13 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                 }
             }
 
-            // ÀíÂÛÉÏÓĞÍø¿¨²»»áÒ»¸öMAC¶¼Ã»ÓĞµÄ,²»¹ı»¹ÊÇ¼ì²éÒ»ÏÂÁË
+            // ç†è®ºä¸Šæœ‰ç½‘å¡ä¸ä¼šä¸€ä¸ªMACéƒ½æ²¡æœ‰çš„,ä¸è¿‡è¿˜æ˜¯æ£€æŸ¥ä¸€ä¸‹äº†
             if (NULL != pAdapter)
             {
-                // ¸ñÊ½»¯MACµØÖ·
+                // æ ¼å¼åŒ–MACåœ°å€
                 for (unsigned int i = 0; i < pAdapter->AddressLength; i++)
                 {
-                    // ÎŞ¸ñÊ½
+                    // æ— æ ¼å¼
                     sprintf(macAddress + i * 2, "%02X", (int)pAdapter->Address[i]);
                 }
                 sprintf(Ip, "%s", pAdapter->IpAddressList.IpAddress.String);
@@ -357,7 +357,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
                     // get mac
                     if (!(ioctl(fd, SIOCGIFHWADDR, (char *)&buf[intrface])))
                     {
-                        //ÊÇ·ñÎª¿Õ
+                        //æ˜¯å¦ä¸ºç©º
                         unsigned char result = 0xFF;
                         for (int t = 0; t < 6; t++)
                         {
@@ -641,7 +641,7 @@ int OperateSystem::getCurrentProcessId()
     return getpid();
 #endif 
 }
-//µ÷ÓÃÕß±£Ö¤´óĞ¡ºÏÊÊ
+//è°ƒç”¨è€…ä¿è¯å¤§å°åˆé€‚
 void OperateSystem::getComputerName(char* compName, int buflen)
 {
 #ifdef WIN32
@@ -655,7 +655,7 @@ void OperateSystem::getComputerName(char* compName, int buflen)
     gethostname(compName, buflen - 1);
 #endif
 }
-//µ÷ÓÃÕß±£Ö¤´óĞ¡ºÏÊÊ
+//è°ƒç”¨è€…ä¿è¯å¤§å°åˆé€‚
 void OperateSystem::getUserName(char* username, int buflen)
 {
 #ifdef WIN32

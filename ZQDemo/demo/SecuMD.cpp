@@ -1,4 +1,4 @@
-#include "SecuMD.h"
+ï»¿#include "SecuMD.h"
 
 unsigned long CMdCallback::QueryInterface(const char* iid, IKnown** ppv)
 {
@@ -15,7 +15,7 @@ unsigned long CMdCallback::Release()
     return 0;
 }
 
-// ÒÔÏÂ¸÷»Øµ÷·½·¨µÄÊµÏÖ½ö½öÎªÑÝÊ¾Ê¹ÓÃ
+// ä»¥ä¸‹å„å›žè°ƒæ–¹æ³•çš„å®žçŽ°ä»…ä»…ä¸ºæ¼”ç¤ºä½¿ç”¨
 void CMdCallback::OnConnect(CConnectionInterface* lpConnection)
 {
     puts("CMdCallback::OnConnect");
@@ -57,7 +57,7 @@ void CMdCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend
     int issue_type = 0;
     if (lpMsg != NULL)
     {
-        // ³É¹¦,Ó¦ÓÃ³ÌÐò²»ÄÜÊÍ·ÅlpBizMessageRecvÏûÏ¢
+        // æˆåŠŸ,åº”ç”¨ç¨‹åºä¸èƒ½é‡Šæ”¾lpBizMessageRecvæ¶ˆæ¯
         if (lpMsg->GetErrorNo() == 0)
         {
             int iLen = 0;
@@ -76,7 +76,7 @@ void CMdCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend
                     break;
                 case 333002:
                     ShowPacket(lpUnPacker);
-                    cout << "µÈ´ý»Ø±¨....." << endl;
+                    cout << "ç­‰å¾…å›žæŠ¥....." << endl;
                     break;
                 case MSGCENTER_FUNC_HEART:
                     if (lpMsg->GetPacketType() == REQUEST_PACKET)
@@ -87,7 +87,7 @@ void CMdCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend
                     if (lpUnPacker_key->GetInt("error_no") != 0)
                         puts(lpUnPacker_key->GetStr("error_info"));
                     else
-                        puts("¶©ÔÄ³É¹¦...");
+                        puts("è®¢é˜…æˆåŠŸ...");
                     break;
                 case MSGCENTER_FUNC_REG_CANCLE:
                     break;
@@ -98,7 +98,7 @@ void CMdCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend
                         issue_type = lpMsg->GetIssueType();
                         if (issue_type == ISSUE_TYPE_REALTIME_SECU)
                         {
-                            printf("¸ÃÐÅÏ¢ÎªÖ¤È¯µÄÖ÷ÍÆÐÅÏ¢£¡\n");
+                            printf("è¯¥ä¿¡æ¯ä¸ºè¯åˆ¸çš„ä¸»æŽ¨ä¿¡æ¯ï¼\n");
                         }
                         ShowPacket(lpUnPacker_key);
                         break;
@@ -108,7 +108,7 @@ void CMdCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend
     }
     else
     {
-        // ÓÐ´íÎóÐÅÏ¢
+        // æœ‰é”™è¯¯ä¿¡æ¯
         puts(lpMsg->GetErrorInfo());
     }
 }
@@ -174,7 +174,7 @@ void CMdCallback::OnResponse_331100(IF2UnPacker* lpUnPacker)
 
 int CMdRequestMode::InitConn()
 {
-    //¼ÓÔØÅäÖÃÎÄ¼þµÇÂ½ 
+    //åŠ è½½é…ç½®æ–‡ä»¶ç™»é™† 
     lpConfig->Load("t2sdk.ini");
     const char* p_fund_account = lpConfig->GetString("ufx", "fund_account", "");
     const char* p_password     = lpConfig->GetString("ufx", "password", "");
@@ -182,7 +182,7 @@ int CMdRequestMode::InitConn()
     strcpy(m_Password,    p_password);
     m_EntrustWay = '7';
     //cout<<"start initializing serverAddr"<<endl;
-    //ÅäÖÃÁ¬½Ó¶ÔÏó
+    //é…ç½®è¿žæŽ¥å¯¹è±¡
     //lpConfig->SetString("t2sdk", "servers", serverAddr);
     ////cout<<"start checking license"<<endl;
     //lpConfig->SetString("t2sdk", "license_file", licFile);
@@ -190,7 +190,7 @@ int CMdRequestMode::InitConn()
     //lpConfig->SetString("t2sdk", "login_name", clientName);
     //cout<<"Connect Successful"<<endl;
 
-    //Èç¹û½ÓÈëarÉèÖÃÁËsafe_level£¬ÔòÐèÒª×öÒÔÏÂ´úÂë
+    //å¦‚æžœæŽ¥å…¥arè®¾ç½®äº†safe_levelï¼Œåˆ™éœ€è¦åšä»¥ä¸‹ä»£ç 
     //begin
     //lpConfig->SetString("safe", "safe_level", "ssl");
     //lpConfig->SetString("safe", "cert_file", "c20121011.pfx");
@@ -209,12 +209,12 @@ int CMdRequestMode::InitConn()
     lpConnection->AddRef();
     if (0 != (iRet = lpConnection->Create2BizMsg(&callback)))
     {
-        cerr << "³õÊ¼»¯Ê§°Ü.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
+        cerr << "åˆå§‹åŒ–å¤±è´¥.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
         return -1;
     }
     if (0 != (iRet = lpConnection->Connect(5000)))
     {
-        cerr << "Á¬½Ó.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
+        cerr << "è¿žæŽ¥.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
         return -1;
     }
 
@@ -232,14 +232,14 @@ void CMdRequestMode::OnHeartbeat(IBizMessage* lpMsg)
     lpMsg->ChangeReq2AnsMessage();
     //BIZROUTE_INFO SendInfo;
     //lpMsg->GetSendInfo(SendInfo);
-    //strcpy(SendInfo.nbrName, "demo");//t2µÇÂ¼Ê±µÄÃû×Ö
+    //strcpy(SendInfo.nbrName, "demo");//t2ç™»å½•æ—¶çš„åå­—
     //lpMsg->SetTargetInfo(SendInfo);
 
     lpConnection->SendBizMsg(lpMsg, 1);
     return;
 }
 
-// 331100µÇÈë
+// 331100ç™»å…¥
 int CMdRequestMode::ReqFunction331100()
 {
     IBizMessage* lpBizMessage = NewBizMessage();
@@ -249,16 +249,16 @@ int CMdRequestMode::ReqFunction331100()
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("È¡´ò°üÆ÷Ê§°Ü£¡\r\n");
+        printf("å–æ‰“åŒ…å™¨å¤±è´¥ï¼\r\n");
         return -1;
     }
     pPacker->AddRef();
     pPacker->BeginPack();
 
-    // ¼ÓÈë×Ö¶ÎÃû
-    pPacker->AddField("op_branch_no", 'I', 5);   // ²Ù×÷·ÖÖ§»ú¹¹
-    pPacker->AddField("op_entrust_way", 'C', 1); // Î¯ÍÐ·½Ê½ 
-    pPacker->AddField("op_station", 'S', 255);   // Õ¾µãµØÖ·
+    // åŠ å…¥å­—æ®µå
+    pPacker->AddField("op_branch_no", 'I', 5);   // æ“ä½œåˆ†æ”¯æœºæž„
+    pPacker->AddField("op_entrust_way", 'C', 1); // å§”æ‰˜æ–¹å¼ 
+    pPacker->AddField("op_station", 'S', 255);   // ç«™ç‚¹åœ°å€
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("input_content", 'C');
     pPacker->AddField("account_content", 'S', 30);
@@ -266,7 +266,7 @@ int CMdRequestMode::ReqFunction331100()
     pPacker->AddField("password", 'S', 10);
     pPacker->AddField("password_type", 'C');
 
-    // ¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
+    // åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());
@@ -277,7 +277,7 @@ int CMdRequestMode::ReqFunction331100()
     pPacker->AddStr(m_Password);
     pPacker->AddChar('2');
 
-    // ½áÊø´ò°ü
+    // ç»“æŸæ‰“åŒ…
     pPacker->EndPack();
 
     lpBizMessage->SetContent(pPacker->GetPackBuf(), pPacker->GetPackLen());
@@ -289,40 +289,40 @@ int CMdRequestMode::ReqFunction331100()
     return 0;
 }
 
-// 620001_12¶©ÔÄÖ¤È¯³É½»»Ø±¨
+// 620001_12è®¢é˜…è¯åˆ¸æˆäº¤å›žæŠ¥
 int CMdRequestMode::SubFunction12(int issue_type)
 {
     int iRet  = 0;
     int hSend = 0;
     IF2UnPacker* pMCUnPacker = NULL;
 
-    // »ñÈ¡°æ±¾Îª2ÀàÐÍµÄpack´ò°üÆ÷
+    // èŽ·å–ç‰ˆæœ¬ä¸º2ç±»åž‹çš„packæ‰“åŒ…å™¨
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("È¡´ò°üÆ÷Ê§°Ü!\r\n");
+        printf("å–æ‰“åŒ…å™¨å¤±è´¥!\r\n");
         return -1;
     }
     pPacker->AddRef();
 
-    // ¶¨Òå½â°üÆ÷
+    // å®šä¹‰è§£åŒ…å™¨
     // IF2UnPacker *pUnPacker = NULL;
 
     IBizMessage* lpBizMessage = NewBizMessage();
 
     lpBizMessage->AddRef();
 
-    // Ó¦´ðÒµÎñÏûÏ¢
+    // åº”ç­”ä¸šåŠ¡æ¶ˆæ¯
     IBizMessage* lpBizMessageRecv = NULL;
-    // ¹¦ÄÜºÅ
+    // åŠŸèƒ½å·
     lpBizMessage->SetFunction(MSGCENTER_FUNC_REG);
-    // ÇëÇóÀàÐÍ
+    // è¯·æ±‚ç±»åž‹
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
-    // ¿ªÊ¼´ò°ü
+    // å¼€å§‹æ‰“åŒ…
     pPacker->BeginPack();
 
-    // ¼ÓÈë×Ö¶ÎÃû
+    // åŠ å…¥å­—æ®µå
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("fund_account", 'S', 18);
     pPacker->AddField("op_branch_no", 'I', 5);
@@ -333,7 +333,7 @@ int CMdRequestMode::SubFunction12(int issue_type)
     pPacker->AddField("user_token", 'S', 40);
     pPacker->AddField("issue_type", 'I', 8);
 
-    // ¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
+    // åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
     pPacker->AddInt(m_BranchNo);
     pPacker->AddStr(m_AccountName);
     pPacker->AddInt(m_op_branch_no);
@@ -343,7 +343,7 @@ int CMdRequestMode::SubFunction12(int issue_type)
     pPacker->AddStr(m_Password);
     pPacker->AddStr(m_opUserToken.c_str());
     pPacker->AddInt(issue_type);
-    // ½áÊø´ò°ü
+    // ç»“æŸæ‰“åŒ…
     pPacker->EndPack();
     lpBizMessage->SetKeyInfo(pPacker->GetPackBuf(), pPacker->GetPackLen());
     lpConnection->SendBizMsg(lpBizMessage, 1);
@@ -354,40 +354,40 @@ int CMdRequestMode::SubFunction12(int issue_type)
     return 0;
 }
 
-// 62001_23 ¶©ÔÄÖ¤È¯Î¯ÍÐ»Ø±¨
+// 62001_23 è®¢é˜…è¯åˆ¸å§”æ‰˜å›žæŠ¥
 int CMdRequestMode::SunFunction23(int issue_type)
 {
     int iRet  = 0;
     int hSend = 0;
     IF2UnPacker* pMCUnPacker = NULL;
 
-    // »ñÈ¡°æ±¾Îª2ÀàÐÍµÄpack´ò°üÆ÷
+    // èŽ·å–ç‰ˆæœ¬ä¸º2ç±»åž‹çš„packæ‰“åŒ…å™¨
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("È¡´ò°üÆ÷Ê§°Ü!\r\n");
+        printf("å–æ‰“åŒ…å™¨å¤±è´¥!\r\n");
         return -1;
     }
     pPacker->AddRef();
 
-    // ¶¨Òå½â°üÆ÷
+    // å®šä¹‰è§£åŒ…å™¨
     // IF2UnPacker *pUnPacker = NULL;
 
     IBizMessage* lpBizMessage = NewBizMessage();
 
     lpBizMessage->AddRef();
 
-    // Ó¦´ðÒµÎñÏûÏ¢
+    // åº”ç­”ä¸šåŠ¡æ¶ˆæ¯
     IBizMessage* lpBizMessageRecv = NULL;
-    // ¹¦ÄÜºÅ
+    // åŠŸèƒ½å·
     lpBizMessage->SetFunction(MSGCENTER_FUNC_REG);
-    // ÇëÇóÀàÐÍ
+    // è¯·æ±‚ç±»åž‹
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
-    // ¿ªÊ¼´ò°ü
+    // å¼€å§‹æ‰“åŒ…
     pPacker->BeginPack();
 
-    // ¼ÓÈë×Ö¶ÎÃû
+    // åŠ å…¥å­—æ®µå
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("fund_account", 'S', 18);
     pPacker->AddField("op_branch_no", 'I', 5);
@@ -398,7 +398,7 @@ int CMdRequestMode::SunFunction23(int issue_type)
     pPacker->AddField("user_token", 'S', 40);
     pPacker->AddField("issue_type", 'I', 8);
 
-    // ¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
+    // åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
     pPacker->AddInt(m_BranchNo);
     pPacker->AddStr(m_AccountName);
     pPacker->AddInt(m_op_branch_no);
@@ -408,7 +408,7 @@ int CMdRequestMode::SunFunction23(int issue_type)
     pPacker->AddStr(m_Password);
     pPacker->AddStr(m_opUserToken.c_str());
     pPacker->AddInt(issue_type);
-    // ½áÊø´ò°ü
+    // ç»“æŸæ‰“åŒ…
     pPacker->EndPack();
     lpBizMessage->SetKeyInfo(pPacker->GetPackBuf(), pPacker->GetPackLen());
     lpConnection->SendBizMsg(lpBizMessage, 1);
@@ -419,46 +419,46 @@ int CMdRequestMode::SunFunction23(int issue_type)
     return 0;
 }
 
-// Ö¤È¯ÆÕÍ¨Î¯ÍÐ
+// è¯åˆ¸æ™®é€šå§”æ‰˜
 int CMdRequestMode::ReqFunction333002()
 {
     int iRet  = 0;
     int hSend = 0;
-    // »ñÈ¡°æ±¾Îª2ÀàÐÍµÄpack´ò°üÆ÷
+    // èŽ·å–ç‰ˆæœ¬ä¸º2ç±»åž‹çš„packæ‰“åŒ…å™¨
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("È¡´ò°üÆ÷Ê§°Ü!\r\n");
+        printf("å–æ‰“åŒ…å™¨å¤±è´¥!\r\n");
         return -1;
     }
     pPacker->AddRef();
 
-    // ¶¨Òå½â°üÆ÷
+    // å®šä¹‰è§£åŒ…å™¨
     // IF2UnPacker *pUnPacker = NULL;
 
     IBizMessage* lpBizMessage = NewBizMessage();
 
     lpBizMessage->AddRef();
 
-    // Ó¦´ðÒµÎñÏûÏ¢
+    // åº”ç­”ä¸šåŠ¡æ¶ˆæ¯
     IBizMessage* lpBizMessageRecv = NULL;
-    // ¹¦ÄÜºÅ
+    // åŠŸèƒ½å·
     lpBizMessage->SetFunction(333002);
-    // ÇëÇóÀàÐÍ
+    // è¯·æ±‚ç±»åž‹
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
-    // ÆäËûµÄÓ¦´ðÐÅÏ¢
+    // å…¶ä»–çš„åº”ç­”ä¿¡æ¯
     LPRET_DATA pRetData = NULL;
-    // ¿ªÊ¼´ò°ü
+    // å¼€å§‹æ‰“åŒ…
     pPacker->BeginPack();
 
-    // ¼ÓÈë×Ö¶ÎÃû
-    pPacker->AddField("op_branch_no", 'I', 5); // Ãû×Ö ÀàÐÍ ³¤¶È
+    // åŠ å…¥å­—æ®µå
+    pPacker->AddField("op_branch_no", 'I', 5); // åå­— ç±»åž‹ é•¿åº¦
     pPacker->AddField("op_entrust_way", 'C', 1);
     pPacker->AddField("op_station", 'S', 255);
     pPacker->AddField("branch_no", 'I', 5);
-    pPacker->AddField("client_id", 'S', 18);    //  ¿Í»§ID
-    pPacker->AddField("fund_account", 'S', 18); // ×Ê½ðÕËºÅ
+    pPacker->AddField("client_id", 'S', 18);    //  å®¢æˆ·ID
+    pPacker->AddField("fund_account", 'S', 18); // èµ„é‡‘è´¦å·
     pPacker->AddField("password", 'S', 10);
     pPacker->AddField("password_type", 'C', 1);
     pPacker->AddField("user_token", 'S', 40);
@@ -471,7 +471,7 @@ int CMdRequestMode::ReqFunction333002()
     pPacker->AddField("entrust_prop", 'S', 3);
     pPacker->AddField("batch_no", 'I', 8);
 
-    ///¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
+    ///åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());

@@ -1,4 +1,4 @@
-#include "SecuTrade.h"
+ï»¿#include "SecuTrade.h"
 #include "SecuMD.h"
 
 int TestSecuTrade()
@@ -16,12 +16,12 @@ int TestSecuTrade()
     lp_SecuRequestMode->InitConn();
     //lp_SecuRequestMode->InitConn("demo", "license.dat", "10.139.103.211:9339");
     cerr << "------------------------------------------------" << endl;
-    cerr << " [1]  331100 ÇëÇóµÇÂ¼                           " << endl;
-    cerr << " [2]  400 Ö¤È¯ĞĞÇé²éÑ¯                          " << endl;
-    cerr << " [3]  330300 »ñÈ¡Ö¤È¯´úÂëĞÅÏ¢                   " << endl;
-    cerr << " [4]  333000 Ö¤È¯´úÂëÊäÈëÈ·ÈÏ                   " << endl;
-    cerr << " [5]  333001 ´óÔ¼¿ÉÂò»ñÈ¡                       " << endl;
-    cerr << " [6]  333002 Ö¤È¯ÆÕÍ¨Î¯ÍĞ                       " << endl;
+    cerr << " [1]  331100 è¯·æ±‚ç™»å½•                           " << endl;
+    cerr << " [2]  400 è¯åˆ¸è¡Œæƒ…æŸ¥è¯¢                          " << endl;
+    cerr << " [3]  330300 è·å–è¯åˆ¸ä»£ç ä¿¡æ¯                   " << endl;
+    cerr << " [4]  333000 è¯åˆ¸ä»£ç è¾“å…¥ç¡®è®¤                   " << endl;
+    cerr << " [5]  333001 å¤§çº¦å¯ä¹°è·å–                       " << endl;
+    cerr << " [6]  333002 è¯åˆ¸æ™®é€šå§”æ‰˜                       " << endl;
     cerr << " [0]  EXIT                                      " << endl;
     cerr << "------------------------------------------------" << endl;
     while (true)
@@ -36,7 +36,7 @@ int TestSecuTrade()
             // lp_SecuRequestMode->ReqFunction331100("70960060","111111",'7');
             break;
         case 2:
-            cout << "---------Ö¤È¯ĞĞÇé²éÑ¯----------" << endl;
+            cout << "---------è¯åˆ¸è¡Œæƒ…æŸ¥è¯¢----------" << endl;
             cout << "Enter exchange_type:"; cin >> exchange_type;
             cout << "Enter stock_code:"; cin >> stock_code;
             lp_SecuRequestMode->ReqFunction400(exchange_type, stock_code);
@@ -45,12 +45,12 @@ int TestSecuTrade()
             lp_SecuRequestMode->ReqFunction330300();
             break;
         case 4:
-            cout << "---------Ö¤È¯´úÂëÊäÈëÈ·ÈÏ----------" << endl;
+            cout << "---------è¯åˆ¸ä»£ç è¾“å…¥ç¡®è®¤----------" << endl;
             cout << "Enter stock_code:"; cin >> stock_code;
             lp_SecuRequestMode->ReqFunction333000(stock_code);
             break;
         case 5:
-            cout << "---------´óÔ¼¿ÉÂò»ñÈ¡----------" << endl;
+            cout << "---------å¤§çº¦å¯ä¹°è·å–----------" << endl;
             cout << "Enter exchange_type:";
             cin >> exchange_type;
             cout << "Enter stock_code:";
@@ -60,7 +60,7 @@ int TestSecuTrade()
             lp_SecuRequestMode->ReqFunction333001(exchange_type, stock_code, entrust_price);
             break;
         case 6:
-            cout << "---------Ö¤È¯ÆÕÍ¨Î¯ÍĞ----------" << endl;
+            cout << "---------è¯åˆ¸æ™®é€šå§”æ‰˜----------" << endl;
             cout << "exchange_type:";
             cin >> exchange_type;
             cout << "stock_code:";
@@ -94,10 +94,10 @@ int TestSecutMd()
     CMdRequestMode* lp_CMdRequestMode = new CMdRequestMode();
     lp_CMdRequestMode->InitConn();
     cerr << "------------------------------------------------" << endl;
-    cerr << " [1]  331100 ÇëÇóµÇÂ¼                           " << endl;
-    cerr << " [2]  62001_12¶©ÔÄÖ¤È¯³É½»»Ø±¨                  " << endl;
-    cerr << " [3] 62001_23¶©ÔÄÖ¤È¯Î¯ÍĞ»Ø±¨                   " << endl;
-    cerr << " [4] 333002 ÆÕÍ¨Î¯ÍĞ                            " << endl;
+    cerr << " [1]  331100 è¯·æ±‚ç™»å½•                           " << endl;
+    cerr << " [2]  62001_12è®¢é˜…è¯åˆ¸æˆäº¤å›æŠ¥                  " << endl;
+    cerr << " [3] 62001_23è®¢é˜…è¯åˆ¸å§”æ‰˜å›æŠ¥                   " << endl;
+    cerr << " [4] 333002 æ™®é€šå§”æ‰˜                            " << endl;
     cerr << " [0]  EXIT                                      " << endl;
     cerr << "------------------------------------------------" << endl;
     while (true)
@@ -115,7 +115,7 @@ int TestSecutMd()
             lp_CMdRequestMode->SunFunction23(ISSUE_TYPE_ENTR_BACK);
             break;
         case 4:
-            cout << "---------Ö¤È¯ÆÕÍ¨Î¯ÍĞ----------" << endl;
+            cout << "---------è¯åˆ¸æ™®é€šå§”æ‰˜----------" << endl;
             lp_CMdRequestMode->ReqFunction333002();
             break;
         case 0:
@@ -150,7 +150,7 @@ int main()
             exit(0);
         }
     }
-    //Í¨¹ıgetchar×èÈûÏß³Ì£¬µÈ´ı·şÎñ¶ËÓ¦´ğ°üµ½´ï
+    //é€šè¿‡getcharé˜»å¡çº¿ç¨‹ï¼Œç­‰å¾…æœåŠ¡ç«¯åº”ç­”åŒ…åˆ°è¾¾
     getchar();
     return 0;
 }

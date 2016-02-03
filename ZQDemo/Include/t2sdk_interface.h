@@ -1,7 +1,7 @@
-/** @file
-* T2_SDKÍ·ÎÄ¼ş
-* @author  T2Ğ¡×é
-* @author  ºãÉúµç×Ó¹É·İÓĞÏŞ¹«Ë¾
+ï»¿/** @file
+* T2_SDKå¤´æ–‡ä»¶
+* @author  T2å°ç»„
+* @author  æ’ç”Ÿç”µå­è‚¡ä»½æœ‰é™å…¬å¸
 * @version 1.0.0.2
 * @date    20090327
 */
@@ -42,30 +42,30 @@ typedef unsigned int		uint32;
 typedef uint32_t			uint32;
 #endif
 
-///ESB×éÃû³¤¶È£¬Ãû×ÖÎª¿É¼û×Ö·û£¬²»ÄÜ°üº¬ÊµÀı·Ö¸ô·û¡¢¿Õ¸ñ¡¢·ÖºÅ;
+///ESBç»„åé•¿åº¦ï¼Œåå­—ä¸ºå¯è§å­—ç¬¦ï¼Œä¸èƒ½åŒ…å«å®ä¾‹åˆ†éš”ç¬¦ã€ç©ºæ ¼ã€åˆ†å·;
 #define IDENTITY_NAME_LENGTH	32
-///ÊµÀı±àºÅ×î´óÕ¼Î»³¤¶È
+///å®ä¾‹ç¼–å·æœ€å¤§å ä½é•¿åº¦
 #define ID_LENGTH               4 
-///½ÚµãÃûÈ«³¤,¶¨ÒåÊ±Ê¹ÓÃchar sName[ID_STR_LEN+1]
+///èŠ‚ç‚¹åå…¨é•¿,å®šä¹‰æ—¶ä½¿ç”¨char sName[ID_STR_LEN+1]
 #define ID_STR_LEN		       (IDENTITY_NAME_LENGTH + ID_LENGTH + 1)
 
 
-//	²å¼ş½Ó¿ÚÃûµÄ×î´ó³¤¶È,¶¨ÒåÊ±Ê¹ÓÃchar sName[PLUGINID_LENGTH+1]
+//	æ’ä»¶æ¥å£åçš„æœ€å¤§é•¿åº¦,å®šä¹‰æ—¶ä½¿ç”¨char sName[PLUGINID_LENGTH+1]
 #define PLUGINID_LENGTH	256
-//	²å¼şÊµÀıÃûµÄ×î´ó³¤¶È,¶¨ÒåÊ±Ê¹ÓÃchar sName[PLUGIN_NAME_LENGTH+1]
+//	æ’ä»¶å®ä¾‹åçš„æœ€å¤§é•¿åº¦,å®šä¹‰æ—¶ä½¿ç”¨char sName[PLUGIN_NAME_LENGTH+1]
 #define PLUGIN_NAME_LENGTH	(PLUGINID_LENGTH+ID_LENGTH+1)
-//	½ø³ÌÃû×î´ó³¤¶È.¶¨ÒåÊ±Ê¹ÓÃchar sName[SVR_NAME_LENGTH+1]
+//	è¿›ç¨‹åæœ€å¤§é•¿åº¦.å®šä¹‰æ—¶ä½¿ç”¨char sName[SVR_NAME_LENGTH+1]
 #define SVR_NAME_LENGTH	256
-//	½ø³ÌÊµÀıÃû×î´ó³¤¶È.¶¨ÒåÊ±Ê¹ÓÃchar sName[PLUGINID_NAME_LENGTH+1]
+//	è¿›ç¨‹å®ä¾‹åæœ€å¤§é•¿åº¦.å®šä¹‰æ—¶ä½¿ç”¨char sName[PLUGINID_NAME_LENGTH+1]
 #define SVRINSTANCE_NAME_LENGTH	(SVR_NAME_LENGTH+ID_LENGTH+1)
-//ÒµÎñÏûÏ¢ÀàĞÍ
+//ä¸šåŠ¡æ¶ˆæ¯ç±»å‹
 
 
-//ÇëÇó
+//è¯·æ±‚
 #define REQUEST_PACKET 0 
-//Ó¦´ğ
+//åº”ç­”
 #define ANSWER_PACKET  1 
-//20110302 xuxp Ôö¼ÓÂ·ÓÉĞÅÏ¢µÄ½á¹¹Ìå¶¨Òå
+//20110302 xuxp å¢åŠ è·¯ç”±ä¿¡æ¯çš„ç»“æ„ä½“å®šä¹‰
 typedef struct tagRouteInfo
 {
     char ospfName[ID_STR_LEN + 1];
@@ -82,7 +82,7 @@ typedef struct tagRouteInfo
 }Route_Info;
 
 
-//20101228 xuxp ÎªÁË·¢ËÍºÍ·µ»Ø¶©ÔÄÍÆËÍĞÅÏ¢¶øÔö¼ÓµÄ½á¹¹ÌåµÄ¶¨Òå
+//20101228 xuxp ä¸ºäº†å‘é€å’Œè¿”å›è®¢é˜…æ¨é€ä¿¡æ¯è€Œå¢åŠ çš„ç»“æ„ä½“çš„å®šä¹‰
 typedef struct tagRequestData
 {
     int sequeceNo;
@@ -91,8 +91,8 @@ typedef struct tagRequestData
     int keyInfoLen;
     void* lpFileHead;
     int fileHeadLen;
-    int packetType;//20100111 xuxp ĞÂ¼ÓµÄ°üÀàĞÍ
-    Route_Info routeInfo;//20110302 xuxp ÇëÇóÀïÃæÔö¼ÓÂ·ÓÉĞÅÏ¢
+    int packetType;//20100111 xuxp æ–°åŠ çš„åŒ…ç±»å‹
+    Route_Info routeInfo;//20110302 xuxp è¯·æ±‚é‡Œé¢å¢åŠ è·¯ç”±ä¿¡æ¯
 }REQ_DATA, *LPREQ_DATA;
 typedef struct tagRespondData
 {
@@ -103,129 +103,129 @@ typedef struct tagRespondData
     int issueType;
     void* lpKeyInfo;
     int keyInfoLen;
-    Route_Info sendInfo;//20110302 xuxp Ó¦´ğÀïÃæÔö¼Ó·¢ËÍÕßĞÅÏ¢
+    Route_Info sendInfo;//20110302 xuxp åº”ç­”é‡Œé¢å¢åŠ å‘é€è€…ä¿¡æ¯
 }RET_DATA, *LPRET_DATA;
 
 
-///½â°üÆ÷½Ó¿Ú
+///è§£åŒ…å™¨æ¥å£
 struct IF2ResultSet : public IKnown
 {
 
-    ///È¡×Ö¶ÎÊı
-    /**@return ·µ»Ø×Ö¶ÎÊı.
+    ///å–å­—æ®µæ•°
+    /**@return è¿”å›å­—æ®µæ•°.
       */
     virtual int FUNCTION_CALL_MODE GetColCount() = 0;
 
-    ///È¡×Ö¶ÎÃû
-    /** @param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      * @return ·µ»Ø×Ö¶ÎÃû  ÏÂ±êÔ½½ç ·µ»ØNULL
+    ///å–å­—æ®µå
+    /** @param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      * @return è¿”å›å­—æ®µå  ä¸‹æ ‡è¶Šç•Œ è¿”å›NULL
       */
     virtual const char * FUNCTION_CALL_MODE GetColName(int column) = 0;
 
-    //È¡×Ö¶ÎÊı¾İÀàĞÍ
-    /** @param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      * @return:¼ûÉÏÃæ³£Á¿¶¨Òå;ÏÂ±êÔ½½ç ·µ»Ø-1
+    //å–å­—æ®µæ•°æ®ç±»å‹
+    /** @param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      * @return:è§ä¸Šé¢å¸¸é‡å®šä¹‰;ä¸‹æ ‡è¶Šç•Œ è¿”å›-1
       */
     virtual char FUNCTION_CALL_MODE GetColType(int column) = 0;
 
 
-    ///È¡Êı×ÖĞÍ×Ö¶ÎĞ¡ÊıÎ»Êı
-    /** @param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      * @return int ·µ»Ø×Ö¶ÎÊı¾İĞ¡ÊıÎ»Êı ÏÂ±êÔ½½ç ·µ»Ø-1
+    ///å–æ•°å­—å‹å­—æ®µå°æ•°ä½æ•°
+    /** @param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      * @return int è¿”å›å­—æ®µæ•°æ®å°æ•°ä½æ•° ä¸‹æ ‡è¶Šç•Œ è¿”å›-1
       */
     virtual int FUNCTION_CALL_MODE GetColScale(int column) = 0;
 
-    //È¡×Ö¶ÎÔÊĞí´æ·ÅÊı¾İµÄ×î´ó¿í¶È.
-    /** @param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      * @return int ·µ»Ø×Ö¶Î¿í¶È ÏÂ±êÔ½½ç ·µ»Ø-1
+    //å–å­—æ®µå…è®¸å­˜æ”¾æ•°æ®çš„æœ€å¤§å®½åº¦.
+    /** @param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      * @return int è¿”å›å­—æ®µå®½åº¦ ä¸‹æ ‡è¶Šç•Œ è¿”å›-1
       */
     virtual int FUNCTION_CALL_MODE GetColWidth(int column) = 0;
 
-    ///È¡×Ö¶ÎÃû¶ÔÓ¦µÄ×Ö¶ÎĞòºÅ
-    /**@param columnName: ×Ö¶ÎÃû
-      *@return ·µ»Ø×Ö¶ÎĞòºÅ. ²»´æÔÚ·µ»Ø-1
+    ///å–å­—æ®µåå¯¹åº”çš„å­—æ®µåºå·
+    /**@param columnName: å­—æ®µå
+      *@return è¿”å›å­—æ®µåºå·. ä¸å­˜åœ¨è¿”å›-1
       */
     virtual int  FUNCTION_CALL_MODE FindColIndex(const char * columnName) = 0;
 
     //
-    //°´×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)£¬È¡×Ö¶ÎÖµ(×Ö·û´®)
-    /**@param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      *@return ×Ö·û´®ĞÍ×Ö¶ÎÖµ,ÏÂ±êÔ½½ç·µ»ØNULL
+    //æŒ‰å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)ï¼Œå–å­—æ®µå€¼(å­—ç¬¦ä¸²)
+    /**@param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      *@return å­—ç¬¦ä¸²å‹å­—æ®µå€¼,ä¸‹æ ‡è¶Šç•Œè¿”å›NULL
       */
     virtual const char *  FUNCTION_CALL_MODE GetStrByIndex(int column) = 0;
 
-    //°´×Ö¶ÎÃû£¬È¡×Ö¶ÎÖµ(×Ö·û´®)
-    /**@param columnName: ×Ö¶ÎÃû
-      *@return ×Ö·û´®ĞÍ×Ö¶ÎÖµ,²»´æÔÚ·µ»ØNULL
+    //æŒ‰å­—æ®µåï¼Œå–å­—æ®µå€¼(å­—ç¬¦ä¸²)
+    /**@param columnName: å­—æ®µå
+      *@return å­—ç¬¦ä¸²å‹å­—æ®µå€¼,ä¸å­˜åœ¨è¿”å›NULL
       */
     virtual const char *  FUNCTION_CALL_MODE GetStr(const char * columnName) = 0;
 
-    //°´×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)£¬È¡×Ö¶ÎÖµ
-    /**@param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      *@return ×Ö·ûĞÍ×Ö¶ÎÖµ,ÏÂ±êÔ½½ç·µ»Ø'\0'.
+    //æŒ‰å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)ï¼Œå–å­—æ®µå€¼
+    /**@param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      *@return å­—ç¬¦å‹å­—æ®µå€¼,ä¸‹æ ‡è¶Šç•Œè¿”å›'\0'.
       */
     virtual char  FUNCTION_CALL_MODE  GetCharByIndex(int column) = 0;
 
-    //°´×Ö¶ÎÃû£¬È¡×Ö¶ÎÖµ
-    /**@param columnName: ×Ö¶ÎÃû
-     *@return ×Ö·ûĞÍ×Ö¶ÎÖµ,²»´æÔÚ·µ»Ø'\0'
+    //æŒ‰å­—æ®µåï¼Œå–å­—æ®µå€¼
+    /**@param columnName: å­—æ®µå
+     *@return å­—ç¬¦å‹å­—æ®µå€¼,ä¸å­˜åœ¨è¿”å›'\0'
      */
     virtual char   FUNCTION_CALL_MODE GetChar(const char * columnName) = 0;
 
-    //°´×Ö¶ÎĞòºÅ£¬È¡×Ö¶ÎÖµ
-    /**@param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      *@return doubleĞÍ×Ö¶ÎÖµ,ÏÂ±êÔ½½ç·µ»Ø0
+    //æŒ‰å­—æ®µåºå·ï¼Œå–å­—æ®µå€¼
+    /**@param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      *@return doubleå‹å­—æ®µå€¼,ä¸‹æ ‡è¶Šç•Œè¿”å›0
       */
     virtual double  FUNCTION_CALL_MODE GetDoubleByIndex(int column) = 0;
 
-    ///°´×Ö¶ÎÃû£¬È¡×Ö¶ÎÖµ
-    /**@param columnName:×Ö¶ÎÃû
-      *@return doubleĞÍ×Ö¶ÎÖµ,²»´æÔÚ·µ»Ø0
+    ///æŒ‰å­—æ®µåï¼Œå–å­—æ®µå€¼
+    /**@param columnName:å­—æ®µå
+      *@return doubleå‹å­—æ®µå€¼,ä¸å­˜åœ¨è¿”å›0
       */
     virtual double  FUNCTION_CALL_MODE GetDouble(const char * columnName) = 0;
 
-    ///°´×Ö¶ÎĞòºÅ£¬È¡×Ö¶ÎÖµ
-    /**@param column:×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-      *@return intĞÍ×Ö¶ÎÖµ,ÏÂ±êÔ½½ç·µ»Ø0
+    ///æŒ‰å­—æ®µåºå·ï¼Œå–å­—æ®µå€¼
+    /**@param column:å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+      *@return intå‹å­—æ®µå€¼,ä¸‹æ ‡è¶Šç•Œè¿”å›0
       */
     virtual int  FUNCTION_CALL_MODE GetIntByIndex(int column) = 0;
 
-    ///°´×Ö¶ÎÃû£¬È¡×Ö¶ÎÖµ
-    /**@param columnName:×Ö¶ÎÃû
-      *@return intĞÍ×Ö¶ÎÖµ,²»´æÔÚ·µ»Ø0
+    ///æŒ‰å­—æ®µåï¼Œå–å­—æ®µå€¼
+    /**@param columnName:å­—æ®µå
+      *@return intå‹å­—æ®µå€¼,ä¸å­˜åœ¨è¿”å›0
       */
     virtual int FUNCTION_CALL_MODE GetInt(const char * columnName) = 0;
 
-    ///°´×Ö¶ÎĞòºÅ»ñµÃ×Ö¶ÎÖµ,¶ş½øÖÆÊı¾İ
-    /**@param column: ×Ö¶ÎĞòºÅ(ÒÔ0Îª»ùÊı)
-    *@param   lpRawLen: [out]Êı¾İ³¤¶È
-    *@return : Êı¾İÊ×µØÖ·
+    ///æŒ‰å­—æ®µåºå·è·å¾—å­—æ®µå€¼,äºŒè¿›åˆ¶æ•°æ®
+    /**@param column: å­—æ®µåºå·(ä»¥0ä¸ºåŸºæ•°)
+    *@param   lpRawLen: [out]æ•°æ®é•¿åº¦
+    *@return : æ•°æ®é¦–åœ°å€
     */
     virtual void *  FUNCTION_CALL_MODE GetRawByIndex(int column, int * lpRawLen) = 0;
 
-    ///°´×Ö¶ÎÃû£¬È¡×Ö¶ÎÖµ
-    /**@param columnName:×Ö¶ÎÃû
-    *@param   lpRawLen: [out]Êı¾İ³¤¶È
-    *@return : Êı¾İÊ×µØÖ·
+    ///æŒ‰å­—æ®µåï¼Œå–å­—æ®µå€¼
+    /**@param columnName:å­—æ®µå
+    *@param   lpRawLen: [out]æ•°æ®é•¿åº¦
+    *@return : æ•°æ®é¦–åœ°å€
     */
     virtual void *  FUNCTION_CALL_MODE GetRaw(const char * columnName, int * lpRawLen) = 0;
 
 
-    ///×îºóÒ»´ÎÈ¡µÄ×Ö¶ÎÖµÊÇ·ñÎªNULL
-   /**@return 0 ÊÇ£¬ 1²»ÊÇ
+    ///æœ€åä¸€æ¬¡å–çš„å­—æ®µå€¼æ˜¯å¦ä¸ºNULL
+   /**@return 0 æ˜¯ï¼Œ 1ä¸æ˜¯
    */
     virtual int  FUNCTION_CALL_MODE WasNull() = 0;
 
-    ///È¡ÏÂÒ»Ìõ¼ÇÂ¼
+    ///å–ä¸‹ä¸€æ¡è®°å½•
     virtual void  FUNCTION_CALL_MODE Next() = 0;
 
-    ///ÅĞ¶ÏÊÇ·ñÎª½áÎ²
-    /**@return 1 ÊÇ£¬0 ²»ÊÇ;
+    ///åˆ¤æ–­æ˜¯å¦ä¸ºç»“å°¾
+    /**@return 1 æ˜¯ï¼Œ0 ä¸æ˜¯;
       */
     virtual int  FUNCTION_CALL_MODE IsEOF() = 0;
 
-    ///ÅĞ¶ÏÊÇ·ñÎª¿Õ
-    /**@return 1 ÊÇ£¬0 ²»ÊÇ;
+    ///åˆ¤æ–­æ˜¯å¦ä¸ºç©º
+    /**@return 1 æ˜¯ï¼Œ0 ä¸æ˜¯;
       */
     virtual int  FUNCTION_CALL_MODE IsEmpty() = 0;
 
@@ -234,142 +234,142 @@ struct IF2ResultSet : public IKnown
 
 struct IF2UnPacker;
 
-///¶à½á¹û¼¯´ò°ü½Ó¿Ú(Ò»¸ö°ü¿ÉÓĞ¶à¸öÒì¹¹½á¹û¼¯)
-/**Ö´ĞĞĞòÁĞ:
+///å¤šç»“æœé›†æ‰“åŒ…æ¥å£(ä¸€ä¸ªåŒ…å¯æœ‰å¤šä¸ªå¼‚æ„ç»“æœé›†)
+/**æ‰§è¡Œåºåˆ—:
  *
- * 0¡¢×¼±¸(¿ÉÑ¡, Èô²»½øĞĞ¸Ã²Ù×÷, ÔòÓÉIF2PackerÄÚ²¿ÉêÇëÄÚ´æ»º³å)£º SetBuffer(),Èç¹û´ò°ü»º´æÇøÓÉµ÷ÓÃÕßÌá¹©,Ôò±ØĞëÔÚBeginPack()Ö®Ç°×¼±¸;
+ * 0ã€å‡†å¤‡(å¯é€‰, è‹¥ä¸è¿›è¡Œè¯¥æ“ä½œ, åˆ™ç”±IF2Packerå†…éƒ¨ç”³è¯·å†…å­˜ç¼“å†²)ï¼š SetBuffer(),å¦‚æœæ‰“åŒ…ç¼“å­˜åŒºç”±è°ƒç”¨è€…æä¾›,åˆ™å¿…é¡»åœ¨BeginPack()ä¹‹å‰å‡†å¤‡;
  *
- * 1¡¢¿ªÊ¼:  BeginPack(),´ò°üÆ÷¸´Î»;
+ * 1ã€å¼€å§‹:  BeginPack(),æ‰“åŒ…å™¨å¤ä½;
  *
- * 2¡¢µÚÒ»¸ö½á¹û¼¯´ò°ü£º
+ * 2ã€ç¬¬ä¸€ä¸ªç»“æœé›†æ‰“åŒ…ï¼š
  *
- *(a)Ìí¼Ó×Ö¶ÎÃûÁĞ±íÓò£ºAddField()
+ *(a)æ·»åŠ å­—æ®µååˆ—è¡¨åŸŸï¼šAddField()
  *
- *(b)°´ÕÕ½á¹û¼¯¶şÎ¬±íË³Ğò£¬Öğ×Ö¶Î£¬ÖğÌõ¼ÇÂ¼°´×Ö¶ÎÀàĞÍÌí¼ÓÄÚÈİ£ºAddStr() {AddInt(), AddDouble(), AddRaw()}
+ *(b)æŒ‰ç…§ç»“æœé›†äºŒç»´è¡¨é¡ºåºï¼Œé€å­—æ®µï¼Œé€æ¡è®°å½•æŒ‰å­—æ®µç±»å‹æ·»åŠ å†…å®¹ï¼šAddStr() {AddInt(), AddDouble(), AddRaw()}
  *
- * 3¡¢ÉèÖÃ½á¹û¼¯µÄ·µ»ØÂë(¿ÉÑ¡£¬Èô²»ÉèÖÃ, Ôò·µ»ØÂëÎª0) SetReturnCode()
+ * 3ã€è®¾ç½®ç»“æœé›†çš„è¿”å›ç (å¯é€‰ï¼Œè‹¥ä¸è®¾ç½®, åˆ™è¿”å›ç ä¸º0) SetReturnCode()
  *
- * 4¡¢´òÏÂÒ»¸ö½á¹û¼¯(¿ÉÑ¡) NewDataSet()£¬´Ë´¦Í¬Ê±ÉèÖÃÁË¸Ã½á¹û¼¯µÄ·µ»ØÂë£»
+ * 4ã€æ‰“ä¸‹ä¸€ä¸ªç»“æœé›†(å¯é€‰) NewDataSet()ï¼Œæ­¤å¤„åŒæ—¶è®¾ç½®äº†è¯¥ç»“æœé›†çš„è¿”å›ç ï¼›
  *
- * 5¡¢²Î¿¼µÚ2²½ÊµÏÖÏÂÒ»¸ö½á¹û¼¯´ò°ü(¿ÉÑ¡)£»
+ * 5ã€å‚è€ƒç¬¬2æ­¥å®ç°ä¸‹ä¸€ä¸ªç»“æœé›†æ‰“åŒ…(å¯é€‰)ï¼›
  *
- * 6¡¢½áÊø£ºEndPack(),ÖØ¸´µ÷ÓÃ»áµ¼ÖÂ¼ÓÈë¿Õ½á¹û¼¯;
+ * 6ã€ç»“æŸï¼šEndPack(),é‡å¤è°ƒç”¨ä¼šå¯¼è‡´åŠ å…¥ç©ºç»“æœé›†;
  *
- * 7¡¢È¡´ò°ü½á¹û(»º´æÇø£¬»º´æÇø´óĞ¡£¬Êı¾İ³¤¶È)
- *    ´ò°ü½á¹ûÒ²¿ÉÒÔÖ±½Ó½â°üUnPack()·µ»Ø½â°ü½Ó¿Ú
+ * 7ã€å–æ‰“åŒ…ç»“æœ(ç¼“å­˜åŒºï¼Œç¼“å­˜åŒºå¤§å°ï¼Œæ•°æ®é•¿åº¦)
+ *    æ‰“åŒ…ç»“æœä¹Ÿå¯ä»¥ç›´æ¥è§£åŒ…UnPack()è¿”å›è§£åŒ…æ¥å£
  *
- *Ê¹ÓÃ×¢ÒâÊÂÏî:IF2PackerËùÊ¹ÓÃµÄÄÚ´æ»º´æÇø£¬ÓÉµ÷ÓÃÕß¸ºÔğ»ØÊÕ£»
- *             ½á¹û¼¯¸½´øµÄ·µ»ØÂë£¬Ö»ÓĞÔÚ°ü¸ñÊ½°æ±¾0x21¼°ÒÔÉÏÊ±ÓĞĞ§£»
+ *ä½¿ç”¨æ³¨æ„äº‹é¡¹:IF2Packeræ‰€ä½¿ç”¨çš„å†…å­˜ç¼“å­˜åŒºï¼Œç”±è°ƒç”¨è€…è´Ÿè´£å›æ”¶ï¼›
+ *             ç»“æœé›†é™„å¸¦çš„è¿”å›ç ï¼Œåªæœ‰åœ¨åŒ…æ ¼å¼ç‰ˆæœ¬0x21åŠä»¥ä¸Šæ—¶æœ‰æ•ˆï¼›
  */
 struct IF2Packer : public IKnown
 {
-    ///´ò°üÆ÷³õÊ¼»¯(Ê¹ÓÃµ÷ÓÃÕßµÄ»º´æÇø)
-    /** µÚÒ»´ÎÊ¹ÓÃ´ò°üÆ÷Ê±£¬¿ÉÏÈÊ¹ÓÃ±¾·½·¨ÉèÖÃºÃ»º³åÇø(Êı¾İ³¤¶È±»ÖÃÎªiDataLen)
-     *@param  char * pBuf  »º³åÇøµØÖ·
-     *@param  int iBufSize  »º³åÇø¿Õ¼ä
-     *@param  int iDataLen  ÒÑÓĞÊı¾İ³¤¶È£¬ĞÂÔöÊı¾İ¼ÓÔÚÒÑÓĞÊı¾İÖ®ºó£¨Ö»¶ÔV1.0¸ñÊ½µÄ°üÓĞĞ§£©
+    ///æ‰“åŒ…å™¨åˆå§‹åŒ–(ä½¿ç”¨è°ƒç”¨è€…çš„ç¼“å­˜åŒº)
+    /** ç¬¬ä¸€æ¬¡ä½¿ç”¨æ‰“åŒ…å™¨æ—¶ï¼Œå¯å…ˆä½¿ç”¨æœ¬æ–¹æ³•è®¾ç½®å¥½ç¼“å†²åŒº(æ•°æ®é•¿åº¦è¢«ç½®ä¸ºiDataLen)
+     *@param  char * pBuf  ç¼“å†²åŒºåœ°å€
+     *@param  int iBufSize  ç¼“å†²åŒºç©ºé—´
+     *@param  int iDataLen  å·²æœ‰æ•°æ®é•¿åº¦ï¼Œæ–°å¢æ•°æ®åŠ åœ¨å·²æœ‰æ•°æ®ä¹‹åï¼ˆåªå¯¹V1.0æ ¼å¼çš„åŒ…æœ‰æ•ˆï¼‰
      */
     virtual void FUNCTION_CALL_MODE SetBuffer(void * pBuf, int iBufSize, int iDataLen = 0) = 0;
 
-    ///¸´Î»£¬ÖØĞÂ¿ªÊ¼´òÁíÒ»¸ö°ü(×Ö¶ÎÊıÓë¼ÇÂ¼ÊıÖÃÎª0ĞĞ0Àı)
+    ///å¤ä½ï¼Œé‡æ–°å¼€å§‹æ‰“å¦ä¸€ä¸ªåŒ…(å­—æ®µæ•°ä¸è®°å½•æ•°ç½®ä¸º0è¡Œ0ä¾‹)
     /**
-     * ¹¦ÄÜ£º¿ªÊ¼´ò°ü£¬°Ñ°ü³¤¶ÈÇåÁã(ÖØ¸´Ê¹ÓÃÒÑÓĞµÄ»º´æÇø¿Õ¼ä)
-     *@return ÎŞ
+     * åŠŸèƒ½ï¼šå¼€å§‹æ‰“åŒ…ï¼ŒæŠŠåŒ…é•¿åº¦æ¸…é›¶(é‡å¤ä½¿ç”¨å·²æœ‰çš„ç¼“å­˜åŒºç©ºé—´)
+     *@return æ— 
      */
     virtual void FUNCTION_CALL_MODE BeginPack(void) = 0;
 
-    ///¿ªÊ¼´òÒ»¸ö½á¹û¼¯
-    /**ÔÚ´òµ¥½á¹û¼¯µÄ°üÊ±£¬¿ÉÒÔ²»µ÷ÓÃ±¾·½·¨,¾ùÈ¡Ä¬ÈÏÖµ
-     *@param const char *szDatasetName 0x20°æ´ò°üĞèÒªÖ¸Ã÷½á¹û¼¯Ãû×Ö
-     *@param int iReturnCode           0x20°æ´ò°üĞèÒªÎªÃ¿¸ö½á¹û¼¯Ö¸Ã÷·µ»ØÖµ
+    ///å¼€å§‹æ‰“ä¸€ä¸ªç»“æœé›†
+    /**åœ¨æ‰“å•ç»“æœé›†çš„åŒ…æ—¶ï¼Œå¯ä»¥ä¸è°ƒç”¨æœ¬æ–¹æ³•,å‡å–é»˜è®¤å€¼
+     *@param const char *szDatasetName 0x20ç‰ˆæ‰“åŒ…éœ€è¦æŒ‡æ˜ç»“æœé›†åå­—
+     *@param int iReturnCode           0x20ç‰ˆæ‰“åŒ…éœ€è¦ä¸ºæ¯ä¸ªç»“æœé›†æŒ‡æ˜è¿”å›å€¼
      */
     virtual int FUNCTION_CALL_MODE NewDataset(const char *szDatasetName, int iReturnCode = 0) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼Ó×Ö¶Î
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ å­—æ®µ
      *
-     *ÓĞÖ´ĞĞ´ÎĞòÒªÇó:ÔÚ NewDataset()»òReset(),SetBuffer()Ö®ºó,Öğ¸ö×Ö¶Î°´Ë³ĞòÌí¼Ó;
+     *æœ‰æ‰§è¡Œæ¬¡åºè¦æ±‚:åœ¨ NewDataset()æˆ–Reset(),SetBuffer()ä¹‹å,é€ä¸ªå­—æ®µæŒ‰é¡ºåºæ·»åŠ ;
      *
-     *@param szFieldName£º×Ö¶ÎÃû
-     *@param cFieldType £º×Ö¶ÎÀàĞÍ:IÕûÊı£¬F¸¡µãÊı£¬C×Ö·û£¬S×Ö·û´®£¬RÈÎÒâ¶ş½øÖÆÊı¾İ
-     *@param iFieldWidth £º×Ö¶Î¿í¶È£¨ËùÕ¼×î´ó×Ö½ÚÊı£©
-     *@param iFieldScale £º×Ö¶Î¾«¶È,¼´cFieldType='F'Ê±µÄĞ¡ÊıÎ»Êı(È±Ê¡Îª4Î»Ğ¡Êı)
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     *@param szFieldNameï¼šå­—æ®µå
+     *@param cFieldType ï¼šå­—æ®µç±»å‹:Iæ•´æ•°ï¼ŒFæµ®ç‚¹æ•°ï¼ŒCå­—ç¬¦ï¼ŒSå­—ç¬¦ä¸²ï¼ŒRä»»æ„äºŒè¿›åˆ¶æ•°æ®
+     *@param iFieldWidth ï¼šå­—æ®µå®½åº¦ï¼ˆæ‰€å æœ€å¤§å­—èŠ‚æ•°ï¼‰
+     *@param iFieldScale ï¼šå­—æ®µç²¾åº¦,å³cFieldType='F'æ—¶çš„å°æ•°ä½æ•°(ç¼ºçœä¸º4ä½å°æ•°)
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddField(const char *szFieldName, char cFieldType = 'S', int iFieldWidth = 255, int iFieldScale = 4) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼Ó×Ö·û´®Êı¾İ
-     * ÓĞÖ´ĞĞ´ÎĞòÒªÇó:±ØĞëÔÚËùÓĞ×Ö¶ÎÔö¼ÓÍêÖ®ºó,Öğ¸ö×Ö¶Î°´Ë³ĞòÌí¼Ó;
-     *@param       szValue£º×Ö·û´®Êı¾İ
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ å­—ç¬¦ä¸²æ•°æ®
+     * æœ‰æ‰§è¡Œæ¬¡åºè¦æ±‚:å¿…é¡»åœ¨æ‰€æœ‰å­—æ®µå¢åŠ å®Œä¹‹å,é€ä¸ªå­—æ®µæŒ‰é¡ºåºæ·»åŠ ;
+     *@param       szValueï¼šå­—ç¬¦ä¸²æ•°æ®
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddStr(const char *szValue) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼ÓÕûÊıÊı¾İ
-     *@param       iValue£ºÕûÊıÊı¾İ
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ æ•´æ•°æ•°æ®
+     *@param       iValueï¼šæ•´æ•°æ•°æ®
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddInt(int iValue) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼Ó¸¡µãÊı¾İ
-     *@param       fValue£º¸¡µãÊı¾İ
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ æµ®ç‚¹æ•°æ®
+     *@param       fValueï¼šæµ®ç‚¹æ•°æ®
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddDouble(double fValue) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼ÓÒ»¸ö×Ö·û
-     *@param		 cValue£º×Ö·û
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ ä¸€ä¸ªå­—ç¬¦
+     *@param		 cValueï¼šå­—ç¬¦
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddChar(char cValue) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÏò°üÌí¼ÓÒ»¸ö´ó¶ÔÏó
-     *@param	void * lpBuff Êı¾İÇø
-     *@param	int iLen  Êı¾İ³¤¶È
-     *@return ¸ºÊı±íÊ¾Ê§°Ü£¬·ñÔòÎªÄ¿Ç°°üµÄ³¤¶È
+     * åŠŸèƒ½ï¼šå‘åŒ…æ·»åŠ ä¸€ä¸ªå¤§å¯¹è±¡
+     *@param	void * lpBuff æ•°æ®åŒº
+     *@param	int iLen  æ•°æ®é•¿åº¦
+     *@return è´Ÿæ•°è¡¨ç¤ºå¤±è´¥ï¼Œå¦åˆ™ä¸ºç›®å‰åŒ…çš„é•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE AddRaw(void * lpBuff, int iLen) = 0;
 
-    ///½áÊø´ò°ü
+    ///ç»“æŸæ‰“åŒ…
     virtual void FUNCTION_CALL_MODE EndPack() = 0;
 
     /**
-     * ¹¦ÄÜ£ºÈ¡´ò°ü½á¹ûÖ¸Õë
-     *@return ´ò°ü½á¹ûÖ¸Õë
+     * åŠŸèƒ½ï¼šå–æ‰“åŒ…ç»“æœæŒ‡é’ˆ
+     *@return æ‰“åŒ…ç»“æœæŒ‡é’ˆ
      */
     virtual void * FUNCTION_CALL_MODE GetPackBuf(void) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÈ¡´ò°ü½á¹û³¤¶È
-     *@return ´ò°ü½á¹û³¤¶È
+     * åŠŸèƒ½ï¼šå–æ‰“åŒ…ç»“æœé•¿åº¦
+     *@return æ‰“åŒ…ç»“æœé•¿åº¦
      */
     virtual int FUNCTION_CALL_MODE GetPackLen(void) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÈ¡´ò°ü½á¹û»º³åÇø´óĞ¡
-     *@return ´ò°ü½á¹û»º³åÇø´óĞ¡
+     * åŠŸèƒ½ï¼šå–æ‰“åŒ…ç»“æœç¼“å†²åŒºå¤§å°
+     *@return æ‰“åŒ…ç»“æœç¼“å†²åŒºå¤§å°
      */
     virtual int FUNCTION_CALL_MODE GetPackBufSize(void) = 0;
 
     /**
-     * ¹¦ÄÜ£ºÈ¡´ò°ü¸ñÊ½°æ±¾
-     *@return °æ±¾
+     * åŠŸèƒ½ï¼šå–æ‰“åŒ…æ ¼å¼ç‰ˆæœ¬
+     *@return ç‰ˆæœ¬
      */
     virtual int FUNCTION_CALL_MODE GetVersion(void) = 0;
 
-    ///ÉèÖÃ½á¹û¼¯µÄ·µ»ØÂë(0x20°æÒÔÉÏÒªÇó)£¬´íÎó½á¹û¼¯ĞèÒªÉèÖÃ
-    /**·µ»ØÂëÈ¡È±Ê¡Öµ0£¬Ôò²»ÉèÖÃ£¬Èç¹ûÉèÖÃ£¬Ôò±ØĞëÔÚEndPack()Ö®Ç°µ÷ÓÃ
-     *@return °æ±¾
+    ///è®¾ç½®ç»“æœé›†çš„è¿”å›ç (0x20ç‰ˆä»¥ä¸Šè¦æ±‚)ï¼Œé”™è¯¯ç»“æœé›†éœ€è¦è®¾ç½®
+    /**è¿”å›ç å–ç¼ºçœå€¼0ï¼Œåˆ™ä¸è®¾ç½®ï¼Œå¦‚æœè®¾ç½®ï¼Œåˆ™å¿…é¡»åœ¨EndPack()ä¹‹å‰è°ƒç”¨
+     *@return ç‰ˆæœ¬
      */
     virtual void FUNCTION_CALL_MODE SetReturnCode(unsigned long dwRetCode) = 0;
 
-    /**Ö±½Ó·µ»Øµ±Ç°´ò°ü½á¹ûµÄ½â°ü½Ó¿Ú,±ØĞëÔÚEndPack()Ö®ºó²ÅÄÜµ÷ÓÃ,ÔÚ´ò°üÆ÷ÊÍ·ÅÊ±ÏàÓ¦µÄ½â°üÆ÷ÊµÀıÒ²ÊÍ·Å
-     *@return ½â°üÆ÷½Ó¿Ú£¬´Ë½â°ü½Ó¿Ú²»ÄÜµ÷ÓÃ destroy()À´ÊÍ·Å
+    /**ç›´æ¥è¿”å›å½“å‰æ‰“åŒ…ç»“æœçš„è§£åŒ…æ¥å£,å¿…é¡»åœ¨EndPack()ä¹‹åæ‰èƒ½è°ƒç”¨,åœ¨æ‰“åŒ…å™¨é‡Šæ”¾æ—¶ç›¸åº”çš„è§£åŒ…å™¨å®ä¾‹ä¹Ÿé‡Šæ”¾
+     *@return è§£åŒ…å™¨æ¥å£ï¼Œæ­¤è§£åŒ…æ¥å£ä¸èƒ½è°ƒç”¨ destroy()æ¥é‡Šæ”¾
      */
     virtual IF2UnPacker * FUNCTION_CALL_MODE UnPack(void) = 0;
 
@@ -384,123 +384,123 @@ struct IF2Packer : public IKnown
     virtual void FUNCTION_CALL_MODE ClearValue() = 0;
 
 
-    //20110302 xuxp Ôö¼ÓÒ»¸ö½Ó¿Úº¯Êı£¬ÓÃÀ´´«µİµÚÒ»¸ö½á¹û¼¯µÄÃû×Ö
-    ///¸´Î»£¬ÖØĞÂ¿ªÊ¼´òÁíÒ»¸ö°ü(×Ö¶ÎÊıÓë¼ÇÂ¼ÊıÖÃÎª0ĞĞ0Àı)
+    //20110302 xuxp å¢åŠ ä¸€ä¸ªæ¥å£å‡½æ•°ï¼Œç”¨æ¥ä¼ é€’ç¬¬ä¸€ä¸ªç»“æœé›†çš„åå­—
+    ///å¤ä½ï¼Œé‡æ–°å¼€å§‹æ‰“å¦ä¸€ä¸ªåŒ…(å­—æ®µæ•°ä¸è®°å½•æ•°ç½®ä¸º0è¡Œ0ä¾‹)
     /**
-     * ¹¦ÄÜ£º¿ªÊ¼´ò°ü£¬°Ñ°ü³¤¶ÈÇåÁã(ÖØ¸´Ê¹ÓÃÒÑÓĞµÄ»º´æÇø¿Õ¼ä)
-     *@return ÎŞ
+     * åŠŸèƒ½ï¼šå¼€å§‹æ‰“åŒ…ï¼ŒæŠŠåŒ…é•¿åº¦æ¸…é›¶(é‡å¤ä½¿ç”¨å·²æœ‰çš„ç¼“å­˜åŒºç©ºé—´)
+     *@return æ— 
      */
     virtual void FUNCTION_CALL_MODE BeginPackEx(char* szName = NULL) = 0;
 
-    //20110324 dongpf Ôö¼ÓÒ»¸ö½Ó¿Úº¯Êı£¬ÓÃÀ´¸´Î»µ±Ç°½á¹û¼¯
-    ///¸´Î»µ±Ç°½á¹û¼¯(×Ö¶ÎÊıÓë¼ÇÂ¼ÊıÖÃÎª0ĞĞ0Àı)£¬²»Ó°ÏìÆäËû½á¹û¼¯
+    //20110324 dongpf å¢åŠ ä¸€ä¸ªæ¥å£å‡½æ•°ï¼Œç”¨æ¥å¤ä½å½“å‰ç»“æœé›†
+    ///å¤ä½å½“å‰ç»“æœé›†(å­—æ®µæ•°ä¸è®°å½•æ•°ç½®ä¸º0è¡Œ0ä¾‹)ï¼Œä¸å½±å“å…¶ä»–ç»“æœé›†
     /**
-     * ¹¦ÄÜ£º¸´Î»µ±Ç°½á¹û¼¯
-     *@return ÎŞ
+     * åŠŸèƒ½ï¼šå¤ä½å½“å‰ç»“æœé›†
+     *@return æ— 
      */
     virtual void FUNCTION_CALL_MODE ClearDataSet() = 0;
 };
 
-///½â°üÆ÷½Ó¿Ú
+///è§£åŒ…å™¨æ¥å£
 struct IF2UnPacker : public IF2ResultSet
 {
-    /**È¡´ò°ü¸ñÊ½°æ±¾
-     *@return °æ±¾
+    /**å–æ‰“åŒ…æ ¼å¼ç‰ˆæœ¬
+     *@return ç‰ˆæœ¬
      */
     virtual int FUNCTION_CALL_MODE GetVersion(void) = 0;
 
-    /**È¡½â°üÊı¾İ³¤¶È
-     *@return 							0 ±íÊ¾³É¹¦£¬ ÆäËüÎªÊ§°Ü
+    /**å–è§£åŒ…æ•°æ®é•¿åº¦
+     *@return 							0 è¡¨ç¤ºæˆåŠŸï¼Œ å…¶å®ƒä¸ºå¤±è´¥
      */
     virtual int FUNCTION_CALL_MODE Open(void * lpBuffer, unsigned int iLen) = 0;
 
-    ///È¡½á¹û¼¯¸öÊı(0x20ÒÔÉÏ°æ±¾Ö§³Ö)
+    ///å–ç»“æœé›†ä¸ªæ•°(0x20ä»¥ä¸Šç‰ˆæœ¬æ”¯æŒ)
     virtual int FUNCTION_CALL_MODE GetDatasetCount() = 0;
 
-    ///ÉèÖÃµ±Ç°½á¹û¼¯(0x20ÒÔÉÏ°æ±¾Ö§³Ö)
+    ///è®¾ç½®å½“å‰ç»“æœé›†(0x20ä»¥ä¸Šç‰ˆæœ¬æ”¯æŒ)
     /**
-     *@param  int nIndex				½á¹û¼¯±àºÅ
-     *@return int						0±íÊ¾³É¹¦£¬·ñÔòÎªÊ§°Ü
+     *@param  int nIndex				ç»“æœé›†ç¼–å·
+     *@return int						0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™ä¸ºå¤±è´¥
      */
     virtual int FUNCTION_CALL_MODE SetCurrentDatasetByIndex(int nIndex) = 0;
 
-    ///ÉèÖÃµ±Ç°½á¹û¼¯ (0x20ÒÔÉÏ°æ±¾Ö§³Ö)
+    ///è®¾ç½®å½“å‰ç»“æœé›† (0x20ä»¥ä¸Šç‰ˆæœ¬æ”¯æŒ)
     /**
-     *@param  const char *szDatasetName	½á¹û¼¯Ãû³Æ
-     *@return int						0 ±íÊ¾³É¹¦£¬·ñÔòÎªÊ§°Ü
+     *@param  const char *szDatasetName	ç»“æœé›†åç§°
+     *@return int						0 è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™ä¸ºå¤±è´¥
      */
     virtual int FUNCTION_CALL_MODE SetCurrentDataset(const char *szDatasetName) = 0;
 
-    /** È¡½â°üÊı¾İÇøÖ¸Õë
-     *@return Êı¾İÇøÖ¸Õë
+    /** å–è§£åŒ…æ•°æ®åŒºæŒ‡é’ˆ
+     *@return æ•°æ®åŒºæŒ‡é’ˆ
      */
     virtual void * FUNCTION_CALL_MODE GetPackBuf(void) = 0;
 
-    /** È¡½â°üÊı¾İ³¤¶È
-     *@return ½â°üÊı¾İ³¤¶È
+    /** å–è§£åŒ…æ•°æ®é•¿åº¦
+     *@return è§£åŒ…æ•°æ®é•¿åº¦
      */
     virtual unsigned int FUNCTION_CALL_MODE GetPackLen(void) = 0;
 
-    /**È¡½â°üÊı¾İ¼ÇÂ¼ÌõÊı,20051207ÒÔºó°æ±¾Ö§³Ö
-     *@return ¼ÇÂ¼ÌõÊı
+    /**å–è§£åŒ…æ•°æ®è®°å½•æ¡æ•°,20051207ä»¥åç‰ˆæœ¬æ”¯æŒ
+     *@return è®°å½•æ¡æ•°
      */
     virtual unsigned int FUNCTION_CALL_MODE GetRowCount(void) = 0;
 };
 
-///Á¬½Ó¶ÔÏó CConnectionInterface µÄ²ÎÊıÅäÖÃ¶ÔÏóCConfigInterface
+///è¿æ¥å¯¹è±¡ CConnectionInterface çš„å‚æ•°é…ç½®å¯¹è±¡CConfigInterface
 /**
-* °üÀ¨´ÓÎÄ¼ş¼ÓÔØ¡¢±£´æµ½ÎÄ¼ş£¬¶ÁĞ´²Ù×÷
+* åŒ…æ‹¬ä»æ–‡ä»¶åŠ è½½ã€ä¿å­˜åˆ°æ–‡ä»¶ï¼Œè¯»å†™æ“ä½œ
 */
 class CConfigInterface : public IKnown
 {
 public:
     /**
-    * ´ÓÎÄ¼ş¼ÓÔØ
-    * @param szFileName ÎÄ¼şÃû£¬¸ñÊ½ÀàËÆini£¬¾ßÌå²Î¿¼¿ª·¢°üÊ¾Àı
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔòÊ§°Ü
+    * ä»æ–‡ä»¶åŠ è½½
+    * @param szFileName æ–‡ä»¶åï¼Œæ ¼å¼ç±»ä¼¼iniï¼Œå…·ä½“å‚è€ƒå¼€å‘åŒ…ç¤ºä¾‹
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™å¤±è´¥
     */
     virtual int FUNCTION_CALL_MODE Load(const char *szFileName) = 0;
 
     /**
-    * ±£´æµ½ÎÄ¼ş
-    * @param szFileName ÎÄ¼şÃû
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔòÊ§°Ü
+    * ä¿å­˜åˆ°æ–‡ä»¶
+    * @param szFileName æ–‡ä»¶å
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™å¤±è´¥
     */
     virtual int FUNCTION_CALL_MODE Save(const char *szFileName) = 0;
 
     /**
-    * È¡×Ö·û´®Öµ
-    * @param szSection ½ÚÃû
-    * @param szEntry   ±äÁ¿Ãû
-    * @param szDefault È±Ê¡Öµ
-    * @return ×Ö·û´®Öµ£¬Ã»ÓĞÕÒµ½Ê±·µ»ØszDefault
+    * å–å­—ç¬¦ä¸²å€¼
+    * @param szSection èŠ‚å
+    * @param szEntry   å˜é‡å
+    * @param szDefault ç¼ºçœå€¼
+    * @return å­—ç¬¦ä¸²å€¼ï¼Œæ²¡æœ‰æ‰¾åˆ°æ—¶è¿”å›szDefault
     */
     virtual const char * FUNCTION_CALL_MODE GetString(const char *szSection, const char *szEntry, const char *szDefault) = 0;
 
     /**
-    * È¡ÕûÊıÖµ
-    * @param szSection ½ÚÃû
-    * @param szEntry   ±äÁ¿Ãû
-    * @param iDefault  È±Ê¡Öµ
-    * @return ÕûÊıÖµ£¬Ã»ÓĞÕÒµ½Ê±·µ»ØiDefault
+    * å–æ•´æ•°å€¼
+    * @param szSection èŠ‚å
+    * @param szEntry   å˜é‡å
+    * @param iDefault  ç¼ºçœå€¼
+    * @return æ•´æ•°å€¼ï¼Œæ²¡æœ‰æ‰¾åˆ°æ—¶è¿”å›iDefault
     */
     virtual int FUNCTION_CALL_MODE GetInt(const char *szSection, const char *szEntry, int iDefault) = 0;
 
     /**
-    * ÉèÖÃ×Ö·û´®Öµ
-    * @param szSection ½ÚÃû
-    * @param szEntry   ±äÁ¿Ãû
-    * @param szValue   Öµ
-    * @return 0±íÊ¾³É¹¦£¬·ñÔòÊ§°Ü
+    * è®¾ç½®å­—ç¬¦ä¸²å€¼
+    * @param szSection èŠ‚å
+    * @param szEntry   å˜é‡å
+    * @param szValue   å€¼
+    * @return 0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™å¤±è´¥
     */
     virtual int FUNCTION_CALL_MODE SetString(const char *szSection, const char *szEntry, const char *szValue) = 0;
 
     /**
-    * ÉèÖÃÕûÊıÖµ
-    * @param szSection ½ÚÃû
-    * @param szEntry   ±äÁ¿Ãû
-    * @param iValue    Öµ
-    * @return 0±íÊ¾³É¹¦£¬·ñÔòÊ§°Ü
+    * è®¾ç½®æ•´æ•°å€¼
+    * @param szSection èŠ‚å
+    * @param szEntry   å˜é‡å
+    * @param iValue    å€¼
+    * @return 0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™å¤±è´¥
     */
     virtual int FUNCTION_CALL_MODE SetInt(const char *szSection, const char *szEntry, int iValue) = 0;
 };
@@ -508,12 +508,12 @@ public:
 
 typedef struct tagBizRouteInfo
 {
-    char ospfName[ID_STR_LEN + 1];//Â·ÓÉÄ¿±ê½ÚµãÖĞ¼ä¼şÃû×Ö
-    char nbrName[ID_STR_LEN + 1];//ÖĞ¼ä¼ş½ÚµãµÄÁÚ¾ÓÃû×Ö
-    char svrName[SVRINSTANCE_NAME_LENGTH + 1];//ÖĞ¼ä¼şµÄ½ø³ÌÃû×Ö
-    char pluginID[PLUGIN_NAME_LENGTH + 1];//ÖĞ¼ä¼ş²å¼şÃû
-    int connectID;//Á¬½ÓºÅ
-    int memberNO;//³ÉÔ±±àºÅ
+    char ospfName[ID_STR_LEN + 1];//è·¯ç”±ç›®æ ‡èŠ‚ç‚¹ä¸­é—´ä»¶åå­—
+    char nbrName[ID_STR_LEN + 1];//ä¸­é—´ä»¶èŠ‚ç‚¹çš„é‚»å±…åå­—
+    char svrName[SVRINSTANCE_NAME_LENGTH + 1];//ä¸­é—´ä»¶çš„è¿›ç¨‹åå­—
+    char pluginID[PLUGIN_NAME_LENGTH + 1];//ä¸­é—´ä»¶æ’ä»¶å
+    int connectID;//è¿æ¥å·
+    int memberNO;//æˆå‘˜ç¼–å·
 
     tagBizRouteInfo()
     {
@@ -524,278 +524,278 @@ typedef struct tagBizRouteInfo
 
 struct IBizMessage : IKnown
 {
-    //ÉèÖÃ¹¦ÄÜºÅ
+    //è®¾ç½®åŠŸèƒ½å·
     virtual void FUNCTION_CALL_MODE SetFunction(const int nFUnctionNo) = 0;
-    //»ñÈ¡¹¦ÄÜºÅ
+    //è·å–åŠŸèƒ½å·
     virtual int FUNCTION_CALL_MODE GetFunction() = 0;
 
-    //ÉèÖÃ°üÀàĞÍ
+    //è®¾ç½®åŒ…ç±»å‹
     virtual void FUNCTION_CALL_MODE SetPacketType(const int nPacketType) = 0;
-    //»ñÈ¡°üÀàĞÍ
+    //è·å–åŒ…ç±»å‹
     virtual int FUNCTION_CALL_MODE GetPacketType() = 0;
 
-    //ÉèÖÃÓªÒµ²¿ºÅ
+    //è®¾ç½®è¥ä¸šéƒ¨å·
     virtual void FUNCTION_CALL_MODE SetBranchNo(const int nBranchNo) = 0;
-    //»ñÈ¡ÓªÒµ²¿ºÅ
+    //è·å–è¥ä¸šéƒ¨å·
     virtual int FUNCTION_CALL_MODE GetBranchNo() = 0;
 
-    //ÉèÖÃÏµÍ³ºÅ
+    //è®¾ç½®ç³»ç»Ÿå·
     virtual void FUNCTION_CALL_MODE SetSystemNo(const int nSystemNo) = 0;
-    //»ñÈ¡ÏµÍ³ºÅ
+    //è·å–ç³»ç»Ÿå·
     virtual int FUNCTION_CALL_MODE GetSystemNo() = 0;
 
-    //ÉèÖÃ×ÓÏµÍ³ºÅ
+    //è®¾ç½®å­ç³»ç»Ÿå·
     virtual void FUNCTION_CALL_MODE SetSubSystemNo(const int nSubSystemNo) = 0;
-    //»ñÈ¡×ÓÏµÍ³ºÅ
+    //è·å–å­ç³»ç»Ÿå·
     virtual int FUNCTION_CALL_MODE GetSubSystemNo() = 0;
 
-    //ÉèÖÃ·¢ËÍÕß±àºÅ
+    //è®¾ç½®å‘é€è€…ç¼–å·
     virtual void FUNCTION_CALL_MODE SetSenderId(const int nSenderId) = 0;
-    //»ñÈ¡·¢ËÍÕß±àºÅ
+    //è·å–å‘é€è€…ç¼–å·
     virtual int FUNCTION_CALL_MODE GetSenderId() = 0;
 
-    //ÉèÖÃ°üĞòºÅ
+    //è®¾ç½®åŒ…åºå·
     virtual void FUNCTION_CALL_MODE SetPacketId(const int nPacketId) = 0;
-    //»ñÈ¡°üĞòºÅ
+    //è·å–åŒ…åºå·
     virtual int FUNCTION_CALL_MODE GetPacketId() = 0;
 
-    //ÉèÖÃÄ¿µÄµØÂ·ÓÉ
+    //è®¾ç½®ç›®çš„åœ°è·¯ç”±
     virtual void FUNCTION_CALL_MODE SetTargetInfo(const BIZROUTE_INFO targetInfo) = 0;
-    //»ñÈ¡Ä¿µÄµØÂ·ÓÉ
+    //è·å–ç›®çš„åœ°è·¯ç”±
     virtual void FUNCTION_CALL_MODE GetTargetInfo(BIZROUTE_INFO& targetInfo) = 0;
 
-    //ÉèÖÃ·¢ËÍÕßÂ·ÓÉ
+    //è®¾ç½®å‘é€è€…è·¯ç”±
     virtual void FUNCTION_CALL_MODE SetSendInfo(const BIZROUTE_INFO sendInfo) = 0;
-    //»ñÈ¡·¢ËÍÕßÂ·ÓÉ
+    //è·å–å‘é€è€…è·¯ç”±
     virtual void FUNCTION_CALL_MODE GetSendInfo(BIZROUTE_INFO& sendInfo) = 0;
 
-    //ÉèÖÃ´íÎóºÅ
+    //è®¾ç½®é”™è¯¯å·
     virtual void FUNCTION_CALL_MODE SetErrorNo(const int nErrorNo) = 0;
-    //»ñÈ¡´íÎóºÅ
+    //è·å–é”™è¯¯å·
     virtual int FUNCTION_CALL_MODE GetErrorNo() = 0;
 
-    //ÉèÖÃ´íÎóĞÅÏ¢
+    //è®¾ç½®é”™è¯¯ä¿¡æ¯
     virtual void FUNCTION_CALL_MODE SetErrorInfo(const char* strErrorInfo) = 0;
-    //»ñÈ¡´íÎóĞÅÏ¢
+    //è·å–é”™è¯¯ä¿¡æ¯
     virtual const char* FUNCTION_CALL_MODE GetErrorInfo() = 0;
 
-    //ÉèÖÃ·µ»ØÂë
+    //è®¾ç½®è¿”å›ç 
     virtual void FUNCTION_CALL_MODE SetReturnCode(const int nReturnCode) = 0;
-    //»ñÈ¡·µ»ØÂë
+    //è·å–è¿”å›ç 
     virtual int FUNCTION_CALL_MODE GetReturnCode() = 0;
 
-    //ÉèÖÃÒµÎñÄÚÈİ
+    //è®¾ç½®ä¸šåŠ¡å†…å®¹
     virtual void FUNCTION_CALL_MODE SetContent(void* lpContent, int iLen) = 0;
-    //»ñÈ¡ÒµÎñÄÚÈİ
+    //è·å–ä¸šåŠ¡å†…å®¹
     virtual const void* FUNCTION_CALL_MODE GetContent(int& iLen) = 0;
 
-    //ÒÔÏÂ½Ó¿ÚÓÃÓÚÏûÏ¢ÖĞĞÄ1.0µÄ¶©ÔÄ
-    //ÉèÖÃ¶©ÔÄÀàĞÍ
+    //ä»¥ä¸‹æ¥å£ç”¨äºæ¶ˆæ¯ä¸­å¿ƒ1.0çš„è®¢é˜…
+    //è®¾ç½®è®¢é˜…ç±»å‹
     virtual void FUNCTION_CALL_MODE SetIssueType(const int nIssueType) = 0;
-    //»ñÈ¡¶©ÔÄÀàĞÍ
+    //è·å–è®¢é˜…ç±»å‹
     virtual int FUNCTION_CALL_MODE GetIssueType() = 0;
 
-    //ÉèÖÃĞòºÅ
+    //è®¾ç½®åºå·
     virtual void FUNCTION_CALL_MODE SetSequeceNo(const int nSequeceNo) = 0;
-    //»ñÈ¡ĞòºÅ
+    //è·å–åºå·
     virtual int FUNCTION_CALL_MODE GetSequeceNo() = 0;
 
-    //ÉèÖÃ¹Ø¼ü×Ö¶ÎĞÅÏ¢
+    //è®¾ç½®å…³é”®å­—æ®µä¿¡æ¯
     virtual void FUNCTION_CALL_MODE SetKeyInfo(void* lpKeyData, int iLen) = 0;
-    //»ñÈ¡¹Ø¼ü×Ö¶ÎĞÅÏ¢
+    //è·å–å…³é”®å­—æ®µä¿¡æ¯
     virtual const void* FUNCTION_CALL_MODE GetKeyInfo(int& iLen) = 0;
 
-    //ÉèÖÃ¸½¼ÓÊı¾İ£¬¶©ÔÄÍÆËÍÊ±Ô­Ñù·µ»Ø
+    //è®¾ç½®é™„åŠ æ•°æ®ï¼Œè®¢é˜…æ¨é€æ—¶åŸæ ·è¿”å›
     virtual void FUNCTION_CALL_MODE SetAppData(const void* lpAppdata, int nAppLen) = 0;
-    //»ñÈ¡¸½¼ÓÊı¾İ£¬¶©ÔÄÍÆËÍÊ±Ô­Ñù·µ»Ø
+    //è·å–é™„åŠ æ•°æ®ï¼Œè®¢é˜…æ¨é€æ—¶åŸæ ·è¿”å›
     virtual const void* FUNCTION_CALL_MODE GetAppData(int& nAppLen) = 0;
 
-    //ÇëÇó×ªÓ¦´ğ
+    //è¯·æ±‚è½¬åº”ç­”
     virtual int	FUNCTION_CALL_MODE ChangeReq2AnsMessage() = 0;
 
-    //»ñÈ¡¶ş½øÖÆ
+    //è·å–äºŒè¿›åˆ¶
     virtual void* FUNCTION_CALL_MODE GetBuff(int& nBuffLen) = 0;
-    //½âÎö¶ş½øÖÆ
+    //è§£æäºŒè¿›åˆ¶
     virtual int	FUNCTION_CALL_MODE SetBuff(const void* lpBuff, int nBuffLen) = 0;
 };
 
-#define IDENTITY_NAME_LENGTH    32  /**< ¿Í»§¶ËÃû×Ö³¤¶È */
-#define MAX_MACADDRESS_LEN	    18  /**< MAC µØÖ·³¤¶È */
-#define MAX_RAND_LEN	        4   /**< Ëæ»úÊı³¤¶È */
+#define IDENTITY_NAME_LENGTH    32  /**< å®¢æˆ·ç«¯åå­—é•¿åº¦ */
+#define MAX_MACADDRESS_LEN	    18  /**< MAC åœ°å€é•¿åº¦ */
+#define MAX_RAND_LEN	        4   /**< éšæœºæ•°é•¿åº¦ */
 
-/** ¿Í»§±êÊ¶³¤¶È */
+/** å®¢æˆ·æ ‡è¯†é•¿åº¦ */
 #define MAX_BIZNAME_LEN \
 	IDENTITY_NAME_LENGTH+1+MAX_MACADDRESS_LEN+1+MAX_RAND_LEN+2
 
-#define INIT_RECVQ_LEN 256          /**< ½ÓÊÕ¶ÓÁĞ³õÊ¼³¤¶È */
-#define STEP_RECVQ_LEN 512          /**< ½ÓÊÕ¶ÓÁĞÀ©Õ¹²½³¤ */
-#define SIMPLIFIED_CHINESE      0   /**< ´íÎóĞÅÏ¢ÓïÑÔ:¼òÌåÖĞÎÄ */
-#define ENGLISH                 1   /**< ´íÎóĞÅÏ¢ÓïÑÔ:Ó¢ÎÄ */
-#define MAX_FILTERFIELD_LEN 63      /**< ¹ıÂË×Ö¶Î³¤¶È */
+#define INIT_RECVQ_LEN 256          /**< æ¥æ”¶é˜Ÿåˆ—åˆå§‹é•¿åº¦ */
+#define STEP_RECVQ_LEN 512          /**< æ¥æ”¶é˜Ÿåˆ—æ‰©å±•æ­¥é•¿ */
+#define SIMPLIFIED_CHINESE      0   /**< é”™è¯¯ä¿¡æ¯è¯­è¨€:ç®€ä½“ä¸­æ–‡ */
+#define ENGLISH                 1   /**< é”™è¯¯ä¿¡æ¯è¯­è¨€:è‹±æ–‡ */
+#define MAX_FILTERFIELD_LEN 63      /**< è¿‡æ»¤å­—æ®µé•¿åº¦ */
 
-/** Ö÷Ìâ¿É¿¿µÈ¼¶ */
+/** ä¸»é¢˜å¯é ç­‰çº§ */
 enum ReliableLevel
 {
-    LEVEL_DOBEST = 0,    /**< ¾¡Á¦¶øÎª */
-    LEVEL_DOBEST_BYSEQ = 1,    /**< ¾¡Á¦ÓĞĞò */
-    LEVEL_MEM = 2,    /**< ÄÚ´æ */
-    LEVEL_FILE = 3,    /**< ÎÄ¼ş */
-    LEVEL_SYSTEM = 4     /**< ÏµÍ³ */
+    LEVEL_DOBEST = 0,    /**< å°½åŠ›è€Œä¸º */
+    LEVEL_DOBEST_BYSEQ = 1,    /**< å°½åŠ›æœ‰åº */
+    LEVEL_MEM = 2,    /**< å†…å­˜ */
+    LEVEL_FILE = 3,    /**< æ–‡ä»¶ */
+    LEVEL_SYSTEM = 4     /**< ç³»ç»Ÿ */
 };
 
 /**
- * ¹ıÂËÆ÷½Ó¿Ú
+ * è¿‡æ»¤å™¨æ¥å£
  */
 class CFilterInterface :public IKnown
 {
 public:
     /**
-     * ¸ù¾İÏÂ±ê»ñÈ¡¹ıÂËÌõ¼şµÄÃû×Ö
-     * @param index ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÏÂ±ê
-     * @return ·µ»Ø¶ÔÓ¦µÄÏÂ±ê¹ıÂËÌõ¼şµÄÃû×Ö£¬·ñÔò·µ»ØNULL.
+     * æ ¹æ®ä¸‹æ ‡è·å–è¿‡æ»¤æ¡ä»¶çš„åå­—
+     * @param index å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶ä¸‹æ ‡
+     * @return è¿”å›å¯¹åº”çš„ä¸‹æ ‡è¿‡æ»¤æ¡ä»¶çš„åå­—ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE GetFilterNameByIndex(int index) = 0;
 
     /**
-     * ¸ù¾İÏÂ±ê»ñÈ¡¹ıÂËÌõ¼şµÄÖµ
-     * @param index ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÏÂ±ê
-     * @return ·µ»Ø¶ÔÓ¦µÄÏÂ±ê¹ıÂËÌõ¼şµÄÖµ£¬·ñÔò·µ»ØNULL.
+     * æ ¹æ®ä¸‹æ ‡è·å–è¿‡æ»¤æ¡ä»¶çš„å€¼
+     * @param index å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶ä¸‹æ ‡
+     * @return è¿”å›å¯¹åº”çš„ä¸‹æ ‡è¿‡æ»¤æ¡ä»¶çš„å€¼ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE GetFilterValueByIndex(int index) = 0;
 
     /**
-     * ¸ù¾İ¹ıÂËÌõ¼şµÄÃû×Ö»ñÈ¡¹ıÂËÌõ¼şµÄÖµ
-     * @param fileName ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×Ö
-     * @return ·µ»Ø¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×ÖµÄÌõ¼şÖµ£¬·ñÔò·µ»ØNULL.
+     * æ ¹æ®è¿‡æ»¤æ¡ä»¶çš„åå­—è·å–è¿‡æ»¤æ¡ä»¶çš„å€¼
+     * @param fileName å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—
+     * @return è¿”å›å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—çš„æ¡ä»¶å€¼ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE GetFilterValue(char*  fileName) = 0;
 
     /**
-     * »ñÈ¡¹ıÂËÌõ¼şµÄ¸öÊı
-     * @return ·µ»Ø¶ÔÓ¦¹ıÂËÌõ¼şµÄ¸öÊı£¬Ã»ÓĞ·µ»Ø0
+     * è·å–è¿‡æ»¤æ¡ä»¶çš„ä¸ªæ•°
+     * @return è¿”å›å¯¹åº”è¿‡æ»¤æ¡ä»¶çš„ä¸ªæ•°ï¼Œæ²¡æœ‰è¿”å›0
      */
     virtual int   FUNCTION_CALL_MODE GetCount() = 0;
 
     /**
-     * ÉèÖÃ¹ıÂËÌõ¼ş£¬¸ù¾İ¹ıÂËÌõ¼şÃû×ÖºÍÖµ
-     * @param filterName ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×Ö
-     * @param filterValue ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×ÖµÄÖµ
+     * è®¾ç½®è¿‡æ»¤æ¡ä»¶ï¼Œæ ¹æ®è¿‡æ»¤æ¡ä»¶åå­—å’Œå€¼
+     * @param filterName å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—
+     * @param filterValue å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—çš„å€¼
      */
     virtual void FUNCTION_CALL_MODE  SetFilter(char* filterName, char* filterValue) = 0;
 };
 
 /**
- * ¶©ÔÄ²ÎÊıÀà½Ó¿Ú
+ * è®¢é˜…å‚æ•°ç±»æ¥å£
  */
 class CSubscribeParamInterface :public IKnown
 {
 public:
 
     /**
-     * ÉèÖÃÖ÷ÌâÃû×Ö
-     * @param szName ¶ÔÓ¦µÄÖ÷ÌâÃû×Ö
+     * è®¾ç½®ä¸»é¢˜åå­—
+     * @param szName å¯¹åº”çš„ä¸»é¢˜åå­—
      */
     virtual void FUNCTION_CALL_MODE  SetTopicName(char* szName) = 0;
 
     /**
-     * ÉèÖÃ¸½¼ÓÊı¾İ
-     * @param lpData ¸½¼ÓÊı¾İµÄÊ×µØÖ·
-     * @param iLen ¸½¼ÓÊı¾İµÄ³¤¶È
+     * è®¾ç½®é™„åŠ æ•°æ®
+     * @param lpData é™„åŠ æ•°æ®çš„é¦–åœ°å€
+     * @param iLen é™„åŠ æ•°æ®çš„é•¿åº¦
      */
     virtual void FUNCTION_CALL_MODE  SetAppData(void* lpData, int iLen) = 0;
 
     /**
-     * Ìí¼Ó¹ıÂËÌõ¼ş
-     * @param filterName ¹ıÂËÌõ¼şµÄÃû×Ö
-     * @param filterValue ¹ıÂËÌõ¼şµÄÖµ
+     * æ·»åŠ è¿‡æ»¤æ¡ä»¶
+     * @param filterName è¿‡æ»¤æ¡ä»¶çš„åå­—
+     * @param filterValue è¿‡æ»¤æ¡ä»¶çš„å€¼
      */
     virtual void FUNCTION_CALL_MODE  SetFilter(char* filterName, char* filterValue) = 0;
 
     /**
-     * Ìí¼Ó·µ»Ø×Ö¶Î
-     * @param filedName ĞèÒªÌí¼ÓµÄ·µ»Ø×Ö¶Î
+     * æ·»åŠ è¿”å›å­—æ®µ
+     * @param filedName éœ€è¦æ·»åŠ çš„è¿”å›å­—æ®µ
      */
     virtual void FUNCTION_CALL_MODE  SetReturnFiled(char* filedName) = 0;
 
     /**
-     * ÉèÖÃÊÇ·ñ²¹È±±êÖ¾
-     * @param bFromNow true±íÊ¾ĞèÒªÖ®Ç°µÄÊı¾İ£¬Ò²¾ÍÊÇ²¹È±£¬false±íÊ¾²»ĞèÒª²¹È±
+     * è®¾ç½®æ˜¯å¦è¡¥ç¼ºæ ‡å¿—
+     * @param bFromNow trueè¡¨ç¤ºéœ€è¦ä¹‹å‰çš„æ•°æ®ï¼Œä¹Ÿå°±æ˜¯è¡¥ç¼ºï¼Œfalseè¡¨ç¤ºä¸éœ€è¦è¡¥ç¼º
      */
     virtual void FUNCTION_CALL_MODE  SetFromNow(bool bFromNow) = 0;
 
     /**
-     * ÉèÖÃ¸²¸Ç¶©ÔÄ±êÖ¾
-     * @param bReplace true±íÊ¾¸²¸Ç¶©ÔÄ£¬È¡ÏûÖ®Ç°µÄËùÓĞ¶©ÔÄ£¬Ö»±£Áôµ±Ç°µÄ¶©ÔÄ£¬false±íÊ¾×·¼Ó¶©ÔÄ
+     * è®¾ç½®è¦†ç›–è®¢é˜…æ ‡å¿—
+     * @param bReplace trueè¡¨ç¤ºè¦†ç›–è®¢é˜…ï¼Œå–æ¶ˆä¹‹å‰çš„æ‰€æœ‰è®¢é˜…ï¼Œåªä¿ç•™å½“å‰çš„è®¢é˜…ï¼Œfalseè¡¨ç¤ºè¿½åŠ è®¢é˜…
      */
     virtual void FUNCTION_CALL_MODE  SetReplace(bool bReplace) = 0;
 
     /**
-     * ÉèÖÃ·¢ËÍ¼ä¸ô
-     * @param nSendInterval µ¥Î»ÊÇÃë
+     * è®¾ç½®å‘é€é—´éš”
+     * @param nSendInterval å•ä½æ˜¯ç§’
      */
     virtual void FUNCTION_CALL_MODE  SetSendInterval(int nSendInterval) = 0;
 
     /**
-     * »ñÈ¡Ö÷ÌâÃû×Ö
-     * @return ·µ»ØÖ÷ÌâÃû×ÖĞÅÏ¢
+     * è·å–ä¸»é¢˜åå­—
+     * @return è¿”å›ä¸»é¢˜åå­—ä¿¡æ¯
      */
     virtual char* FUNCTION_CALL_MODE  GetTopicName() = 0;
 
     /**
-     * »ñÈ¡¸½¼ÓÊı¾İ
-     * @param iLen ³ö²Î£¬±íÊ¾¸½¼ÓÊı¾İµÄ³¤¶È
-     * @return ·µ»Ø¸½¼ÓÊı¾İÊ×µØÖ·£¬Ã»ÓĞ·µ»ØNULL
+     * è·å–é™„åŠ æ•°æ®
+     * @param iLen å‡ºå‚ï¼Œè¡¨ç¤ºé™„åŠ æ•°æ®çš„é•¿åº¦
+     * @return è¿”å›é™„åŠ æ•°æ®é¦–åœ°å€ï¼Œæ²¡æœ‰è¿”å›NULL
      */
     virtual void* FUNCTION_CALL_MODE  GetAppData(int *iLen) = 0;
 
     /**
-     * »ñÈ¡¶ÔÓ¦µÄ¹ıÂË×Ö¶ÎµÄÃû×Ö
-     * @param index ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÏÂ±ê
-     * @return ·µ»Ø¶ÔÓ¦µÄÏÂ±ê¹ıÂËÌõ¼şµÄÃû×Ö£¬·ñÔò·µ»ØNULL.
+     * è·å–å¯¹åº”çš„è¿‡æ»¤å­—æ®µçš„åå­—
+     * @param index å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶ä¸‹æ ‡
+     * @return è¿”å›å¯¹åº”çš„ä¸‹æ ‡è¿‡æ»¤æ¡ä»¶çš„åå­—ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE  GetFilterNameByIndex(int index) = 0;
 
     /**
-     * ¸ù¾İÏÂ±ê»ñÈ¡¹ıÂËÌõ¼şµÄÖµ
-     * @param index ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÏÂ±ê
-     * @return ·µ»Ø¶ÔÓ¦µÄÏÂ±ê¹ıÂËÌõ¼şµÄÖµ£¬·ñÔò·µ»ØNULL.
+     * æ ¹æ®ä¸‹æ ‡è·å–è¿‡æ»¤æ¡ä»¶çš„å€¼
+     * @param index å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶ä¸‹æ ‡
+     * @return è¿”å›å¯¹åº”çš„ä¸‹æ ‡è¿‡æ»¤æ¡ä»¶çš„å€¼ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE  GetFilterValueByIndex(int index) = 0;
 
     /**
-     * ¸ù¾İ¹ıÂËÌõ¼şµÄÃû×Ö»ñÈ¡¹ıÂËÌõ¼şµÄÖµ
-     * @param fileName ¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×Ö
-     * @return ·µ»Ø¶ÔÓ¦µÄ¹ıÂËÌõ¼şÃû×ÖµÄÌõ¼şÖµ£¬·ñÔò·µ»ØNULL.
+     * æ ¹æ®è¿‡æ»¤æ¡ä»¶çš„åå­—è·å–è¿‡æ»¤æ¡ä»¶çš„å€¼
+     * @param fileName å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—
+     * @return è¿”å›å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶åå­—çš„æ¡ä»¶å€¼ï¼Œå¦åˆ™è¿”å›NULL.
      */
     virtual char* FUNCTION_CALL_MODE  GetFilterValue(char*  fileName) = 0;
 
     /**
-     * »ñÈ¡¹ıÂËÌõ¼şµÄ¸öÊı
-     * @return ·µ»Ø¶ÔÓ¦¹ıÂËÌõ¼şµÄ¸öÊı£¬Ã»ÓĞ·µ»Ø0
+     * è·å–è¿‡æ»¤æ¡ä»¶çš„ä¸ªæ•°
+     * @return è¿”å›å¯¹åº”è¿‡æ»¤æ¡ä»¶çš„ä¸ªæ•°ï¼Œæ²¡æœ‰è¿”å›0
      */
     virtual int   FUNCTION_CALL_MODE  GetFilterCount() = 0;
 
     /**
-     * »ñÈ¡·µ»Ø×Ö¶Î
-     * @return ·µ»Ø¶ÔÓ¦µÄ·µ»Ø×Ö¶ÎĞÅÏ¢
+     * è·å–è¿”å›å­—æ®µ
+     * @return è¿”å›å¯¹åº”çš„è¿”å›å­—æ®µä¿¡æ¯
      */
     virtual char* FUNCTION_CALL_MODE  GetReturnFiled() = 0;
 
     /**
-     * »ñÈ¡ÊÇ·ñ²¹È±µÄ±êÖ¾
-     * @return ·µ»Ø¶ÔÓ¦µÄ²¹È±±êÖ¾
+     * è·å–æ˜¯å¦è¡¥ç¼ºçš„æ ‡å¿—
+     * @return è¿”å›å¯¹åº”çš„è¡¥ç¼ºæ ‡å¿—
      */
     virtual bool  FUNCTION_CALL_MODE  GetFromNow() = 0;
 
     /**
-     * »ñÈ¡ÊÇ·ñ¸²¸Ç¶©ÔÄµÄ±êÖ¾
-     * @return ·µ»Ø¶ÔÓ¦µÄ¸²¸Ç¶©ÔÄ±êÖ¾
+     * è·å–æ˜¯å¦è¦†ç›–è®¢é˜…çš„æ ‡å¿—
+     * @return è¿”å›å¯¹åº”çš„è¦†ç›–è®¢é˜…æ ‡å¿—
      */
     virtual bool  FUNCTION_CALL_MODE  GetReplace() = 0;
 
     /**
-     * »ñÈ¡¶ÔÓ¦µÄ·¢ËÍÆµÂÊ
-     * @return ·µ»Ø¶ÔÓ¦µÄ·¢ËÍ¼ä¸ô
+     * è·å–å¯¹åº”çš„å‘é€é¢‘ç‡
+     * @return è¿”å›å¯¹åº”çš„å‘é€é—´éš”
      */
     virtual int   FUNCTION_CALL_MODE  GetSendInterval() = 0;
 };
@@ -803,18 +803,18 @@ public:
 class CSubscribeInterface;
 
 /**
- * @brief ¶©ÔÄ»Øµ÷½Ó¿Ú·µ»ØµÄÊı¾İ¶¨Òå£¬³ıÁË¶©ÔÄĞèÒªµÄÒµÎñÌåÖ®Íâ£¬»¹ĞèÒª·µ»ØµÄÊı¾İ
+ * @brief è®¢é˜…å›è°ƒæ¥å£è¿”å›çš„æ•°æ®å®šä¹‰ï¼Œé™¤äº†è®¢é˜…éœ€è¦çš„ä¸šåŠ¡ä½“ä¹‹å¤–ï¼Œè¿˜éœ€è¦è¿”å›çš„æ•°æ®
  */
 typedef struct tagSubscribeRecvData
 {
-    char* lpFilterData;     /**< ¹ıÂË×Ö¶ÎµÄÊı¾İÍ·Ö¸Õë£¬ÓÃ½â°üÆ÷½â°ü */
-    int iFilterDataLen;     /**< ¹ıÂË×Ö¶ÎµÄÊı¾İ³¤¶È */
-    char* lpAppData;        /**< ¸½¼ÓÊı¾İµÄÊı¾İÍ·Ö¸Õë */
-    int iAppDataLen;        /**< ¸½¼ÓÊı¾İµÄ³¤¶È */
-    char szTopicName[260];  /**< Ö÷ÌâÃû×Ö */
+    char* lpFilterData;     /**< è¿‡æ»¤å­—æ®µçš„æ•°æ®å¤´æŒ‡é’ˆï¼Œç”¨è§£åŒ…å™¨è§£åŒ… */
+    int iFilterDataLen;     /**< è¿‡æ»¤å­—æ®µçš„æ•°æ®é•¿åº¦ */
+    char* lpAppData;        /**< é™„åŠ æ•°æ®çš„æ•°æ®å¤´æŒ‡é’ˆ */
+    int iAppDataLen;        /**< é™„åŠ æ•°æ®çš„é•¿åº¦ */
+    char szTopicName[260];  /**< ä¸»é¢˜åå­— */
 
    /**
-    * tagSubscribeRecvData ¹¹Ôìº¯Êı
+    * tagSubscribeRecvData æ„é€ å‡½æ•°
     */
     tagSubscribeRecvData()
     {
@@ -823,80 +823,80 @@ typedef struct tagSubscribeRecvData
 }SUBSCRIBE_RECVDATA, *LPSUBSCRIBE_RECVDATA;
 
 /**
- * ¶©ÔÄ»Øµ÷½Ó¿Ú£¬ÉÏ²ãÓ¦ÓÃÍ¨¹ıÕâ¸ö½Ó¿Ú£¬½ÓÊÕÖ÷ÍÆ¹ıÀ´µÄÏûÏ¢
+ * è®¢é˜…å›è°ƒæ¥å£ï¼Œä¸Šå±‚åº”ç”¨é€šè¿‡è¿™ä¸ªæ¥å£ï¼Œæ¥æ”¶ä¸»æ¨è¿‡æ¥çš„æ¶ˆæ¯
  */
 class CSubCallbackInterface : public IKnown
 {
 public:
 
     /**
-     * ÊÕµ½·¢²¼ÏûÏ¢µÄ»Øµ÷
-     * @param lpSub »Øµ÷µÄ¶©ÔÄÖ¸Õë
-     * @param subscribeIndex ÏûÏ¢¶ÔÓ¦µÄ¶©ÔÄ±êÊ¶£¬Õâ¸ö±êÊ¶À´×ÔÓÚSubscribeTopicº¯ÊıµÄ·µ»Ø
-     * @param lpData ·µ»ØÏûÏ¢µÄ¶ş½øÖÆÖ¸Õë£¬Ò»°ãÊÇÏûÏ¢µÄÒµÎñÌå´ò°üÄÚÈİ
-     * @param nLength ¶ş½øÖÆÊı¾İµÄ³¤¶È
-     * @param lpRecvData Ö÷ÍÆÏûÏ¢µÄÆäËû×Ö¶Î·µ»Ø£¬Ö÷Òª°üº¬ÁË¸½¼ÓÊı¾İ£¬¹ıÂËĞÅÏ¢£¬Ö÷ÌâÃû×Ö£¬ÏêÏ¸²Î¿´Ç°Ãæ½á¹¹Ìå¶¨Òå
-     * @return ÎŞ
+     * æ”¶åˆ°å‘å¸ƒæ¶ˆæ¯çš„å›è°ƒ
+     * @param lpSub å›è°ƒçš„è®¢é˜…æŒ‡é’ˆ
+     * @param subscribeIndex æ¶ˆæ¯å¯¹åº”çš„è®¢é˜…æ ‡è¯†ï¼Œè¿™ä¸ªæ ‡è¯†æ¥è‡ªäºSubscribeTopicå‡½æ•°çš„è¿”å›
+     * @param lpData è¿”å›æ¶ˆæ¯çš„äºŒè¿›åˆ¶æŒ‡é’ˆï¼Œä¸€èˆ¬æ˜¯æ¶ˆæ¯çš„ä¸šåŠ¡ä½“æ‰“åŒ…å†…å®¹
+     * @param nLength äºŒè¿›åˆ¶æ•°æ®çš„é•¿åº¦
+     * @param lpRecvData ä¸»æ¨æ¶ˆæ¯çš„å…¶ä»–å­—æ®µè¿”å›ï¼Œä¸»è¦åŒ…å«äº†é™„åŠ æ•°æ®ï¼Œè¿‡æ»¤ä¿¡æ¯ï¼Œä¸»é¢˜åå­—ï¼Œè¯¦ç»†å‚çœ‹å‰é¢ç»“æ„ä½“å®šä¹‰
+     * @return æ— 
      */
     virtual void FUNCTION_CALL_MODE OnReceived(CSubscribeInterface *lpSub, int subscribeIndex, const void *lpData, int nLength, LPSUBSCRIBE_RECVDATA lpRecvData) = 0;
 
     /**
-     * ÊÕµ½ÌŞ³ı¶©ÔÄÏîµÄÏûÏ¢»Øµ÷£¬Ò»°ãÔÚÓµÓĞÌßÈË²ßÂÔµÄÖ÷ÌâÏÂ»á»Øµ÷Õâ¸ö½Ó¿Ú,Õâ¸ö»Øµ÷ÀïÃæ²»ĞèÒªÈ¡Ïû¶©ÔÄ£¬µ×²ãÒÑ¾­È¡ÏûÕâ¸ö¶©ÔÄ£¬Ö»ÊÇÒ»¸öÍ¨Öª½Ó¿Ú
-     * @param lpSub »Øµ÷µÄ¶©ÔÄÖ¸Õë
-     * @param subscribeIndex ÏûÏ¢¶ÔÓ¦µÄ¶©ÔÄ±êÊ¶£¬Õâ¸ö±êÊ¶À´×ÔÓÚSubscribeTopicº¯ÊıµÄ·µ»Ø
-     * @param TickMsgInfo ÌßÈËµÄ´íÎóĞÅÏ¢£¬Ö÷ÒªÊÇ°üº¬¾ßÌåÖØ¸´µÄ¶©ÔÄÏîÎ»ÖÃĞÅÏ¢
-     * @return ÎŞ
+     * æ”¶åˆ°å‰”é™¤è®¢é˜…é¡¹çš„æ¶ˆæ¯å›è°ƒï¼Œä¸€èˆ¬åœ¨æ‹¥æœ‰è¸¢äººç­–ç•¥çš„ä¸»é¢˜ä¸‹ä¼šå›è°ƒè¿™ä¸ªæ¥å£,è¿™ä¸ªå›è°ƒé‡Œé¢ä¸éœ€è¦å–æ¶ˆè®¢é˜…ï¼Œåº•å±‚å·²ç»å–æ¶ˆè¿™ä¸ªè®¢é˜…ï¼Œåªæ˜¯ä¸€ä¸ªé€šçŸ¥æ¥å£
+     * @param lpSub å›è°ƒçš„è®¢é˜…æŒ‡é’ˆ
+     * @param subscribeIndex æ¶ˆæ¯å¯¹åº”çš„è®¢é˜…æ ‡è¯†ï¼Œè¿™ä¸ªæ ‡è¯†æ¥è‡ªäºSubscribeTopicå‡½æ•°çš„è¿”å›
+     * @param TickMsgInfo è¸¢äººçš„é”™è¯¯ä¿¡æ¯ï¼Œä¸»è¦æ˜¯åŒ…å«å…·ä½“é‡å¤çš„è®¢é˜…é¡¹ä½ç½®ä¿¡æ¯
+     * @return æ— 
      */
     virtual void FUNCTION_CALL_MODE OnRecvTickMsg(CSubscribeInterface *lpSub, int subscribeIndex, const char* TickMsgInfo) = 0;
 };
 
 
 /**
- * ¶©ÔÄ½Ó¿ÚµÄ¶¨Òå
+ * è®¢é˜…æ¥å£çš„å®šä¹‰
  */
 class CSubscribeInterface : public IKnown
 {
 public:
 
     /**
-     * ¶©ÔÄÖ÷Ìâ
-     * @param lpSubscribeParamInter ÉÏÃæ¶¨ÒåµÄ¶©ÔÄ²ÎÊı½á¹¹
-     * @param uiTimeout ³¬Ê±Ê±¼ä
-     * @param lppBizUnPack ÒµÎñĞ£ÑéÊ±£¬Ê§°Ü·µ»ØµÄÒµÎñ´íÎóĞÅÏ¢£¬Èç¹û¶©ÔÄ³É¹¦Ã»ÓĞ·µ»Ø£¬Êä³ö²ÎÊı£¬ĞèÒªÍâÃæµ÷ÓÃReleaseÊÍ·Å
-                           Èç¹û½ÓÊÜÒµÎñĞ£ÑéµÄ´íÎóĞÅÏ¢£¬Ğ´·¨ÈçÏÂ£º
+     * è®¢é˜…ä¸»é¢˜
+     * @param lpSubscribeParamInter ä¸Šé¢å®šä¹‰çš„è®¢é˜…å‚æ•°ç»“æ„
+     * @param uiTimeout è¶…æ—¶æ—¶é—´
+     * @param lppBizUnPack ä¸šåŠ¡æ ¡éªŒæ—¶ï¼Œå¤±è´¥è¿”å›çš„ä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœè®¢é˜…æˆåŠŸæ²¡æœ‰è¿”å›ï¼Œè¾“å‡ºå‚æ•°ï¼Œéœ€è¦å¤–é¢è°ƒç”¨Releaseé‡Šæ”¾
+                           å¦‚æœæ¥å—ä¸šåŠ¡æ ¡éªŒçš„é”™è¯¯ä¿¡æ¯ï¼Œå†™æ³•å¦‚ä¸‹ï¼š
                            IF2UnPacker* lpBizUnPack =NULL;
                            SubscribeTopic(...,&lpBizUnPack);
-                           ×îºó¸ù¾İ·µ»ØÖµ£¬Èç¹ûÊÇÊ§°ÜµÄ¾ÍÅĞ¶Ï lpBizUnPack ÊÇ²»ÊÇNULL.
-                           ×îºó´íÎóĞÅÏ¢»ñÈ¡ÍêÖ®ºó,ÊÍ·Å
+                           æœ€åæ ¹æ®è¿”å›å€¼ï¼Œå¦‚æœæ˜¯å¤±è´¥çš„å°±åˆ¤æ–­ lpBizUnPack æ˜¯ä¸æ˜¯NULL.
+                           æœ€åé”™è¯¯ä¿¡æ¯è·å–å®Œä¹‹å,é‡Šæ”¾
                            lpBizUnPack->Release();
-     * @param lpBizPack ÒµÎñĞ£ÑéĞèÒªÔö¼ÓµÄÒµÎñ×Ö¶ÎÒÔ¼°Öµ£¬Ã»ÓĞ¾Í¸ù¾İ¹ıÂËÊôĞÔ×÷ÎªÒµÎñĞ£Ñé×Ö¶Î
-     * @return ·µ»ØÖµ´óÓÚ0£¬±íÊ¾µ±Ç°¶©ÔÄ³É¹¦µÄ¶©ÔÄ±êÊ¶£¬ÍâÃæÒª¼Ç×¡Õâ¸ö±êÊ¶ºÍ¶©ÔÄÏîÖ®¼äµÄÓ³Éä¹ØÏµ£¬Õâ¸ö±êÊ¶ĞèÒªÓÃÓÚÈ¡Ïû¶©ÔÄºÍ½ÓÊÕÏûÏ¢µÄ»Øµ÷ÀïÃæ.
-     *		  ·µ»ØÆäËûÖµ£¬¸ù¾İ´íÎóºÅ»ñÈ¡´íÎóĞÅÏ¢.
+     * @param lpBizPack ä¸šåŠ¡æ ¡éªŒéœ€è¦å¢åŠ çš„ä¸šåŠ¡å­—æ®µä»¥åŠå€¼ï¼Œæ²¡æœ‰å°±æ ¹æ®è¿‡æ»¤å±æ€§ä½œä¸ºä¸šåŠ¡æ ¡éªŒå­—æ®µ
+     * @return è¿”å›å€¼å¤§äº0ï¼Œè¡¨ç¤ºå½“å‰è®¢é˜…æˆåŠŸçš„è®¢é˜…æ ‡è¯†ï¼Œå¤–é¢è¦è®°ä½è¿™ä¸ªæ ‡è¯†å’Œè®¢é˜…é¡¹ä¹‹é—´çš„æ˜ å°„å…³ç³»ï¼Œè¿™ä¸ªæ ‡è¯†éœ€è¦ç”¨äºå–æ¶ˆè®¢é˜…å’Œæ¥æ”¶æ¶ˆæ¯çš„å›è°ƒé‡Œé¢.
+     *		  è¿”å›å…¶ä»–å€¼ï¼Œæ ¹æ®é”™è¯¯å·è·å–é”™è¯¯ä¿¡æ¯.
      */
     virtual int FUNCTION_CALL_MODE SubscribeTopic(CSubscribeParamInterface* lpSubscribeParamInter, unsigned int uiTimeout, IF2UnPacker** lppBizUnPack = NULL, IF2Packer* lpBizPack = NULL) = 0;
 
     /**
-     * È¡Ïû¶©ÔÄÖ÷Ìâ
-     * @param subscribeIndex ÏûÏ¢¶ÔÓ¦µÄ¶©ÔÄ±êÊ¶£¬Õâ¸ö±êÊ¶À´×ÔÓÚSubscribeTopicº¯ÊıµÄ·µ»Ø
-     * @return ·µ»Ø0±íÊ¾È¡Ïû¶©ÔÄ³É¹¦£¬·µ»ØÆäËûÖµ£¬¸ù¾İ´íÎóºÅ»ñÈ¡´íÎóĞÅÏ¢.
+     * å–æ¶ˆè®¢é˜…ä¸»é¢˜
+     * @param subscribeIndex æ¶ˆæ¯å¯¹åº”çš„è®¢é˜…æ ‡è¯†ï¼Œè¿™ä¸ªæ ‡è¯†æ¥è‡ªäºSubscribeTopicå‡½æ•°çš„è¿”å›
+     * @return è¿”å›0è¡¨ç¤ºå–æ¶ˆè®¢é˜…æˆåŠŸï¼Œè¿”å›å…¶ä»–å€¼ï¼Œæ ¹æ®é”™è¯¯å·è·å–é”™è¯¯ä¿¡æ¯.
      */
     virtual int FUNCTION_CALL_MODE CancelSubscribeTopic(int subscribeIndex) = 0;
 
 
     /**
-    * È¡Ïû¶©ÔÄÖ÷Ìâ
-    * @param topicName Ö÷ÌâÃû×Ö
-    * @param lpFilterInterface ¶ÔÓ¦µÄ¹ıÂËÌõ¼ş
-    * @return ·µ»Ø0±íÊ¾È¡Ïû¶©ÔÄ³É¹¦£¬·µ»ØÆäËûÖµ£¬¸ù¾İ´íÎóºÅ»ñÈ¡´íÎóĞÅÏ¢.
+    * å–æ¶ˆè®¢é˜…ä¸»é¢˜
+    * @param topicName ä¸»é¢˜åå­—
+    * @param lpFilterInterface å¯¹åº”çš„è¿‡æ»¤æ¡ä»¶
+    * @return è¿”å›0è¡¨ç¤ºå–æ¶ˆè®¢é˜…æˆåŠŸï¼Œè¿”å›å…¶ä»–å€¼ï¼Œæ ¹æ®é”™è¯¯å·è·å–é”™è¯¯ä¿¡æ¯.
     */
     virtual int FUNCTION_CALL_MODE CancelSubscribeTopicEx(char* topicName, CFilterInterface* lpFilterInterface) = 0;
 
 
 
     /**
-     * »ñÈ¡µ±Ç°¶©ÔÄ½Ó¿ÚÒÑ¾­¶©ÔÄµÄËùÓĞÖ÷ÌâÒÔ¼°¹ıÂËÌõ¼şĞÅÏ¢
-     * @param lpPack ÍâÃæ´«ÈëµÄ´ò°üÆ÷
-     * @note packer±¨ÎÄ×Ö¶Î
+     * è·å–å½“å‰è®¢é˜…æ¥å£å·²ç»è®¢é˜…çš„æ‰€æœ‰ä¸»é¢˜ä»¥åŠè¿‡æ»¤æ¡ä»¶ä¿¡æ¯
+     * @param lpPack å¤–é¢ä¼ å…¥çš„æ‰“åŒ…å™¨
+     * @note packeræŠ¥æ–‡å­—æ®µ
          - SubcribeIndex
          - IsBornTopic
          - TopicName
@@ -913,113 +913,113 @@ public:
     virtual void FUNCTION_CALL_MODE GetSubcribeTopic(IF2Packer* lpPack) = 0;
 
     /**
-     * È¡·şÎñÆ÷µØÖ·
-     * @param lpPort Êä³öµÄ·şÎñÆ÷¶Ë¿Ú£¬¿ÉÒÔÎªNULL
-     * @return ·µ»Ø·şÎñÆ÷µØÖ·
+     * å–æœåŠ¡å™¨åœ°å€
+     * @param lpPort è¾“å‡ºçš„æœåŠ¡å™¨ç«¯å£ï¼Œå¯ä»¥ä¸ºNULL
+     * @return è¿”å›æœåŠ¡å™¨åœ°å€
      */
     virtual const char * FUNCTION_CALL_MODE GetServerAddress(int *lpPort) = 0;
 };
 
 /**
- * ·¢²¼½Ó¿Ú
+ * å‘å¸ƒæ¥å£
  */
 class CPublishInterface : public IKnown
 {
 public:
 
     /**
-     * ÒµÎñ´ò°ü¸ñÊ½µÄÄÚÈİ·¢²¼½Ó¿Ú
-     * @param topicName Ö÷ÌâÃû×Ö£¬²»ÖªµÀÃû×Ö¾Í´«NULL
-     * @param lpUnPacker ¾ßÌåµÄÄÚÈİ
-     * @param iTimeOut ³¬Ê±Ê±¼ä
-     * @param lppBizUnPack ÒµÎñĞ£ÑéÊ±£¬Ê§°Ü·µ»ØµÄÒµÎñ´íÎóĞÅÏ¢£¬Èç¹û·¢²¼³É¹¦Ã»ÓĞ·µ»Ø£¬Êä³ö²ÎÊı£¬ĞèÒªÍâÃæµ÷ÓÃReleaseÊÍ·Å
-                             Èç¹û½ÓÊÜÒµÎñĞ£ÑéµÄ´íÎóĞÅÏ¢£¬Ğ´·¨ÈçÏÂ£º
+     * ä¸šåŠ¡æ‰“åŒ…æ ¼å¼çš„å†…å®¹å‘å¸ƒæ¥å£
+     * @param topicName ä¸»é¢˜åå­—ï¼Œä¸çŸ¥é“åå­—å°±ä¼ NULL
+     * @param lpUnPacker å…·ä½“çš„å†…å®¹
+     * @param iTimeOut è¶…æ—¶æ—¶é—´
+     * @param lppBizUnPack ä¸šåŠ¡æ ¡éªŒæ—¶ï¼Œå¤±è´¥è¿”å›çš„ä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘å¸ƒæˆåŠŸæ²¡æœ‰è¿”å›ï¼Œè¾“å‡ºå‚æ•°ï¼Œéœ€è¦å¤–é¢è°ƒç”¨Releaseé‡Šæ”¾
+                             å¦‚æœæ¥å—ä¸šåŠ¡æ ¡éªŒçš„é”™è¯¯ä¿¡æ¯ï¼Œå†™æ³•å¦‚ä¸‹ï¼š
                              IF2UnPacker* lpBizUnPack =NULL;
                              PubMsgByPacker(...,&lpBizUnPack);
-                             ×îºó¸ù¾İ·µ»ØÖµ£¬Èç¹ûÊÇÊ§°ÜµÄ¾ÍÅĞ¶Ï lpBizUnPack ÊÇ²»ÊÇNULL.
-                             ×îºó´íÎóĞÅÏ¢»ñÈ¡ÍêÖ®ºó,ÊÍ·Å
+                             æœ€åæ ¹æ®è¿”å›å€¼ï¼Œå¦‚æœæ˜¯å¤±è´¥çš„å°±åˆ¤æ–­ lpBizUnPack æ˜¯ä¸æ˜¯NULL.
+                             æœ€åé”™è¯¯ä¿¡æ¯è·å–å®Œä¹‹å,é‡Šæ”¾
                              lpBizUnPack->Release();
-     * @param bAddTimeStamp ÊÇ·ñÌí¼ÓÊ±¼ä´Á£¬ÅäºÏµ¥±ÊĞÔÄÜ²éÕÒ
-     * @return ·µ»Ø0±íÊ¾³É¹¦£¬·µ»ØÆäËûÖµ£¬¸ù¾İ´íÎóºÅ»ñÈ¡´íÎóĞÅÏ¢.
+     * @param bAddTimeStamp æ˜¯å¦æ·»åŠ æ—¶é—´æˆ³ï¼Œé…åˆå•ç¬”æ€§èƒ½æŸ¥æ‰¾
+     * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œè¿”å›å…¶ä»–å€¼ï¼Œæ ¹æ®é”™è¯¯å·è·å–é”™è¯¯ä¿¡æ¯.
      */
     virtual int FUNCTION_CALL_MODE PubMsgByPacker(char* topicName, IF2UnPacker* lpUnPacker, int iTimeOut = -1,
         IF2UnPacker** lppBizUnPack = NULL, bool bAddTimeStamp = false) = 0;
 
     /**
-     * ·ÇÒµÎñ´ò°ü¸ñÊ½µÄÄÚÈİ·¢²¼½Ó¿Ú£¬Ò»°ã¶ş½øÖÆ¸ñÊ½±¨ÎÄ·¢²¼
-     * @param topicName Ö÷ÌâÃû×Ö£¬²»ÖªµÀÃû×Ö¾Í´«NULL
-     * @param lpFilterInterface ¹ıÂËÌõ¼ş£¬ĞèÒªÉÏ²ã×Ô¼ºÖ¸¶¨£¬·ñÔòÄ¬ÈÏÃ»ÓĞ¹ıÂËÌõ¼ş
-     * @param lpData ¾ßÌåµÄÄÚÈİ
-     * @param nLength ÄÚÈİ³¤¶È
-     * @param iTimeOut ³¬Ê±Ê±¼ä
-     * @param lppBizUnPack ÒµÎñĞ£ÑéÊ±£¬Ê§°Ü·µ»ØµÄÒµÎñ´íÎóĞÅÏ¢£¬Èç¹û·¢²¼³É¹¦Ã»ÓĞ·µ»Ø£¬Êä³ö²ÎÊı£¬ĞèÒªÍâÃæµ÷ÓÃReleaseÊÍ·Å
-                             Èç¹û½ÓÊÜÒµÎñĞ£ÑéµÄ´íÎóĞÅÏ¢£¬Ğ´·¨ÈçÏÂ£º
+     * éä¸šåŠ¡æ‰“åŒ…æ ¼å¼çš„å†…å®¹å‘å¸ƒæ¥å£ï¼Œä¸€èˆ¬äºŒè¿›åˆ¶æ ¼å¼æŠ¥æ–‡å‘å¸ƒ
+     * @param topicName ä¸»é¢˜åå­—ï¼Œä¸çŸ¥é“åå­—å°±ä¼ NULL
+     * @param lpFilterInterface è¿‡æ»¤æ¡ä»¶ï¼Œéœ€è¦ä¸Šå±‚è‡ªå·±æŒ‡å®šï¼Œå¦åˆ™é»˜è®¤æ²¡æœ‰è¿‡æ»¤æ¡ä»¶
+     * @param lpData å…·ä½“çš„å†…å®¹
+     * @param nLength å†…å®¹é•¿åº¦
+     * @param iTimeOut è¶…æ—¶æ—¶é—´
+     * @param lppBizUnPack ä¸šåŠ¡æ ¡éªŒæ—¶ï¼Œå¤±è´¥è¿”å›çš„ä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘å¸ƒæˆåŠŸæ²¡æœ‰è¿”å›ï¼Œè¾“å‡ºå‚æ•°ï¼Œéœ€è¦å¤–é¢è°ƒç”¨Releaseé‡Šæ”¾
+                             å¦‚æœæ¥å—ä¸šåŠ¡æ ¡éªŒçš„é”™è¯¯ä¿¡æ¯ï¼Œå†™æ³•å¦‚ä¸‹ï¼š
                              IF2UnPacker* lpBizUnPack =NULL;
                              PubMsgByPacker(...,&lpBizUnPack);
-                             ×îºó¸ù¾İ·µ»ØÖµ£¬Èç¹ûÊÇÊ§°ÜµÄ¾ÍÅĞ¶Ï lpBizUnPack ÊÇ²»ÊÇNULL.
-                             ×îºó´íÎóĞÅÏ¢»ñÈ¡ÍêÖ®ºó,ÊÍ·Å
+                             æœ€åæ ¹æ®è¿”å›å€¼ï¼Œå¦‚æœæ˜¯å¤±è´¥çš„å°±åˆ¤æ–­ lpBizUnPack æ˜¯ä¸æ˜¯NULL.
+                             æœ€åé”™è¯¯ä¿¡æ¯è·å–å®Œä¹‹å,é‡Šæ”¾
                              lpBizUnPack->Release();
-     * @param bAddTimeStamp ÊÇ·ñÌí¼ÓÊ±¼ä´Á£¬ÅäºÏµ¥±ÊĞÔÄÜ²éÕÒ
-     * @return ·µ»Ø0±íÊ¾³É¹¦£¬·µ»ØÆäËûÖµ£¬¸ù¾İ´íÎóºÅ»ñÈ¡´íÎóĞÅÏ¢.
+     * @param bAddTimeStamp æ˜¯å¦æ·»åŠ æ—¶é—´æˆ³ï¼Œé…åˆå•ç¬”æ€§èƒ½æŸ¥æ‰¾
+     * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œè¿”å›å…¶ä»–å€¼ï¼Œæ ¹æ®é”™è¯¯å·è·å–é”™è¯¯ä¿¡æ¯.
      */
     virtual int FUNCTION_CALL_MODE PubMsg(char* topicName, CFilterInterface* lpFilterInterface, const void *lpData, int nLength, int iTimeOut = -1,
         IF2UnPacker** lppBizUnPack = NULL, bool bAddTimeStamp = false) = 0;
 
     /**
-     * ·µ»Øµ±Ç°Ö÷ÌâµÄ·¢²¼ĞòºÅ
-     * @param topicName Ö÷ÌâÃû×Ö
-     * @return ·µ»Ø0±íÊ¾Ã»ÓĞ¶ÔÓ¦µÄÖ÷Ìâ£¬·µ»ØÆäËûÖµ±íÊ¾³É¹¦
+     * è¿”å›å½“å‰ä¸»é¢˜çš„å‘å¸ƒåºå·
+     * @param topicName ä¸»é¢˜åå­—
+     * @return è¿”å›0è¡¨ç¤ºæ²¡æœ‰å¯¹åº”çš„ä¸»é¢˜ï¼Œè¿”å›å…¶ä»–å€¼è¡¨ç¤ºæˆåŠŸ
      */
     virtual uint32 FUNCTION_CALL_MODE GetMsgNoByTopicName(char* topicName) = 0;
 
     /**
-     * È¡·şÎñÆ÷µØÖ·
-     * @param lpPort Êä³öµÄ·şÎñÆ÷¶Ë¿Ú£¬¿ÉÒÔÎªNULL
-     * @return ·µ»Ø·şÎñÆ÷µØÖ·
+     * å–æœåŠ¡å™¨åœ°å€
+     * @param lpPort è¾“å‡ºçš„æœåŠ¡å™¨ç«¯å£ï¼Œå¯ä»¥ä¸ºNULL
+     * @return è¿”å›æœåŠ¡å™¨åœ°å€
      */
     virtual const char * FUNCTION_CALL_MODE GetServerAddress(int *lpPort) = 0;
 };
 
 class CConnectionInterface;
 
-///Á¬½Ó¶ÔÏó CConnectionInterface ĞèÒªµÄ»Øµ÷¶ÔÏó½Ó¿Ú¶¨Òå
+///è¿æ¥å¯¹è±¡ CConnectionInterface éœ€è¦çš„å›è°ƒå¯¹è±¡æ¥å£å®šä¹‰
 /**
-* °üÀ¨Á¬½Ó³É¹¦¡¢Á¬½Ó¶Ï¿ª¡¢·¢ËÍÍê³É¡¢ÊÕµ½Êı¾İµÈÊÂ¼ş
+* åŒ…æ‹¬è¿æ¥æˆåŠŸã€è¿æ¥æ–­å¼€ã€å‘é€å®Œæˆã€æ”¶åˆ°æ•°æ®ç­‰äº‹ä»¶
 */
 class CCallbackInterface : public IKnown
 {
 public:
     /**
-    * Ì×½Ó×ÖÁ¬½Ó³É¹¦
-    * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
+    * å¥—æ¥å­—è¿æ¥æˆåŠŸ
+    * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
     */
     virtual void FUNCTION_CALL_MODE OnConnect(CConnectionInterface *lpConnection) = 0;
 
     /**
-    * Íê³É°²È«Á¬½Ó
-    * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
+    * å®Œæˆå®‰å…¨è¿æ¥
+    * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
     */
     virtual void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface *lpConnection) = 0;
 
     /**
-    * Íê³É×¢²á
-    * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
+    * å®Œæˆæ³¨å†Œ
+    * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
     */
     virtual void FUNCTION_CALL_MODE OnRegister(CConnectionInterface *lpConnection) = 0;
 
     /**
-    * Á¬½Ó±»¶Ï¿ª
-    * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
+    * è¿æ¥è¢«æ–­å¼€
+    * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
     */
     virtual void FUNCTION_CALL_MODE OnClose(CConnectionInterface *lpConnection) = 0;
 
     /**
-    * ·¢ËÍÍê³É
-    * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
-    * @param hSend        ·¢ËÍ¾ä±ú
-    * @param reserved1    ±£Áô×Ö¶Î
-    * @param reserved2    ±£Áô×Ö¶Î
-    * @param nQueuingData ·¢ËÍ¶ÓÁĞÖĞÊ£Óà¸öÊı£¬Ê¹ÓÃÕß¿ÉÒÔÓÃ´ËÊıÖµ¿ØÖÆ·¢ËÍµÄËÙ¶È£¬¼´Ğ¡ÓÚÄ³ÖµÊ±½øĞĞ·¢ËÍ
+    * å‘é€å®Œæˆ
+    * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
+    * @param hSend        å‘é€å¥æŸ„
+    * @param reserved1    ä¿ç•™å­—æ®µ
+    * @param reserved2    ä¿ç•™å­—æ®µ
+    * @param nQueuingData å‘é€é˜Ÿåˆ—ä¸­å‰©ä½™ä¸ªæ•°ï¼Œä½¿ç”¨è€…å¯ä»¥ç”¨æ­¤æ•°å€¼æ§åˆ¶å‘é€çš„é€Ÿåº¦ï¼Œå³å°äºæŸå€¼æ—¶è¿›è¡Œå‘é€
     * @see Send()
     */
     virtual void FUNCTION_CALL_MODE OnSent(CConnectionInterface *lpConnection, int hSend, void *reserved1, void *reserved2, int nQueuingData) = 0;
@@ -1039,37 +1039,37 @@ public:
     virtual void FUNCTION_CALL_MODE Reserved7() = 0;
 
     /**
-    * ÊÕµ½SendBizÒì²½·¢ËÍµÄÇëÇóµÄÓ¦´ğ
-    * @param lpConnection    ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
-    * @param hSend           ·¢ËÍ¾ä±ú
-    * @param lpUnPackerOrStr Ö¸Ïò½â°üÆ÷Ö¸Õë»òÕß´íÎóĞÅÏ¢
-    * @param nResult         ÊÕ°ü½á¹û
-    * Èç¹ûnResultµÈÓÚ0£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬²¢ÇÒÒµÎñ²Ù×÷³É¹¦£¬lpUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    * Èç¹ûnResultµÈÓÚ1£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬µ«ÒµÎñ²Ù×÷Ê§°ÜÁË£¬lpUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    * Èç¹ûnResultµÈÓÚ2£¬±íÊ¾ÊÕµ½·ÇÒµÎñ´íÎóĞÅÏ¢£¬lpUnPackerOrStrÖ¸ÏòÒ»¸ö¿É¶ÁµÄ×Ö·û´®´íÎóĞÅÏ¢¡£
-    * Èç¹ûnResultµÈÓÚ3£¬±íÊ¾ÒµÎñ°ü½â°üÊ§°Ü¡£lpUnPackerOrStrÖ¸ÏòNULL¡£
+    * æ”¶åˆ°SendBizå¼‚æ­¥å‘é€çš„è¯·æ±‚çš„åº”ç­”
+    * @param lpConnection    å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
+    * @param hSend           å‘é€å¥æŸ„
+    * @param lpUnPackerOrStr æŒ‡å‘è§£åŒ…å™¨æŒ‡é’ˆæˆ–è€…é”™è¯¯ä¿¡æ¯
+    * @param nResult         æ”¶åŒ…ç»“æœ
+    * å¦‚æœnResultç­‰äº0ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œå¹¶ä¸”ä¸šåŠ¡æ“ä½œæˆåŠŸï¼ŒlpUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    * å¦‚æœnResultç­‰äº1ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œä½†ä¸šåŠ¡æ“ä½œå¤±è´¥äº†ï¼ŒlpUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    * å¦‚æœnResultç­‰äº2ï¼Œè¡¨ç¤ºæ”¶åˆ°éä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼ŒlpUnPackerOrStræŒ‡å‘ä¸€ä¸ªå¯è¯»çš„å­—ç¬¦ä¸²é”™è¯¯ä¿¡æ¯ã€‚
+    * å¦‚æœnResultç­‰äº3ï¼Œè¡¨ç¤ºä¸šåŠ¡åŒ…è§£åŒ…å¤±è´¥ã€‚lpUnPackerOrStræŒ‡å‘NULLã€‚
     */
     virtual void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface *lpConnection, int hSend, const void *lpUnPackerOrStr, int nResult) = 0;
 
     /**
-* ÊÕµ½SendBizÒì²½·¢ËÍµÄÇëÇóµÄÓ¦´ğ
-* @param lpConnection    ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
-* @param hSend           ·¢ËÍ¾ä±ú
-* @param lpRetData ÆäËûĞèÒª·µ»ØµÄÓ¦´ğÄÚÈİ£¬¸ù¾İĞèÒª»ñÈ¡
-* @param lpUnPackerOrStr Ö¸Ïò½â°üÆ÷Ö¸Õë»òÕß´íÎóĞÅÏ¢
-* @param nResult         ÊÕ°ü½á¹û
-* Èç¹ûnResultµÈÓÚ0£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬²¢ÇÒÒµÎñ²Ù×÷³É¹¦£¬lpUnpackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-* Èç¹ûnResultµÈÓÚ1£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬µ«ÒµÎñ²Ù×÷Ê§°ÜÁË£¬lpUnpackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-* Èç¹ûnResultµÈÓÚ2£¬±íÊ¾ÊÕµ½·ÇÒµÎñ´íÎóĞÅÏ¢£¬lpUnpackerOrStrÖ¸ÏòÒ»¸ö¿É¶ÁµÄ×Ö·û´®´íÎóĞÅÏ¢¡£
-* Èç¹ûnResultµÈÓÚ3£¬±íÊ¾ÒµÎñ°ü½â°üÊ§°Ü¡£lpUnpackerOrStrÖ¸ÏòNULL¡£
+* æ”¶åˆ°SendBizå¼‚æ­¥å‘é€çš„è¯·æ±‚çš„åº”ç­”
+* @param lpConnection    å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
+* @param hSend           å‘é€å¥æŸ„
+* @param lpRetData å…¶ä»–éœ€è¦è¿”å›çš„åº”ç­”å†…å®¹ï¼Œæ ¹æ®éœ€è¦è·å–
+* @param lpUnPackerOrStr æŒ‡å‘è§£åŒ…å™¨æŒ‡é’ˆæˆ–è€…é”™è¯¯ä¿¡æ¯
+* @param nResult         æ”¶åŒ…ç»“æœ
+* å¦‚æœnResultç­‰äº0ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œå¹¶ä¸”ä¸šåŠ¡æ“ä½œæˆåŠŸï¼ŒlpUnpackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+* å¦‚æœnResultç­‰äº1ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œä½†ä¸šåŠ¡æ“ä½œå¤±è´¥äº†ï¼ŒlpUnpackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+* å¦‚æœnResultç­‰äº2ï¼Œè¡¨ç¤ºæ”¶åˆ°éä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼ŒlpUnpackerOrStræŒ‡å‘ä¸€ä¸ªå¯è¯»çš„å­—ç¬¦ä¸²é”™è¯¯ä¿¡æ¯ã€‚
+* å¦‚æœnResultç­‰äº3ï¼Œè¡¨ç¤ºä¸šåŠ¡åŒ…è§£åŒ…å¤±è´¥ã€‚lpUnpackerOrStræŒ‡å‘NULLã€‚
 */
     virtual void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult) = 0;
-    //20130624 xuxp »Øµ÷Ôö¼ÓBizMessage½Ó¿Ú
+    //20130624 xuxp å›è°ƒå¢åŠ BizMessageæ¥å£
         /**
-        * ÊÕµ½·¢ËÍÊ±Ö¸¶¨ÁËReplyCallbackÑ¡ÏîµÄÇëÇóµÄÓ¦´ğ»òÕßÊÇÃ»ÓĞ¶ÔÓ¦ÇëÇóµÄÊı¾İ
-        * @param lpConnection ·¢Éú¸ÃÊÂ¼şµÄÁ¬½Ó¶ÔÏó
-        * @param hSend        ·¢ËÍ¾ä±ú
-        * @param lpMsg        ÒµÎñÏûÏ¢Ö¸Õë
+        * æ”¶åˆ°å‘é€æ—¶æŒ‡å®šäº†ReplyCallbacké€‰é¡¹çš„è¯·æ±‚çš„åº”ç­”æˆ–è€…æ˜¯æ²¡æœ‰å¯¹åº”è¯·æ±‚çš„æ•°æ®
+        * @param lpConnection å‘ç”Ÿè¯¥äº‹ä»¶çš„è¿æ¥å¯¹è±¡
+        * @param hSend        å‘é€å¥æŸ„
+        * @param lpMsg        ä¸šåŠ¡æ¶ˆæ¯æŒ‡é’ˆ
         */
     virtual void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg) = 0;
 
@@ -1077,50 +1077,50 @@ public:
 
 };
 
-///T2_SDKÁ¬½Ó¶ÔÏó½Ó¿Ú
+///T2_SDKè¿æ¥å¯¹è±¡æ¥å£
 /**
-* °üÀ¨Á¬½Ó¡¢¶Ï¿ª¡¢·¢ËÍ¡¢½ÓÊÕµÈ
+* åŒ…æ‹¬è¿æ¥ã€æ–­å¼€ã€å‘é€ã€æ¥æ”¶ç­‰
 */
 class CConnectionInterface : public IKnown
 {
 public:
-    ///Á¬½Ó×´Ì¬£¬¿É×éºÏ
+    ///è¿æ¥çŠ¶æ€ï¼Œå¯ç»„åˆ
     enum ConnectionStatus
     {
-        Disconnected = 0x0000, /**< Î´Á¬½Ó */
-        Connecting = 0x0001, /**< socketÕıÔÚÁ¬½Ó */
-        Connected = 0x0002, /**< socketÒÑÁ¬½Ó */
-        SafeConnecting = 0x0004, /**< ÕıÔÚ½¨Á¢°²È«Á¬½Ó */
-        SafeConnected = 0x0008, /**< ÒÑ½¨Á¢°²È«Á¬½Ó */
-        Registering = 0x0010, /**< Õı×¢²á */
-        Registered = 0x0020, /**< ÒÑ×¢²á */
-        Rejected = 0x0040  /**< ±»¾Ü¾ø£¬½«±»¹Ø±Õ */
+        Disconnected = 0x0000, /**< æœªè¿æ¥ */
+        Connecting = 0x0001, /**< socketæ­£åœ¨è¿æ¥ */
+        Connected = 0x0002, /**< socketå·²è¿æ¥ */
+        SafeConnecting = 0x0004, /**< æ­£åœ¨å»ºç«‹å®‰å…¨è¿æ¥ */
+        SafeConnected = 0x0008, /**< å·²å»ºç«‹å®‰å…¨è¿æ¥ */
+        Registering = 0x0010, /**< æ­£æ³¨å†Œ */
+        Registered = 0x0020, /**< å·²æ³¨å†Œ */
+        Rejected = 0x0040  /**< è¢«æ‹’ç»ï¼Œå°†è¢«å…³é—­ */
     };
 
-    ///½ÓÊÕÑ¡Ïî£¨¿É×éºÏ£¬0±íÊ¾½ÓÊÕ³¬Ê±Ê±£¬²»É¾³ı°üID£¬ÈÔ¿ÉÔÙ´Îµ÷ÓÃRecvBiz·½·¨À´³¢ÊÔ½ÓÊÕ£©
+    ///æ¥æ”¶é€‰é¡¹ï¼ˆå¯ç»„åˆï¼Œ0è¡¨ç¤ºæ¥æ”¶è¶…æ—¶æ—¶ï¼Œä¸åˆ é™¤åŒ…IDï¼Œä»å¯å†æ¬¡è°ƒç”¨RecvBizæ–¹æ³•æ¥å°è¯•æ¥æ”¶ï¼‰
     enum RecvFlags
     {
-        JustRemoveHandle = 0x0001   /**< µ±½ÓÊÕ³¬Ê±Ê±£¬°Ñpacket_idÉ¾³ı */
+        JustRemoveHandle = 0x0001   /**< å½“æ¥æ”¶è¶…æ—¶æ—¶ï¼ŒæŠŠpacket_idåˆ é™¤ */
     };
 
     /**
-    * ³õÊ¼»¯Á¬½Ó¶ÔÏó
-    * @param lpCallback »Øµ÷¶ÔÏó
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
-    * Èç¹ûÓ¦ÓÃ²»ĞèÒªÈÎºÎ»Øµ÷·½·¨£¬Ôò¿ÉÏò¸Ã·½·¨´«µİNULL£¬¶ø²»±Ø×Ô¶¨Òå»Øµ÷ÀàºÍ¶ÔÏó
+    * åˆå§‹åŒ–è¿æ¥å¯¹è±¡
+    * @param lpCallback å›è°ƒå¯¹è±¡
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
+    * å¦‚æœåº”ç”¨ä¸éœ€è¦ä»»ä½•å›è°ƒæ–¹æ³•ï¼Œåˆ™å¯å‘è¯¥æ–¹æ³•ä¼ é€’NULLï¼Œè€Œä¸å¿…è‡ªå®šä¹‰å›è°ƒç±»å’Œå¯¹è±¡
     */
     virtual int FUNCTION_CALL_MODE Create(CCallbackInterface *lpCallback) = 0;
 
     /**
-    * ¿ªÊ¼Á¬½Ó/×¢²á
-    * @param uiTimeout ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë£¬0±íÊ¾²»µÈ´ı£¨Ê¹ÓÃ´úÀíÁ¬½Ó·şÎñÆ÷Ê±£¬¸Ã²ÎÊı²»Æğ×÷ÓÃ£©
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * å¼€å§‹è¿æ¥/æ³¨å†Œ
+    * @param uiTimeout è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ï¼Œ0è¡¨ç¤ºä¸ç­‰å¾…ï¼ˆä½¿ç”¨ä»£ç†è¿æ¥æœåŠ¡å™¨æ—¶ï¼Œè¯¥å‚æ•°ä¸èµ·ä½œç”¨ï¼‰
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE Connect(unsigned int uiTimeout) = 0;
 
     /**
-    * ¶Ï¿ªÁ¬½Ó
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * æ–­å¼€è¿æ¥
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE Close() = 0;
 
@@ -1137,115 +1137,115 @@ public:
     virtual int FUNCTION_CALL_MODE Reserved6() = 0;
 
     /**
-    * È¡·şÎñÆ÷µØÖ·
-    * @param lpPort Êä³öµÄ·şÎñÆ÷¶Ë¿Ú£¬¿ÉÒÔÎªNULL
-    * @return ·µ»Ø·şÎñÆ÷µØÖ·
+    * å–æœåŠ¡å™¨åœ°å€
+    * @param lpPort è¾“å‡ºçš„æœåŠ¡å™¨ç«¯å£ï¼Œå¯ä»¥ä¸ºNULL
+    * @return è¿”å›æœåŠ¡å™¨åœ°å€
     */
     virtual const char * FUNCTION_CALL_MODE GetServerAddress(int *lpPort) = 0;
 
     /**
-    * È¡Á¬½Ó×´Ì¬
-    * @return ·µ»ØÁ¬½Ó×´Ì¬
+    * å–è¿æ¥çŠ¶æ€
+    * @return è¿”å›è¿æ¥çŠ¶æ€
     */
     virtual int FUNCTION_CALL_MODE GetStatus() = 0;
 
     /**
-    * È¡·şÎñÆ÷¸ºÔØ£¬Ê¹ÓÃÕß¿ÉÒÔÍ¬Ê±´´½¨¶à¸öÁ¬½ÓÊµÀıÍ¬Ê±Á¬½Ó²»Í¬µÄ·şÎñÆ÷£¬¸ù¾İÍê³ÉÁ¬½ÓµÄÊ±¼äÒÔ¼°¸ºÔØ¾ö¶¨Ê¹ÓÃÄÄ¸ö·şÎñÆ÷
-    * @return ·µ»Ø·şÎñÆ÷¸ºÔØ£¨·Ç¸ºÊı£©£¬Ô½´ó±íÊ¾Ô½·±Ã¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * å–æœåŠ¡å™¨è´Ÿè½½ï¼Œä½¿ç”¨è€…å¯ä»¥åŒæ—¶åˆ›å»ºå¤šä¸ªè¿æ¥å®ä¾‹åŒæ—¶è¿æ¥ä¸åŒçš„æœåŠ¡å™¨ï¼Œæ ¹æ®å®Œæˆè¿æ¥çš„æ—¶é—´ä»¥åŠè´Ÿè½½å†³å®šä½¿ç”¨å“ªä¸ªæœåŠ¡å™¨
+    * @return è¿”å›æœåŠ¡å™¨è´Ÿè½½ï¼ˆéè´Ÿæ•°ï¼‰ï¼Œè¶Šå¤§è¡¨ç¤ºè¶Šç¹å¿™ï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE GetServerLoad() = 0;
 
     /**
-    * È¡´íÎóÂë¶ÔÓ¦µÄ´íÎóĞÅÏ¢£¬Ä¿Ç°Ö§³Ö¼òÌåÖĞÎÄºÍÓ¢ÎÄ£¬Ö§³ÖÆäËûÓïÑÔ¿ÉÒÔÍ¨¹ıÁ¬½Ó¶ÔÏóÅäÖÃerrormsg
-    * @param nErrorCode ´íÎóÂë
-    * @return ·µ»Ø´íÎóĞÅÏ¢
+    * å–é”™è¯¯ç å¯¹åº”çš„é”™è¯¯ä¿¡æ¯ï¼Œç›®å‰æ”¯æŒç®€ä½“ä¸­æ–‡å’Œè‹±æ–‡ï¼Œæ”¯æŒå…¶ä»–è¯­è¨€å¯ä»¥é€šè¿‡è¿æ¥å¯¹è±¡é…ç½®errormsg
+    * @param nErrorCode é”™è¯¯ç 
+    * @return è¿”å›é”™è¯¯ä¿¡æ¯
     */
     virtual const char * FUNCTION_CALL_MODE GetErrorMsg(int nErrorCode) = 0;
 
     /**
-    * È¡Á¬½Ó´íÎóºÅ£¬µ±Á¬½ÓÎŞ·¨Óë·şÎñ¶ËÍê³É×¢²áÊ±£¬¼È¿ÉÍ¨¹ıConnectµÄ·µ»ØÖµ»ñÈ¡´íÎóºÅ£¬
-    * Ò²¿ÉÍ¨¹ıµ÷ÓÃ±¾·½·¨À´»ñÈ¡´íÎóºÅ£¬È»ºóÓÃ¸Ã´íÎóºÅµ÷ÓÃGetErrorMsg¿É»ñÈ¡¿É¶ÁµÄ´íÎóĞÅÏ¢
-    * @return ·µ»ØÁ¬½Ó´íÎóºÅ
+    * å–è¿æ¥é”™è¯¯å·ï¼Œå½“è¿æ¥æ— æ³•ä¸æœåŠ¡ç«¯å®Œæˆæ³¨å†Œæ—¶ï¼Œæ—¢å¯é€šè¿‡Connectçš„è¿”å›å€¼è·å–é”™è¯¯å·ï¼Œ
+    * ä¹Ÿå¯é€šè¿‡è°ƒç”¨æœ¬æ–¹æ³•æ¥è·å–é”™è¯¯å·ï¼Œç„¶åç”¨è¯¥é”™è¯¯å·è°ƒç”¨GetErrorMsgå¯è·å–å¯è¯»çš„é”™è¯¯ä¿¡æ¯
+    * @return è¿”å›è¿æ¥é”™è¯¯å·
     */
     virtual int FUNCTION_CALL_MODE GetConnectError() = 0;
 
     /**
-    * ·¢ËÍÒµÎñÊı¾İ
-    * @param iFunID      ¹¦ÄÜºÅ
-    * @param lpPacker    ´ò°üÆ÷Ö¸Õë
-    * @param nAsy        0±íÊ¾Í¬²½£¬·ñÔò±íÊ¾Òì²½
-    * @param iSystemNo   Èç¹ûiSystemNo > 0ÔòÉèÖÃÏµÍ³ºÅ
-    * @param nCompressID ¶ÔÒµÎñ°üÌå½øĞĞÑ¹ËõµÄÑ¹ËõËã·¨ID£¬Ä¿Ç°Ö»Ö§³ÖID = 1µÄÑ¹ËõËã·¨¡£
-    * ID = 0±íÊ¾²»Ñ¹Ëõ¡£×¢Òâ£¬Ñ¹ËõÖ»ÊÇÏòSDKÌá³ö½¨Òé£¬ÊÇ·ñÕæÕıÑ¹Ëõ»¹È¡¾öÓÚ°üµÄÊµ¼Ê´óĞ¡¡£
-    * Í¬²½·¢ËÍµÄ°ü£¬Í¨¹ıµ÷ÓÃRecvBizÀ´½ÓÊÕ£¬Òì²½·¢ËÍµÄ°ü£¬µ±ÊÕµ½Ó¦´ğ°üºó£¬×Ô¶¯´¥·¢»Øµ÷º¯ÊıOnReceivedBiz¡£
-    * @return ·µ»Ø·¢ËÍ¾ä±ú£¨ÕıÊı£©£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * å‘é€ä¸šåŠ¡æ•°æ®
+    * @param iFunID      åŠŸèƒ½å·
+    * @param lpPacker    æ‰“åŒ…å™¨æŒ‡é’ˆ
+    * @param nAsy        0è¡¨ç¤ºåŒæ­¥ï¼Œå¦åˆ™è¡¨ç¤ºå¼‚æ­¥
+    * @param iSystemNo   å¦‚æœiSystemNo > 0åˆ™è®¾ç½®ç³»ç»Ÿå·
+    * @param nCompressID å¯¹ä¸šåŠ¡åŒ…ä½“è¿›è¡Œå‹ç¼©çš„å‹ç¼©ç®—æ³•IDï¼Œç›®å‰åªæ”¯æŒID = 1çš„å‹ç¼©ç®—æ³•ã€‚
+    * ID = 0è¡¨ç¤ºä¸å‹ç¼©ã€‚æ³¨æ„ï¼Œå‹ç¼©åªæ˜¯å‘SDKæå‡ºå»ºè®®ï¼Œæ˜¯å¦çœŸæ­£å‹ç¼©è¿˜å–å†³äºåŒ…çš„å®é™…å¤§å°ã€‚
+    * åŒæ­¥å‘é€çš„åŒ…ï¼Œé€šè¿‡è°ƒç”¨RecvBizæ¥æ¥æ”¶ï¼Œå¼‚æ­¥å‘é€çš„åŒ…ï¼Œå½“æ”¶åˆ°åº”ç­”åŒ…åï¼Œè‡ªåŠ¨è§¦å‘å›è°ƒå‡½æ•°OnReceivedBizã€‚
+    * @return è¿”å›å‘é€å¥æŸ„ï¼ˆæ­£æ•°ï¼‰ï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE SendBiz(int iFunID, IF2Packer *lpPacker, int nAsy = 0, int iSystemNo = 0, int nCompressID = 1) = 0;
 
     /**
-    * ½ÓÊÕÒµÎñÊı¾İ
-    * @param hSend            ·¢ËÍ¾ä±ú£¨SendBizµÄ³É¹¦·µ»ØÖµ£©
-    * @param lppUnPackerOrStr Èç¹û·µ»ØÖµµÈÓÚ0£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬²¢ÇÒÒµÎñ²Ù×÷³É¹¦£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ1£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬µ«ÒµÎñ²Ù×÷Ê§°ÜÁË£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ2£¬±íÊ¾ÊÕµ½·ÇÒµÎñ´íÎóĞÅÏ¢£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö¿É¶ÁµÄ×Ö·û´®´íÎóĞÅÏ¢¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ3£¬±íÊ¾ÒµÎñ°ü½â°üÊ§°Ü¡£*lppUnPackerOrStrÔ­ÏÈËùÖ¸ÏòµÄÄÚÈİ²»»á±»¸Ä±ä¡£
-    * @param uiTimeout        ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë¡£
-    * @param uiFlag           ½ÓÊÕÑ¡Ïî£¬0±íÊ¾½ÓÊÕ³¬Ê±ºóÈÔ¿É¼ÌĞøµ÷ÓÃRecvBizÀ´½ÓÊÕ£¬
-    *                         JustRemoveHandle±íÊ¾µ±½ÓÊÕ³¬Ê±ºó£¬°ÑhSendÏà¹ØÊı¾İÉ¾³ı
-    * @return Ğ¡ÓÚ0±íÊ¾RecvBiz²Ù×÷±¾ÉíÊ§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
-    * ×¢Òâ£¡Íâ²¿Ö¸ÕëËùÖ¸ÏòµÄ½â°üÆ÷µÄÄÚ´æÓÉSDKÄÚ²¿¹ÜÀí£¬Íâ²¿ÇĞÎğÊÍ·Å£¡
+    * æ¥æ”¶ä¸šåŠ¡æ•°æ®
+    * @param hSend            å‘é€å¥æŸ„ï¼ˆSendBizçš„æˆåŠŸè¿”å›å€¼ï¼‰
+    * @param lppUnPackerOrStr å¦‚æœè¿”å›å€¼ç­‰äº0ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œå¹¶ä¸”ä¸šåŠ¡æ“ä½œæˆåŠŸï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº1ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œä½†ä¸šåŠ¡æ“ä½œå¤±è´¥äº†ï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº2ï¼Œè¡¨ç¤ºæ”¶åˆ°éä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªå¯è¯»çš„å­—ç¬¦ä¸²é”™è¯¯ä¿¡æ¯ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº3ï¼Œè¡¨ç¤ºä¸šåŠ¡åŒ…è§£åŒ…å¤±è´¥ã€‚*lppUnPackerOrStråŸå…ˆæ‰€æŒ‡å‘çš„å†…å®¹ä¸ä¼šè¢«æ”¹å˜ã€‚
+    * @param uiTimeout        è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ã€‚
+    * @param uiFlag           æ¥æ”¶é€‰é¡¹ï¼Œ0è¡¨ç¤ºæ¥æ”¶è¶…æ—¶åä»å¯ç»§ç»­è°ƒç”¨RecvBizæ¥æ¥æ”¶ï¼Œ
+    *                         JustRemoveHandleè¡¨ç¤ºå½“æ¥æ”¶è¶…æ—¶åï¼ŒæŠŠhSendç›¸å…³æ•°æ®åˆ é™¤
+    * @return å°äº0è¡¨ç¤ºRecvBizæ“ä½œæœ¬èº«å¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
+    * æ³¨æ„ï¼å¤–éƒ¨æŒ‡é’ˆæ‰€æŒ‡å‘çš„è§£åŒ…å™¨çš„å†…å­˜ç”±SDKå†…éƒ¨ç®¡ç†ï¼Œå¤–éƒ¨åˆ‡å‹¿é‡Šæ”¾ï¼
     */
     virtual int FUNCTION_CALL_MODE RecvBiz(int hSend, void **lppUnPackerOrStr, unsigned uiTimeout = 1000, unsigned uiFlag = 0) = 0;
 
-    //20101228 xuxp ĞÂÔö·¢ËÍºÍ½ÓÊÜµÄÁ½¸ö½Ó¿Úº¯Êı£¬ÓÃÓÚ¶©ÔÄºÍÍÆËÍ
+    //20101228 xuxp æ–°å¢å‘é€å’Œæ¥å—çš„ä¸¤ä¸ªæ¥å£å‡½æ•°ï¼Œç”¨äºè®¢é˜…å’Œæ¨é€
      /**
-     * ·¢ËÍÒµÎñÊı¾İ
-     * @param iFunID      ¹¦ÄÜºÅ
-     * @param lpPacker    ´ò°üÆ÷Ö¸Õë
-     * @param svrName     Ö¸¶¨ÖĞ¼ä¼şµÄ½Úµã
-     * @param nAsy        0±íÊ¾Í¬²½£¬·ñÔò±íÊ¾Òì²½¡£
-     * @param iSystemNo   Èç¹ûiSystemNo > 0ÔòÉèÖÃÏµÍ³ºÅ
-     * @param nCompressID ¶ÔÒµÎñ°üÌå½øĞĞÑ¹ËõµÄÑ¹ËõËã·¨ID£¬Ä¿Ç°Ö»Ö§³ÖID = 1µÄÑ¹ËõËã·¨¡£
-     * ID = 0±íÊ¾²»Ñ¹Ëõ¡£×¢Òâ£¬Ñ¹ËõÖ»ÊÇÏòSDKÌá³ö½¨Òé£¬ÊÇ·ñÕæÕıÑ¹Ëõ»¹È¡¾öÓÚ°üµÄÊµ¼Ê´óĞ¡¡£
-     * Í¬²½·¢ËÍµÄ°ü£¬Í¨¹ıµ÷ÓÃRecvBizÀ´½ÓÊÕ£¬Òì²½·¢ËÍµÄ°ü£¬µ±ÊÕµ½Ó¦´ğ°üºó£¬×Ô¶¯´¥·¢»Øµ÷º¯ÊıOnReceivedBiz¡£
-     * @param branchNo  ÓªÒµ²¿ºÅ¡£
-     * @param lpRequest  ÇëÇóÀïÃæµÄÆäËûÄÚÈİ£¬¸ù¾İ½á¹¹Ìå¶¨Òå¸³Öµ¡£
-     * @return ·µ»Ø·¢ËÍ¾ä±ú£¨ÕıÊı£©£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+     * å‘é€ä¸šåŠ¡æ•°æ®
+     * @param iFunID      åŠŸèƒ½å·
+     * @param lpPacker    æ‰“åŒ…å™¨æŒ‡é’ˆ
+     * @param svrName     æŒ‡å®šä¸­é—´ä»¶çš„èŠ‚ç‚¹
+     * @param nAsy        0è¡¨ç¤ºåŒæ­¥ï¼Œå¦åˆ™è¡¨ç¤ºå¼‚æ­¥ã€‚
+     * @param iSystemNo   å¦‚æœiSystemNo > 0åˆ™è®¾ç½®ç³»ç»Ÿå·
+     * @param nCompressID å¯¹ä¸šåŠ¡åŒ…ä½“è¿›è¡Œå‹ç¼©çš„å‹ç¼©ç®—æ³•IDï¼Œç›®å‰åªæ”¯æŒID = 1çš„å‹ç¼©ç®—æ³•ã€‚
+     * ID = 0è¡¨ç¤ºä¸å‹ç¼©ã€‚æ³¨æ„ï¼Œå‹ç¼©åªæ˜¯å‘SDKæå‡ºå»ºè®®ï¼Œæ˜¯å¦çœŸæ­£å‹ç¼©è¿˜å–å†³äºåŒ…çš„å®é™…å¤§å°ã€‚
+     * åŒæ­¥å‘é€çš„åŒ…ï¼Œé€šè¿‡è°ƒç”¨RecvBizæ¥æ¥æ”¶ï¼Œå¼‚æ­¥å‘é€çš„åŒ…ï¼Œå½“æ”¶åˆ°åº”ç­”åŒ…åï¼Œè‡ªåŠ¨è§¦å‘å›è°ƒå‡½æ•°OnReceivedBizã€‚
+     * @param branchNo  è¥ä¸šéƒ¨å·ã€‚
+     * @param lpRequest  è¯·æ±‚é‡Œé¢çš„å…¶ä»–å†…å®¹ï¼Œæ ¹æ®ç»“æ„ä½“å®šä¹‰èµ‹å€¼ã€‚
+     * @return è¿”å›å‘é€å¥æŸ„ï¼ˆæ­£æ•°ï¼‰ï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
      */
     virtual int FUNCTION_CALL_MODE SendBizEx(int iFunID, IF2Packer *lpPacker, char* svrName, int nAsy = 0, int iSystemNo = 0, int nCompressID = 1, int branchNo = 0, LPREQ_DATA lpRequest = NULL) = 0;
 
     /**
-    * ½ÓÊÕÒµÎñÊı¾İ
-    * @param hSend            ·¢ËÍ¾ä±ú£¨SendBizµÄ³É¹¦·µ»ØÖµ£©
-    * @param lppUnPackerOrStr Èç¹û·µ»ØÖµµÈÓÚ0£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬²¢ÇÒÒµÎñ²Ù×÷³É¹¦£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ1£¬±íÊ¾ÒµÎñÊı¾İ½ÓÊÕ³É¹¦£¬µ«ÒµÎñ²Ù×÷Ê§°ÜÁË£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö½â°üÆ÷£¬´ËÊ±Ó¦Ê×ÏÈ½«¸ÃÖ¸Õë×ª»»ÎªIF2UnPacker *¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ2£¬±íÊ¾ÊÕµ½·ÇÒµÎñ´íÎóĞÅÏ¢£¬*lppUnPackerOrStrÖ¸ÏòÒ»¸ö¿É¶ÁµÄ×Ö·û´®´íÎóĞÅÏ¢¡£
-    *                         Èç¹û·µ»ØÖµµÈÓÚ3£¬±íÊ¾ÒµÎñ°ü½â°üÊ§°Ü¡£*lppUnPackerOrStrÔ­ÏÈËùÖ¸ÏòµÄÄÚÈİ²»»á±»¸Ä±ä¡£
-    * @param lpRetData ÆäËûĞèÒª·µ»ØµÄÓ¦´ğÄÚÈİ£¬¸ù¾İĞèÒª»ñÈ¡
-    * @param uiTimeout        ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë£¬0±íÊ¾²»µÈ´ı¡£
-    * @param uiFlag           ½ÓÊÕÑ¡Ïî£¬0±íÊ¾½ÓÊÕ³¬Ê±ºóÈÔ¿É¼ÌĞøµ÷ÓÃRecvBizÀ´½ÓÊÕ£¬
-    *                         JustRemoveHandle±íÊ¾µ±½ÓÊÕ³¬Ê±ºó£¬°ÑhSendÏà¹ØÊı¾İÉ¾³ı
-    * @return Ğ¡ÓÚ0±íÊ¾RecvBiz²Ù×÷±¾ÉíÊ§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
-    * ×¢Òâ£¡Íâ²¿Ö¸ÕëËùÖ¸ÏòµÄ½â°üÆ÷µÄÄÚ´æÓÉSDKÄÚ²¿¹ÜÀí£¬Íâ²¿ÇĞÎğÊÍ·Å£¡
-    * ×¢Òâ£¡Íâ²¿Ö¸ÕëËùÖ¸ÏòµÄLPRET_DATAµÄÄÚ´æÓÉSDKÄÚ²¿¹ÜÀí£¬Íâ²¿ÇĞÎğÊÍ·Å£¡
+    * æ¥æ”¶ä¸šåŠ¡æ•°æ®
+    * @param hSend            å‘é€å¥æŸ„ï¼ˆSendBizçš„æˆåŠŸè¿”å›å€¼ï¼‰
+    * @param lppUnPackerOrStr å¦‚æœè¿”å›å€¼ç­‰äº0ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œå¹¶ä¸”ä¸šåŠ¡æ“ä½œæˆåŠŸï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº1ï¼Œè¡¨ç¤ºä¸šåŠ¡æ•°æ®æ¥æ”¶æˆåŠŸï¼Œä½†ä¸šåŠ¡æ“ä½œå¤±è´¥äº†ï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªè§£åŒ…å™¨ï¼Œæ­¤æ—¶åº”é¦–å…ˆå°†è¯¥æŒ‡é’ˆè½¬æ¢ä¸ºIF2UnPacker *ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº2ï¼Œè¡¨ç¤ºæ”¶åˆ°éä¸šåŠ¡é”™è¯¯ä¿¡æ¯ï¼Œ*lppUnPackerOrStræŒ‡å‘ä¸€ä¸ªå¯è¯»çš„å­—ç¬¦ä¸²é”™è¯¯ä¿¡æ¯ã€‚
+    *                         å¦‚æœè¿”å›å€¼ç­‰äº3ï¼Œè¡¨ç¤ºä¸šåŠ¡åŒ…è§£åŒ…å¤±è´¥ã€‚*lppUnPackerOrStråŸå…ˆæ‰€æŒ‡å‘çš„å†…å®¹ä¸ä¼šè¢«æ”¹å˜ã€‚
+    * @param lpRetData å…¶ä»–éœ€è¦è¿”å›çš„åº”ç­”å†…å®¹ï¼Œæ ¹æ®éœ€è¦è·å–
+    * @param uiTimeout        è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ï¼Œ0è¡¨ç¤ºä¸ç­‰å¾…ã€‚
+    * @param uiFlag           æ¥æ”¶é€‰é¡¹ï¼Œ0è¡¨ç¤ºæ¥æ”¶è¶…æ—¶åä»å¯ç»§ç»­è°ƒç”¨RecvBizæ¥æ¥æ”¶ï¼Œ
+    *                         JustRemoveHandleè¡¨ç¤ºå½“æ¥æ”¶è¶…æ—¶åï¼ŒæŠŠhSendç›¸å…³æ•°æ®åˆ é™¤
+    * @return å°äº0è¡¨ç¤ºRecvBizæ“ä½œæœ¬èº«å¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
+    * æ³¨æ„ï¼å¤–éƒ¨æŒ‡é’ˆæ‰€æŒ‡å‘çš„è§£åŒ…å™¨çš„å†…å­˜ç”±SDKå†…éƒ¨ç®¡ç†ï¼Œå¤–éƒ¨åˆ‡å‹¿é‡Šæ”¾ï¼
+    * æ³¨æ„ï¼å¤–éƒ¨æŒ‡é’ˆæ‰€æŒ‡å‘çš„LPRET_DATAçš„å†…å­˜ç”±SDKå†…éƒ¨ç®¡ç†ï¼Œå¤–éƒ¨åˆ‡å‹¿é‡Šæ”¾ï¼
     */
     virtual int FUNCTION_CALL_MODE RecvBizEx(int hSend, void **lppUnpackerOrStr, LPRET_DATA* lpRetData, unsigned uiTimeout = 1000, unsigned uiFlag = 0) = 0;
 
 
-    //20101228 xuxp ĞÂÔöCreateº¯Êı£¬À´±£Ö¤»Øµ÷ÓÃĞÂµÄOnReceivedBizExµÄ½Ó¿Ú
+    //20101228 xuxp æ–°å¢Createå‡½æ•°ï¼Œæ¥ä¿è¯å›è°ƒç”¨æ–°çš„OnReceivedBizExçš„æ¥å£
     /**
-    * ³õÊ¼»¯Á¬½Ó¶ÔÏó
-    * @param lpCallback »Øµ÷¶ÔÏó
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
-    * Èç¹ûÓ¦ÓÃ²»ĞèÒªÈÎºÎ»Øµ÷·½·¨£¬Ôò¿ÉÏò¸Ã·½·¨´«µİNULL£¬¶ø²»±Ø×Ô¶¨Òå»Øµ÷ÀàºÍ¶ÔÏó
+    * åˆå§‹åŒ–è¿æ¥å¯¹è±¡
+    * @param lpCallback å›è°ƒå¯¹è±¡
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
+    * å¦‚æœåº”ç”¨ä¸éœ€è¦ä»»ä½•å›è°ƒæ–¹æ³•ï¼Œåˆ™å¯å‘è¯¥æ–¹æ³•ä¼ é€’NULLï¼Œè€Œä¸å¿…è‡ªå®šä¹‰å›è°ƒç±»å’Œå¯¹è±¡
     */
     virtual int FUNCTION_CALL_MODE CreateEx(CCallbackInterface *lpCallback) = 0;
 
 
-    //20120111 dongpf ĞÂÔöGetRealAddressº¯Êı£¬À´»ñÈ¡·şÎñ¶ËÉÏ×Ô¼ºµÄipµØÖ·ºÍ¶Ë¿Ú
+    //20120111 dongpf æ–°å¢GetRealAddresså‡½æ•°ï¼Œæ¥è·å–æœåŠ¡ç«¯ä¸Šè‡ªå·±çš„ipåœ°å€å’Œç«¯å£
     /**
-    * »ñÈ¡ipµØÖ·ºÍ¶Ë¿Ú
-    * @return »ñÈ¡ipµØÖ·ºÍ¶Ë¿Ú£¬¸ñÊ½£ºipµØÖ·+¶Ë¿Ú
+    * è·å–ipåœ°å€å’Œç«¯å£
+    * @return è·å–ipåœ°å€å’Œç«¯å£ï¼Œæ ¼å¼ï¼šipåœ°å€+ç«¯å£
     */
     virtual const char* FUNCTION_CALL_MODE GetRealAddress() = 0;
 
@@ -1253,41 +1253,41 @@ public:
     virtual int FUNCTION_CALL_MODE Reserved8() = 0;
     virtual int FUNCTION_CALL_MODE Reserved9() = 0;
 
-    //20130527 xuxp ĞÂÔöGetSelfAddressº¯Êı£¬À´»ñÈ¡×Ô¼º±¾µØµÄIPºÍ¶Ë¿Ú
+    //20130527 xuxp æ–°å¢GetSelfAddresså‡½æ•°ï¼Œæ¥è·å–è‡ªå·±æœ¬åœ°çš„IPå’Œç«¯å£
     /**
-    * »ñÈ¡ipµØÖ·ºÍ¶Ë¿Ú
-    * @return »ñÈ¡ipµØÖ·ºÍ¶Ë¿Ú£¬¸ñÊ½£ºipµØÖ·+¶Ë¿Ú
+    * è·å–ipåœ°å€å’Œç«¯å£
+    * @return è·å–ipåœ°å€å’Œç«¯å£ï¼Œæ ¼å¼ï¼šipåœ°å€+ç«¯å£
     */
     virtual const char* FUNCTION_CALL_MODE GetSelfAddress() = 0;
 
-    //20130529 xuxp ĞÂÔöGetSelfMacº¯Êı£¬À´»ñÈ¡×Ô¼º±¾µØÊ¹ÓÃµÄÍø¿¨MAC
+    //20130529 xuxp æ–°å¢GetSelfMacå‡½æ•°ï¼Œæ¥è·å–è‡ªå·±æœ¬åœ°ä½¿ç”¨çš„ç½‘å¡MAC
     /**
-    * »ñÈ¡MACµØÖ·
-    * @return MACµÄµØÖ·×Ö·û´®¸ñÊ½£¬ÀàËÆ¡°D067E5556D83¡±,ÖĞ¼äÃ»ÓĞ·Ö¸ô·û
+    * è·å–MACåœ°å€
+    * @return MACçš„åœ°å€å­—ç¬¦ä¸²æ ¼å¼ï¼Œç±»ä¼¼â€œD067E5556D83â€,ä¸­é—´æ²¡æœ‰åˆ†éš”ç¬¦
     */
     virtual const char* FUNCTION_CALL_MODE GetSelfMac() = 0;
 
-    //20130609 xuxp ĞÂÔö¶©ÔÄ·¢²¼½Ó¿Ú
-    ///////////////////////////////////ÏÂÃæÔö¼Ó¶©ÔÄ·¢²¼µÄ½Ó¿Ú///////////////////////////////////////
+    //20130609 xuxp æ–°å¢è®¢é˜…å‘å¸ƒæ¥å£
+    ///////////////////////////////////ä¸‹é¢å¢åŠ è®¢é˜…å‘å¸ƒçš„æ¥å£///////////////////////////////////////
 
     /**
-    * ´´½¨Ò»¸ö¶©ÔÄÕß
-    * @param lpCallback »Øµ÷½Ó¿Ú
-    * @param SubScribeName ¶©ÔÄÕßÃû×Ö£¬¶à¶©ÔÄÕßµÄÃû×Ö±ØĞë²»Ò»Ñù£¬²»¿ÉÒÔÏàÍ¬.×î´ó³¤¶È32¸ö×Ö½Ú
-    * @param iTimeOut ³¬Ê±Ê±¼ä
-    * @param iInitRecvQLen ³õÊ¼»¯½ÓÊÕ¶ÓÁĞµÄ³¤¶È
-    * @param iStepRecvQLen ½ÓÊÜ¶ÓÁĞµÄÀ©Õ¹²½³¤
-    * @return ·µ»Ø¶©ÔÄ½Ó¿ÚÊµÀı£¬Ò»¸ö»á»°½Ó¿Ú¶ÔÓ¦Ò»¸ö»Øµ÷.
+    * åˆ›å»ºä¸€ä¸ªè®¢é˜…è€…
+    * @param lpCallback å›è°ƒæ¥å£
+    * @param SubScribeName è®¢é˜…è€…åå­—ï¼Œå¤šè®¢é˜…è€…çš„åå­—å¿…é¡»ä¸ä¸€æ ·ï¼Œä¸å¯ä»¥ç›¸åŒ.æœ€å¤§é•¿åº¦32ä¸ªå­—èŠ‚
+    * @param iTimeOut è¶…æ—¶æ—¶é—´
+    * @param iInitRecvQLen åˆå§‹åŒ–æ¥æ”¶é˜Ÿåˆ—çš„é•¿åº¦
+    * @param iStepRecvQLen æ¥å—é˜Ÿåˆ—çš„æ‰©å±•æ­¥é•¿
+    * @return è¿”å›è®¢é˜…æ¥å£å®ä¾‹ï¼Œä¸€ä¸ªä¼šè¯æ¥å£å¯¹åº”ä¸€ä¸ªå›è°ƒ.
     */
     virtual CSubscribeInterface* FUNCTION_CALL_MODE NewSubscriber(CSubCallbackInterface *lpCallback, char* SubScribeName, int iTimeOut,
         int iInitRecvQLen = INIT_RECVQ_LEN, int iStepRecvQLen = STEP_RECVQ_LEN) = 0;
 
     /**
-     * »ñÈ¡·¢²¼Õß
-     * @param msgCount ±¾µØ»º´æÏûÏ¢µÄ¸öÊı
-     * @param iTimeOut µÚÒ»´Î³õÊ¼»¯µÄÊ±ºòµÄ³¬Ê±Ê±¼ä
-     * @param bResetNo ÊÇ·ñÖØÖÃĞò
-     * @return ·µ»Ø·¢ËÍ½Ó¿ÚÊµÀı£¬ÕâÊÇÒ»¸öµ¥Àı£¬Èç¹ûÒÑ¾­newÁË£¬¾ÍÖ±½Ó·µ»Ø¶ÔÓ¦µÄÖ¸Õë
+     * è·å–å‘å¸ƒè€…
+     * @param msgCount æœ¬åœ°ç¼“å­˜æ¶ˆæ¯çš„ä¸ªæ•°
+     * @param iTimeOut ç¬¬ä¸€æ¬¡åˆå§‹åŒ–çš„æ—¶å€™çš„è¶…æ—¶æ—¶é—´
+     * @param bResetNo æ˜¯å¦é‡ç½®åº
+     * @return è¿”å›å‘é€æ¥å£å®ä¾‹ï¼Œè¿™æ˜¯ä¸€ä¸ªå•ä¾‹ï¼Œå¦‚æœå·²ç»newäº†ï¼Œå°±ç›´æ¥è¿”å›å¯¹åº”çš„æŒ‡é’ˆ
      */
     virtual CPublishInterface* FUNCTION_CALL_MODE GetPublisher(int msgCount, int iTimeOut, bool bResetNo = false) = 0;
 
@@ -1295,12 +1295,12 @@ public:
 
 
     /**
-     * »ñÈ¡·şÎñ¶ËµÄËùÓĞÖ÷ÌâĞÅÏ¢
-     * @param byForce ÊÇ·ñÇ¿ÖÆ´ÓºóÌ¨»ñÈ¡
-     * @param iTimeOut ³¬Ê±Ê±¼ä
-     * @return ³É¹¦¾Í·µ»ØËùÓĞÖ÷ÌâĞÅÏ¢
-     * @note ½â°üÆ÷ÍâÃæĞèÒªµ÷ÓÃrelease½Ó¿Ú½øĞĞÊÍ·Å.
-     * @note packer·µ»Ø×Ö¶Î
+     * è·å–æœåŠ¡ç«¯çš„æ‰€æœ‰ä¸»é¢˜ä¿¡æ¯
+     * @param byForce æ˜¯å¦å¼ºåˆ¶ä»åå°è·å–
+     * @param iTimeOut è¶…æ—¶æ—¶é—´
+     * @return æˆåŠŸå°±è¿”å›æ‰€æœ‰ä¸»é¢˜ä¿¡æ¯
+     * @note è§£åŒ…å™¨å¤–é¢éœ€è¦è°ƒç”¨releaseæ¥å£è¿›è¡Œé‡Šæ”¾.
+     * @note packerè¿”å›å­—æ®µ
      * - TopicName
      * - TopicNo
      * - ReliableLevel
@@ -1322,38 +1322,38 @@ public:
     virtual IF2UnPacker* FUNCTION_CALL_MODE GetTopic(bool byForce, int iTimeOut) = 0;
 
     /**
-    * »ñÈ¡¶©ÔÄ·¢²¼µÄ×îºó´íÎó
+    * è·å–è®¢é˜…å‘å¸ƒçš„æœ€åé”™è¯¯
     */
     virtual const char* FUNCTION_CALL_MODE GetMCLastError() = 0;
     ////////////////////////////////////////////////////////////////////////////////
 
-    //20130624 xuxp Á¬½Ó½Ó¿ÚÔö¼ÓÏÂÃæÈı¸ö½Ó¿Ú£¬ÓÃÀ´×÷Îª·şÎñ¶ËµÄ½Ó¿Ú£¬¿Í»§¶Ë¿ª·¢Ò²ÍÆ¼öÊ¹ÓÃ
-    ///////////////////////////////////ĞÂµÄÒ»Ì×²Ù×÷½Ó¿Ú///////////////////////////////////////
+    //20130624 xuxp è¿æ¥æ¥å£å¢åŠ ä¸‹é¢ä¸‰ä¸ªæ¥å£ï¼Œç”¨æ¥ä½œä¸ºæœåŠ¡ç«¯çš„æ¥å£ï¼Œå®¢æˆ·ç«¯å¼€å‘ä¹Ÿæ¨èä½¿ç”¨
+    ///////////////////////////////////æ–°çš„ä¸€å¥—æ“ä½œæ¥å£///////////////////////////////////////
     /**
-    * ³õÊ¼»¯Á¬½Ó¶ÔÏó
-    * @param lpCallback »Øµ÷¶ÔÏó
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
-    * Èç¹ûÓ¦ÓÃ²»ĞèÒªÈÎºÎ»Øµ÷·½·¨£¬Ôò¿ÉÏò¸Ã·½·¨´«µİNULL£¬¶ø²»±Ø×Ô¶¨Òå»Øµ÷ÀàºÍ¶ÔÏó
+    * åˆå§‹åŒ–è¿æ¥å¯¹è±¡
+    * @param lpCallback å›è°ƒå¯¹è±¡
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
+    * å¦‚æœåº”ç”¨ä¸éœ€è¦ä»»ä½•å›è°ƒæ–¹æ³•ï¼Œåˆ™å¯å‘è¯¥æ–¹æ³•ä¼ é€’NULLï¼Œè€Œä¸å¿…è‡ªå®šä¹‰å›è°ƒç±»å’Œå¯¹è±¡
     */
     virtual int FUNCTION_CALL_MODE Create2BizMsg(CCallbackInterface *lpCallback) = 0;
 
     /**
-    * ·¢ËÍÒµÎñÊı¾İ
-    * @param lpMsg       ÒµÎñÏûÏ¢½Ó¿ÚÖ¸Õë
-    * @param nAsy        0±íÊ¾Í¬²½£¬·ñÔò±íÊ¾Òì²½¡£
-    * Í¬²½·¢ËÍµÄ°ü£¬Í¨¹ıµ÷ÓÃRecvBizMsgÀ´½ÓÊÕ£¬Òì²½·¢ËÍµÄ°ü£¬µ±ÊÕµ½Ó¦´ğ°üºó£¬×Ô¶¯´¥·¢»Øµ÷º¯ÊıOnReceivedBizMsg¡£
-    * @return ·µ»Ø·¢ËÍ¾ä±ú£¨ÕıÊı£©£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * å‘é€ä¸šåŠ¡æ•°æ®
+    * @param lpMsg       ä¸šåŠ¡æ¶ˆæ¯æ¥å£æŒ‡é’ˆ
+    * @param nAsy        0è¡¨ç¤ºåŒæ­¥ï¼Œå¦åˆ™è¡¨ç¤ºå¼‚æ­¥ã€‚
+    * åŒæ­¥å‘é€çš„åŒ…ï¼Œé€šè¿‡è°ƒç”¨RecvBizMsgæ¥æ¥æ”¶ï¼Œå¼‚æ­¥å‘é€çš„åŒ…ï¼Œå½“æ”¶åˆ°åº”ç­”åŒ…åï¼Œè‡ªåŠ¨è§¦å‘å›è°ƒå‡½æ•°OnReceivedBizMsgã€‚
+    * @return è¿”å›å‘é€å¥æŸ„ï¼ˆæ­£æ•°ï¼‰ï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE SendBizMsg(IBizMessage* lpMsg, int nAsy = 0) = 0;
 
     /**
-    * ½ÓÊÕÊı¾İ
-    * @param hSend     ·¢ËÍ¾ä±ú
-    * @param lpMsg	   ÊÕµ½ÒµÎñÏûÏ¢Ö¸ÕëµÄµØÖ·
-    * @param uiTimeout ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë£¬0±íÊ¾²»µÈ´ı
-    * @param uiFlag    ½ÓÊÕÑ¡Ïî£¬0±íÊ¾½ÓÊÕ³¬Ê±ºóÈÔ¿É¼ÌĞøµ÷ÓÃReceiveÀ´½ÓÊÕ£¬
-    *                  JustRemoveHandle±íÊ¾µ±½ÓÊÕ³¬Ê±Ê±£¬°Ñpacket_idÉ¾³ı£¨ÒÔºóÔÙÊÕµ½£¬Ôò»áÒÔÒì²½µÄ·½Ê½ÊÕµ½£©
-    * @return ·µ»Ø0±íÊ¾³É¹¦£¬·ñÔò±íÊ¾Ê§°Ü£¬Í¨¹ıµ÷ÓÃGetErrorMsg¿ÉÒÔ»ñÈ¡ÏêÏ¸´íÎóĞÅÏ¢
+    * æ¥æ”¶æ•°æ®
+    * @param hSend     å‘é€å¥æŸ„
+    * @param lpMsg	   æ”¶åˆ°ä¸šåŠ¡æ¶ˆæ¯æŒ‡é’ˆçš„åœ°å€
+    * @param uiTimeout è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ï¼Œ0è¡¨ç¤ºä¸ç­‰å¾…
+    * @param uiFlag    æ¥æ”¶é€‰é¡¹ï¼Œ0è¡¨ç¤ºæ¥æ”¶è¶…æ—¶åä»å¯ç»§ç»­è°ƒç”¨Receiveæ¥æ¥æ”¶ï¼Œ
+    *                  JustRemoveHandleè¡¨ç¤ºå½“æ¥æ”¶è¶…æ—¶æ—¶ï¼ŒæŠŠpacket_idåˆ é™¤ï¼ˆä»¥åå†æ”¶åˆ°ï¼Œåˆ™ä¼šä»¥å¼‚æ­¥çš„æ–¹å¼æ”¶åˆ°ï¼‰
+    * @return è¿”å›0è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¡¨ç¤ºå¤±è´¥ï¼Œé€šè¿‡è°ƒç”¨GetErrorMsgå¯ä»¥è·å–è¯¦ç»†é”™è¯¯ä¿¡æ¯
     */
     virtual int FUNCTION_CALL_MODE RecvBizMsg(int hSend, IBizMessage** lpMsg, unsigned uiTimeout = 1000, unsigned uiFlag = 0) = 0;
     ////////////////////////////////////////////////////////////////////////////////
@@ -1362,69 +1362,69 @@ public:
 extern "C"
 {
     /**
-    * »ñÈ¡T2_SDKµÄ°æ±¾ºÅ
-    * @return µ±Ç°T2_SDKµÄ°æ±¾ºÅ£¬Ä¿Ç°°æ±¾Îª0x01000002£¬±íÊ¾1.0.0.2
+    * è·å–T2_SDKçš„ç‰ˆæœ¬å·
+    * @return å½“å‰T2_SDKçš„ç‰ˆæœ¬å·ï¼Œç›®å‰ç‰ˆæœ¬ä¸º0x01000002ï¼Œè¡¨ç¤º1.0.0.2
     */
     int FUNCTION_CALL_MODE GetVersionInfo();
 
     /**
-    * »ñÈ¡Ò»¸öÊµÏÖCConfigInterface½Ó¿ÚµÄÀàµÄÖ¸Õë
-    * @return ÊµÏÖCConfigInterface½Ó¿ÚµÄÀàµÄÖ¸Õë
+    * è·å–ä¸€ä¸ªå®ç°CConfigInterfaceæ¥å£çš„ç±»çš„æŒ‡é’ˆ
+    * @return å®ç°CConfigInterfaceæ¥å£çš„ç±»çš„æŒ‡é’ˆ
     */
     CConfigInterface* FUNCTION_CALL_MODE NewConfig();
 
     /**
-    * »ñÈ¡Ò»¸öÊµÏÖCConnectionInterface½Ó¿ÚµÄÀàµÄÖ¸Õë
-    * @param CConfigInterface ÊµÏÖCConfigInterface½Ó¿ÚµÄÀàµÄÖ¸Õë
-    * @returnÊµÏÖCConnectionInterface½Ó¿ÚµÄÀàµÄÖ¸Õë
+    * è·å–ä¸€ä¸ªå®ç°CConnectionInterfaceæ¥å£çš„ç±»çš„æŒ‡é’ˆ
+    * @param CConfigInterface å®ç°CConfigInterfaceæ¥å£çš„ç±»çš„æŒ‡é’ˆ
+    * @returnå®ç°CConnectionInterfaceæ¥å£çš„ç±»çš„æŒ‡é’ˆ
     */
     CConnectionInterface* FUNCTION_CALL_MODE NewConnection(CConfigInterface *lpConfig);
 
     /**
-    * @param int iVersion ÒµÎñ°ü¸ñÊ½°æ±¾(È¡Öµ:1 ×Ö´®°æ,ÆäËûÖµ 0x20°æ)
-    * ÍÆ¼öÊ¹ÓÃ0x20°æ
-    * @return IPacker * ´ò°üÆ÷½Ó¿ÚÖ¸Õë
+    * @param int iVersion ä¸šåŠ¡åŒ…æ ¼å¼ç‰ˆæœ¬(å–å€¼:1 å­—ä¸²ç‰ˆ,å…¶ä»–å€¼ 0x20ç‰ˆ)
+    * æ¨èä½¿ç”¨0x20ç‰ˆ
+    * @return IPacker * æ‰“åŒ…å™¨æ¥å£æŒ‡é’ˆ
     */
     IF2Packer * FUNCTION_CALL_MODE NewPacker(int iVersion);
 
     /**
-    * @param void * lpBuffer Òª½â°üµÄÊı¾İ£¨²»º¬ARÍ¨ĞÅ°üÍ·£©
-    * @param unsigned int iLen Êı¾İ³¤¶È
-    * @return IUnPacker * ½á¹û¼¯²Ù×÷½Ó¿ÚÖ¸Õë
+    * @param void * lpBuffer è¦è§£åŒ…çš„æ•°æ®ï¼ˆä¸å«ARé€šä¿¡åŒ…å¤´ï¼‰
+    * @param unsigned int iLen æ•°æ®é•¿åº¦
+    * @return IUnPacker * ç»“æœé›†æ“ä½œæ¥å£æŒ‡é’ˆ
     */
     IF2UnPacker * FUNCTION_CALL_MODE NewUnPacker(void * lpBuffer, unsigned int iLen);
 
     /**
-    * @param char *EncodePass ´«³öµÄÉ¢ÁĞ½á¹û£¬×Ö·û´®£¬³¤¶È²»³¬¹ı16£¨°üÀ¨'\0'£©
-    * @param const char* Password ´«ÈëµÄ´ıÉ¢ÁĞµÄÃÜÂë
-    * @param int nReserve ±£Áô²ÎÊı£¬²ÉÓÃÄ¬ÈÏÖµ
-    * @return char * ´«³öµÄÉ¢ÁĞ½á¹ûµØÖ·£¬Í¬EncodePass
+    * @param char *EncodePass ä¼ å‡ºçš„æ•£åˆ—ç»“æœï¼Œå­—ç¬¦ä¸²ï¼Œé•¿åº¦ä¸è¶…è¿‡16ï¼ˆåŒ…æ‹¬'\0'ï¼‰
+    * @param const char* Password ä¼ å…¥çš„å¾…æ•£åˆ—çš„å¯†ç 
+    * @param int nReserve ä¿ç•™å‚æ•°ï¼Œé‡‡ç”¨é»˜è®¤å€¼
+    * @return char * ä¼ å‡ºçš„æ•£åˆ—ç»“æœåœ°å€ï¼ŒåŒEncodePass
     */
     char * FUNCTION_CALL_MODE Encode(char *EncodePass, const char* Password, int nReserve = 0);
 
 
     /**
-    *ÀûÓÃÒ»²¿Ìá¹©µÄ¼ÓÃÜº¯ÊıÀ´¶ÔÃÜÂë½øĞĞ¼ÓÃÜ
-    * @param const char* pIn ´«ÈëµÄ´ı¼ÓÃÜµÄ×Ö·û´®
-    * @param const char* pOut Êä³ö²ÎÊı£¬³¤¶ÈºÍ´«ÈëµÄ×Ö·û´®´óĞ¡Ò»Ñù£¬ÓÉÍâ²¿ÉêÇë
+    *åˆ©ç”¨ä¸€éƒ¨æä¾›çš„åŠ å¯†å‡½æ•°æ¥å¯¹å¯†ç è¿›è¡ŒåŠ å¯†
+    * @param const char* pIn ä¼ å…¥çš„å¾…åŠ å¯†çš„å­—ç¬¦ä¸²
+    * @param const char* pOut è¾“å‡ºå‚æ•°ï¼Œé•¿åº¦å’Œä¼ å…¥çš„å­—ç¬¦ä¸²å¤§å°ä¸€æ ·ï¼Œç”±å¤–éƒ¨ç”³è¯·
     * @return
     */
     int FUNCTION_CALL_MODE EncodeEx(const char *pIn, char *pOut);
 
 
     /**
-    * ¹¹ÔìÒ»¸ö¹ıÂËÆ÷½Ó¿ÚÖ¸Õë
-    * @return ·µ»ØNULL±íÊ¾Ê§°Ü.
+    * æ„é€ ä¸€ä¸ªè¿‡æ»¤å™¨æ¥å£æŒ‡é’ˆ
+    * @return è¿”å›NULLè¡¨ç¤ºå¤±è´¥.
     */
     CFilterInterface* FUNCTION_CALL_MODE NewFilter();
 
     /**
-    * ¹¹ÔìÒ»¸ö¶©ÔÄÊôĞÔ½Ó¿ÚÖ¸Õë
-    * @return ·µ»ØNULL±íÊ¾Ê§°Ü.
+    * æ„é€ ä¸€ä¸ªè®¢é˜…å±æ€§æ¥å£æŒ‡é’ˆ
+    * @return è¿”å›NULLè¡¨ç¤ºå¤±è´¥.
     */
     CSubscribeParamInterface* FUNCTION_CALL_MODE NewSubscribeParam();
 
-    //20130625 xuxp ¹¹ÔìÒµÎñÏûÏ¢
+    //20130625 xuxp æ„é€ ä¸šåŠ¡æ¶ˆæ¯
     IBizMessage* FUNCTION_CALL_MODE NewBizMessage();
 
 }
