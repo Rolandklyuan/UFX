@@ -85,11 +85,11 @@ int TestSecutMd()
 {
     char exchange_type[4];
     char stock_code[16];
-    double entrust_price = 0.0;
+    // double entrust_price = 0.0;
     memset(exchange_type, 0, sizeof(exchange_type));
     memset(stock_code,    0, sizeof(stock_code));
-    double entrust_amount = 0.0;
-    char entrust_bs = '\0';
+    // double entrust_amount = 0.0;
+    // char entrust_bs = '\0';
     int chose = 0;
     CMdRequestMode* lp_CMdRequestMode = new CMdRequestMode();
     lp_CMdRequestMode->InitConn();

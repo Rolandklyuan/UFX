@@ -70,7 +70,7 @@ inline void ParseValue(unsigned int& val, int size, char* str)
 
 #define ISPACKValid  __packValid
 
-bool ParseMarketInfo_UFX(CMarketInfo_UFX*        marketinfo, char* qhstr);
+bool ParseMarketInfo_UFX(CMarketInfo_UFX*        marketinfo, const char* qhstr);
 bool ParseOrderRspInfo_UFX(COrderRspInfo_UFX*    orderinfo,  char* qhstr);
 bool ParseRealRspInfo_UFX(CRealRspInfo_UFX*      realinfo,   char* qhstr);
 bool ParseArgMarketInfo_UFX(CArgMarketInfo_UFX*  marketinfo, char* qhstr);

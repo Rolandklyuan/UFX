@@ -1,4 +1,4 @@
-CFLAGS = -c -D LINUX
+CFLAGS = -c -g -D LINUX
 all : ZQDemo
 ZQDemo : SecuMD.o SecuTrade.o main.o tool.o analyStr.o
 	g++ -o ZQDemo -D LINUX libt2sdk.so SecuMD.o SecuTrade.o main.o tool.o -lrt
@@ -11,6 +11,6 @@ SecuTrade.o : SecuTrade.cpp
 tool.o : ../Common/tool.cpp
 	g++ $(CFLAGS) ../Common/tool.cpp  -I ../Include -I ../Common
 analyStr.o : ../Common/analyStr.cpp
-	g++ $(CFLAGS) ../Common/analyStr.cpp -I ../Include -I ../Common
+	g++ $(CFLAGS) -Wno-write-strings ../Common/analyStr.cpp -I ../Include -I ../Common
 clean:
 	rm -rf *.o ZQDemo

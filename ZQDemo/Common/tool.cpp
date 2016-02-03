@@ -223,7 +223,7 @@ bool GetIpAddressByUrl(char* ip, const char* inurl)
 bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
 {
 
-    bool bfind = false;
+    // bool bfind = false;
     char szDestIp[64];
     if (GetIpAddressByUrl(szDestIp, desturl) == false)
     {
@@ -320,7 +320,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
 #define SDKDebug(x) (std::cout<<x)
     register int fd, intrface = 0;
     ifreq buf[16];
-    struct arpreq arp;
+    // struct arpreq arp;
     struct ifconf ifc;
 
     if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) >= 0)

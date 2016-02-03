@@ -146,7 +146,6 @@ void CMdCallback::SetRequestMode(CMdRequestMode* lpMode)
 
 void CMdCallback::OnResponse_331100(IF2UnPacker* lpUnPacker)
 {
-    int iSystemNo = -1;
     puts("CTradeCallBack::331100");
     // lpReqMode->m_BranchNo = lpUnPacker->GetInt("branch_no");
     // cout<<lpReqMode->m_BranchNo;
@@ -166,15 +165,15 @@ void CMdCallback::OnResponse_331100(IF2UnPacker* lpUnPacker)
         lpReqMode->m_BranchNo = lpUnPacker->GetInt("branch_no");
     }
     cout << "BranchNo:" << lpUnPacker->GetStr("branch_no") << endl;
-    iSystemNo = lpUnPacker->GetInt("sysnode_id");
-    cout << "iSystemNo:" << lpUnPacker->GetInt("sysnode_id") << endl;
+    int iSystemNo = lpUnPacker->GetInt("sysnode_id");
+    cout << "iSystemNo:" << iSystemNo << endl;
 
     return;
 }
 
 int CMdRequestMode::InitConn()
 {
-    //加载配置文件登陆 
+    //加载配置文件登陆
     lpConfig->Load("t2sdk.ini");
     const char* p_fund_account = lpConfig->GetString("ufx", "fund_account", "");
     const char* p_password     = lpConfig->GetString("ufx", "password", "");
@@ -257,7 +256,7 @@ int CMdRequestMode::ReqFunction331100()
 
     // 加入字段名
     pPacker->AddField("op_branch_no", 'I', 5);   // 操作分支机构
-    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式 
+    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式
     pPacker->AddField("op_station", 'S', 255);   // 站点地址
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("input_content", 'C');
@@ -292,9 +291,9 @@ int CMdRequestMode::ReqFunction331100()
 // 620001_12订阅证券成交回报
 int CMdRequestMode::SubFunction12(int issue_type)
 {
-    int iRet  = 0;
-    int hSend = 0;
-    IF2UnPacker* pMCUnPacker = NULL;
+    // int iRet  = 0;
+    // int hSend = 0;
+    // IF2UnPacker* pMCUnPacker = NULL;
 
     // 获取版本为2类型的pack打包器
     IF2Packer* pPacker = NewPacker(2);
@@ -313,7 +312,7 @@ int CMdRequestMode::SubFunction12(int issue_type)
     lpBizMessage->AddRef();
 
     // 应答业务消息
-    IBizMessage* lpBizMessageRecv = NULL;
+    // IBizMessage* lpBizMessageRecv = NULL;
     // 功能号
     lpBizMessage->SetFunction(MSGCENTER_FUNC_REG);
     // 请求类型
@@ -357,9 +356,9 @@ int CMdRequestMode::SubFunction12(int issue_type)
 // 62001_23 订阅证券委托回报
 int CMdRequestMode::SunFunction23(int issue_type)
 {
-    int iRet  = 0;
-    int hSend = 0;
-    IF2UnPacker* pMCUnPacker = NULL;
+    // int iRet  = 0;
+    // int hSend = 0;
+    // IF2UnPacker* pMCUnPacker = NULL;
 
     // 获取版本为2类型的pack打包器
     IF2Packer* pPacker = NewPacker(2);
@@ -378,7 +377,7 @@ int CMdRequestMode::SunFunction23(int issue_type)
     lpBizMessage->AddRef();
 
     // 应答业务消息
-    IBizMessage* lpBizMessageRecv = NULL;
+    // IBizMessage* lpBizMessageRecv = NULL;
     // 功能号
     lpBizMessage->SetFunction(MSGCENTER_FUNC_REG);
     // 请求类型
@@ -422,8 +421,8 @@ int CMdRequestMode::SunFunction23(int issue_type)
 // 证券普通委托
 int CMdRequestMode::ReqFunction333002()
 {
-    int iRet  = 0;
-    int hSend = 0;
+    // int iRet  = 0;
+    // int hSend = 0;
     // 获取版本为2类型的pack打包器
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
@@ -441,14 +440,14 @@ int CMdRequestMode::ReqFunction333002()
     lpBizMessage->AddRef();
 
     // 应答业务消息
-    IBizMessage* lpBizMessageRecv = NULL;
+    // IBizMessage* lpBizMessageRecv = NULL;
     // 功能号
     lpBizMessage->SetFunction(333002);
     // 请求类型
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
     // 其他的应答信息
-    LPRET_DATA pRetData = NULL;
+    // LPRET_DATA pRetData = NULL;
     // 开始打包
     pPacker->BeginPack();
 

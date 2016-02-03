@@ -137,7 +137,7 @@ void CTradeCallback::SetRequestMode(SecuRequestMode* lpMode)
 
 void CTradeCallback::OnResponse_331100(IF2UnPacker* lpUnPacker)
 {
-    int iSystemNo = -1;
+    // int iSystemNo = -1;
     puts("CTradeCallBack::331100");
     // lpReqMode->m_BranchNo = lpUnPacker->GetInt("branch_no");
     // cout<<lpReqMode->m_BranchNo;
@@ -157,7 +157,7 @@ void CTradeCallback::OnResponse_331100(IF2UnPacker* lpUnPacker)
         lpReqMode->m_BranchNo = lpUnPacker->GetInt("branch_no");
     }
     // cout<<"BranchNo:"<<lpUnPacker->GetStr("branch_no")<<endl;
-    iSystemNo = lpUnPacker->GetInt("sysnode_id");
+    // iSystemNo = lpUnPacker->GetInt("sysnode_id");
     // cout<<"iSystemNo:"<<lpUnPacker->GetInt("sysnode_id")<<endl;
     if (lpUnPacker->GetInt("op_branch_no") != 0)
     {
@@ -241,7 +241,7 @@ int SecuRequestMode::ReqFunction331100()
 
     // 加入字段名
     // pPacker->AddField("op_branch_no", 'I', 5); // 操作分支机构
-    pPacker->AddField("op_entrust_way", 'C', 1);  // 委托方式 
+    pPacker->AddField("op_entrust_way", 'C', 1);  // 委托方式
     pPacker->AddField("op_station", 'S', 255);    // 站点地址
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("input_content", 'C');
@@ -271,7 +271,7 @@ int SecuRequestMode::ReqFunction331100()
     return 0;
 }
 
-// 400证券行情查询 
+// 400证券行情查询
 int SecuRequestMode::ReqFunction400(char* exchange_type, char* stock_code)
 {
     IF2Packer* pPacker        = NewPacker(2);
@@ -325,7 +325,7 @@ int SecuRequestMode::ReqFunction330300()
 
     // 加入字段名
     pPacker->AddField("op_branch_no", 'I', 5);   // 操作分支机构
-    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式 
+    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式
     pPacker->AddField("op_station", 'S', 255);   // 站点地址
     pPacker->AddField("query_type", 'C');
     pPacker->AddField("exchange_type", 'S');
@@ -374,7 +374,7 @@ int SecuRequestMode::ReqFunction333000(char* stock_code)
 
     // 加入字段名
     pPacker->AddField("op_branch_no", 'I', 5);   // 操作分支机构
-    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式 
+    pPacker->AddField("op_entrust_way", 'C', 1); // 委托方式
     pPacker->AddField("op_station", 'S');        // 站点地址
     pPacker->AddField("branch_no", 'I', 5);
     //pPacker->AddField("client_id", 'C'); 
@@ -416,8 +416,8 @@ int SecuRequestMode::ReqFunction333000(char* stock_code)
 // 333001 大约可买获取
 int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price)
 {
-    int iRet  = 0;
-    int hSend = 0;
+    // int iRet  = 0;
+    // int hSend = 0;
     // 获取版本为2类型的pack打包器
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
@@ -435,14 +435,14 @@ int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, do
     lpBizMessage->AddRef();
 
     // 应答业务消息
-    IBizMessage* lpBizMessageRecv = NULL;
+    // IBizMessage* lpBizMessageRecv = NULL;
     // 功能号
     lpBizMessage->SetFunction(333001);
     // 请求类型
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
     // 其他的应答信息
-    LPRET_DATA pRetData = NULL;
+    // LPRET_DATA pRetData = NULL;
     // 开始打包
     pPacker->BeginPack();
 
@@ -491,7 +491,7 @@ int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, do
 //证券普通委托
 int SecuRequestMode::ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs)
 {
-    int iRet = 0, hSend = 0;
+    // int iRet = 0, hSend = 0;
     ///获取版本为2类型的pack打包器
     IF2Packer *pPacker = NewPacker(2);
     if (!pPacker)
@@ -509,14 +509,14 @@ int SecuRequestMode::ReqFunction333002(char* exchange_type, char* stock_code, do
     lpBizMessage->AddRef();
 
     ///应答业务消息
-    IBizMessage* lpBizMessageRecv = NULL;
+    // IBizMessage* lpBizMessageRecv = NULL;
     //功能号
     lpBizMessage->SetFunction(333002);
     //请求类型
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
     ///其他的应答信息
-    LPRET_DATA pRetData = NULL;
+    // LPRET_DATA pRetData = NULL;
     ///开始打包
     pPacker->BeginPack();
 
