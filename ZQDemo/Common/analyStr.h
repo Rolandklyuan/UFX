@@ -1,4 +1,4 @@
-﻿#ifndef ANALYSTR_H
+#ifndef ANALYSTR_H
 #define ANALYSTR_H
 
 #include "tool.h"

@@ -1,4 +1,4 @@
-ï»¿#include "SecuTrade.h"
+#include "SecuTrade.h"
 
 unsigned long CTradeCallback::QueryInterface(const char* iid, IKnown** ppv)
 {
@@ -61,16 +61,16 @@ void CTradeCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hS
 
     if (lpMsg != NULL)
     {
-        // æˆåŠŸ,åº”ç”¨ç¨‹åºä¸èƒ½é‡Šæ”¾lpBizMessageRecvæ¶ˆæ¯
+        // ³É¹¦,Ó¦ÓÃ³ÌÐò²»ÄÜÊÍ·ÅlpBizMessageRecvÏûÏ¢
         if (lpMsg->GetErrorNo() == 0)
         {
-            // å¦‚æžœè¦æŠŠæ¶ˆæ¯æ”¾åˆ°å…¶ä»–çº¿ç¨‹å¤„ç†ï¼Œå¿…é¡»è‡ªè¡Œæ‹·è´ï¼Œæ“ä½œå¦‚ä¸‹ï¼š
+            // Èç¹ûÒª°ÑÏûÏ¢·Åµ½ÆäËûÏß³Ì´¦Àí£¬±ØÐë×ÔÐÐ¿½±´£¬²Ù×÷ÈçÏÂ£º
             // int iMsgLen = 0;
             // void * lpMsgBuffer = lpBizMessageRecv->GetBuff(iMsgLen);
-            // å°†lpMsgBufferæ‹·è´èµ°ï¼Œç„¶åŽåœ¨å…¶ä»–çº¿ç¨‹ä¸­æ¢å¤æˆæ¶ˆæ¯å¯è¿›è¡Œå¦‚ä¸‹æ“ä½œï¼š
+            // ½«lpMsgBuffer¿½±´×ß£¬È»ºóÔÚÆäËûÏß³ÌÖÐ»Ö¸´³ÉÏûÏ¢¿É½øÐÐÈçÏÂ²Ù×÷£º
             // lpBizMessageRecv->SetBuff(lpMsgBuffer,iMsgLen);
-            // æ²¡æœ‰é”™è¯¯ä¿¡æ¯
-            puts("ä¸šåŠ¡æ“ä½œæˆåŠŸ");
+            // Ã»ÓÐ´íÎóÐÅÏ¢
+            puts("ÒµÎñ²Ù×÷³É¹¦");
             int iLen = 0;
             const void* lpBuffer = lpMsg->GetContent(iLen);
             IF2UnPacker* lpUnPacker = NewUnPacker((void*)lpBuffer, iLen);
@@ -97,7 +97,7 @@ void CTradeCallback::OnReceivedBizMsg(CConnectionInterface* lpConnection, int hS
         }
         else
         {
-            // æœ‰é”™è¯¯ä¿¡æ¯
+            // ÓÐ´íÎóÐÅÏ¢
             puts(lpMsg->GetErrorInfo());
         }
     }
@@ -177,7 +177,7 @@ int SecuRequestMode::InitConn()
     strcpy(m_Password,    p_password);
     m_EntrustWay = '7';
 
-    //é…ç½®è¿žæŽ¥å¯¹è±¡
+    //ÅäÖÃÁ¬½Ó¶ÔÏó
     //lpConfig->SetString("t2sdk", "servers", serverAddr);
     ////cout<<"start checking license"<<endl;
     //lpConfig->SetString("t2sdk", "license_file", licFile);
@@ -185,7 +185,7 @@ int SecuRequestMode::InitConn()
     //lpConfig->SetString("t2sdk", "login_name", clientName);
     //cout<<"Connect Successful"<<endl;
 
-    //å¦‚æžœæŽ¥å…¥arè®¾ç½®äº†safe_levelï¼Œåˆ™éœ€è¦åšä»¥ä¸‹ä»£ç 
+    //Èç¹û½ÓÈëarÉèÖÃÁËsafe_level£¬ÔòÐèÒª×öÒÔÏÂ´úÂë
     //begin
     //lpConfig->SetString("safe", "safe_level", "ssl");
     //lpConfig->SetString("safe", "cert_file", "c20121011.pfx");
@@ -205,12 +205,12 @@ int SecuRequestMode::InitConn()
     lpConnection->AddRef();
     if (0 != (iRet = lpConnection->Create2BizMsg(&callback)))
     {
-        cerr << "åˆå§‹åŒ–å¤±è´¥.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
+        cerr << "³õÊ¼»¯Ê§°Ü.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
         return -1;
     }
     if (0 != (iRet = lpConnection->Connect(0)))
     {
-        cerr << "è¿žæŽ¥.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
+        cerr << "Á¬½Ó.iRet=" << iRet << " msg:" << lpConnection->GetErrorMsg(iRet) << endl;
         return -1;
     }
 
@@ -223,7 +223,7 @@ unsigned long SecuRequestMode::Release()
     return 0;
 }
 
-// 331100è¯åˆ¸å®¢æˆ·ç™»é™†
+// 331100Ö¤È¯¿Í»§µÇÂ½
 int SecuRequestMode::ReqFunction331100()
 {
     IBizMessage* lpBizMessage = NewBizMessage();
@@ -233,23 +233,23 @@ int SecuRequestMode::ReqFunction331100()
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥ï¼\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü£¡\r\n");
         return -1;
     }
     pPacker->AddRef();
     pPacker->BeginPack();
 
-    // åŠ å…¥å­—æ®µå
-    // pPacker->AddField("op_branch_no", 'I', 5); // æ“ä½œåˆ†æ”¯æœºæž„
-    pPacker->AddField("op_entrust_way", 'C', 1);  // å§”æ‰˜æ–¹å¼ 
-    pPacker->AddField("op_station", 'S', 255);    // ç«™ç‚¹åœ°å€
+    // ¼ÓÈë×Ö¶ÎÃû
+    // pPacker->AddField("op_branch_no", 'I', 5); // ²Ù×÷·ÖÖ§»ú¹¹
+    pPacker->AddField("op_entrust_way", 'C', 1);  // Î¯ÍÐ·½Ê½ 
+    pPacker->AddField("op_station", 'S', 255);    // Õ¾µãµØÖ·
     pPacker->AddField("branch_no", 'I', 5);
     pPacker->AddField("input_content", 'C');
     pPacker->AddField("account_content", 'S', 30);
     pPacker->AddField("content_type", 'S', 6);
     pPacker->AddField("password", 'S', 10);
     pPacker->AddField("password_type", 'C');
-    // åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
+    // ¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
     // pPacker->AddInt( );						
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());
@@ -260,7 +260,7 @@ int SecuRequestMode::ReqFunction331100()
     pPacker->AddStr(m_Password);
     pPacker->AddChar('2');
 
-    // ç»“æŸæ‰“åŒ…
+    // ½áÊø´ò°ü
     pPacker->EndPack();
 
     lpBizMessage->SetContent(pPacker->GetPackBuf(), pPacker->GetPackLen());
@@ -271,7 +271,7 @@ int SecuRequestMode::ReqFunction331100()
     return 0;
 }
 
-// 400è¯åˆ¸è¡Œæƒ…æŸ¥è¯¢ 
+// 400Ö¤È¯ÐÐÇé²éÑ¯ 
 int SecuRequestMode::ReqFunction400(char* exchange_type, char* stock_code)
 {
     IF2Packer* pPacker        = NewPacker(2);
@@ -282,17 +282,17 @@ int SecuRequestMode::ReqFunction400(char* exchange_type, char* stock_code)
 
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥ï¼\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü£¡\r\n");
         return -1;
     }
     pPacker->AddRef();
     pPacker->BeginPack();
 
-    //åŠ å…¥å­—æ®µå
+    //¼ÓÈë×Ö¶ÎÃû
     pPacker->AddField("exchange_type", 'S');
     pPacker->AddField("stock_code", 'S');
 
-    //åŠ å…¥å­—æ®µå€¼
+    //¼ÓÈë×Ö¶ÎÖµ
     pPacker->AddStr(exchange_type);
     pPacker->AddStr(stock_code);
 
@@ -306,7 +306,7 @@ int SecuRequestMode::ReqFunction400(char* exchange_type, char* stock_code)
     return 0;
 }
 
-// 330300è¯åˆ¸ä»£ç ä¿¡æ¯æŸ¥è¯¢
+// 330300Ö¤È¯´úÂëÐÅÏ¢²éÑ¯
 int SecuRequestMode::ReqFunction330300()
 {
     IF2Packer*   pPacker      = NewPacker(2);
@@ -317,23 +317,23 @@ int SecuRequestMode::ReqFunction330300()
 
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥ï¼\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü£¡\r\n");
         return -1;
     }
     pPacker->AddRef();
     pPacker->BeginPack();
 
-    // åŠ å…¥å­—æ®µå
-    pPacker->AddField("op_branch_no", 'I', 5);   // æ“ä½œåˆ†æ”¯æœºæž„
-    pPacker->AddField("op_entrust_way", 'C', 1); // å§”æ‰˜æ–¹å¼ 
-    pPacker->AddField("op_station", 'S', 255);   // ç«™ç‚¹åœ°å€
+    // ¼ÓÈë×Ö¶ÎÃû
+    pPacker->AddField("op_branch_no", 'I', 5);   // ²Ù×÷·ÖÖ§»ú¹¹
+    pPacker->AddField("op_entrust_way", 'C', 1); // Î¯ÍÐ·½Ê½ 
+    pPacker->AddField("op_station", 'S', 255);   // Õ¾µãµØÖ·
     pPacker->AddField("query_type", 'C');
     pPacker->AddField("exchange_type", 'S');
     pPacker->AddField("stock_type", 'S');
     pPacker->AddField("stcok_code", 'S');
     pPacker->AddField("position_str", 'S');
 
-    // åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
+    // ¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());
@@ -343,7 +343,7 @@ int SecuRequestMode::ReqFunction330300()
     pPacker->AddStr("600570");
     pPacker->AddStr(" ");
 
-    // ç»“æŸæ‰“åŒ…
+    // ½áÊø´ò°ü
     pPacker->EndPack();
 
     lpBizMessage->SetContent(pPacker->GetPackBuf(), pPacker->GetPackLen());
@@ -355,7 +355,7 @@ int SecuRequestMode::ReqFunction330300()
     return 0;
 }
 
-// 333000è¯åˆ¸ä»£ç è¾“å…¥ç¡®è®¤
+// 333000Ö¤È¯´úÂëÊäÈëÈ·ÈÏ
 int SecuRequestMode::ReqFunction333000(char* stock_code)
 {
     IF2Packer*   pPacker      = NewPacker(2);
@@ -366,16 +366,16 @@ int SecuRequestMode::ReqFunction333000(char* stock_code)
 
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥ï¼\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü£¡\r\n");
         return -1;
     }
     pPacker->AddRef();
     pPacker->BeginPack();
 
-    // åŠ å…¥å­—æ®µå
-    pPacker->AddField("op_branch_no", 'I', 5);   // æ“ä½œåˆ†æ”¯æœºæž„
-    pPacker->AddField("op_entrust_way", 'C', 1); // å§”æ‰˜æ–¹å¼ 
-    pPacker->AddField("op_station", 'S');        // ç«™ç‚¹åœ°å€
+    // ¼ÓÈë×Ö¶ÎÃû
+    pPacker->AddField("op_branch_no", 'I', 5);   // ²Ù×÷·ÖÖ§»ú¹¹
+    pPacker->AddField("op_entrust_way", 'C', 1); // Î¯ÍÐ·½Ê½ 
+    pPacker->AddField("op_station", 'S');        // Õ¾µãµØÖ·
     pPacker->AddField("branch_no", 'I', 5);
     //pPacker->AddField("client_id", 'C'); 
     pPacker->AddField("fund_account", 'S', 30);
@@ -387,7 +387,7 @@ int SecuRequestMode::ReqFunction333000(char* stock_code)
     pPacker->AddField("stock_code", 'S', 16);
 
     // cout<<m_client_id<<endl;
-    // åŠ å…¥å­—æ®µå€¼
+    // ¼ÓÈë×Ö¶ÎÖµ
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());
@@ -413,46 +413,46 @@ int SecuRequestMode::ReqFunction333000(char* stock_code)
     return 0;
 }
 
-// 333001 å¤§çº¦å¯ä¹°èŽ·å–
+// 333001 ´óÔ¼¿ÉÂò»ñÈ¡
 int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price)
 {
     int iRet  = 0;
     int hSend = 0;
-    // èŽ·å–ç‰ˆæœ¬ä¸º2ç±»åž‹çš„packæ‰“åŒ…å™¨
+    // »ñÈ¡°æ±¾Îª2ÀàÐÍµÄpack´ò°üÆ÷
     IF2Packer* pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥!\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü!\r\n");
         return -1;
     }
     pPacker->AddRef();
 
-    // å®šä¹‰è§£åŒ…å™¨
+    // ¶¨Òå½â°üÆ÷
     // IF2UnPacker* pUnPacker = NULL;
 
     IBizMessage* lpBizMessage = NewBizMessage();
 
     lpBizMessage->AddRef();
 
-    // åº”ç­”ä¸šåŠ¡æ¶ˆæ¯
+    // Ó¦´ðÒµÎñÏûÏ¢
     IBizMessage* lpBizMessageRecv = NULL;
-    // åŠŸèƒ½å·
+    // ¹¦ÄÜºÅ
     lpBizMessage->SetFunction(333001);
-    // è¯·æ±‚ç±»åž‹
+    // ÇëÇóÀàÐÍ
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
-    // å…¶ä»–çš„åº”ç­”ä¿¡æ¯
+    // ÆäËûµÄÓ¦´ðÐÅÏ¢
     LPRET_DATA pRetData = NULL;
-    // å¼€å§‹æ‰“åŒ…
+    // ¿ªÊ¼´ò°ü
     pPacker->BeginPack();
 
-    // åŠ å…¥å­—æ®µå
-    pPacker->AddField("op_branch_no", 'I', 5);  // åå­— ç±»åž‹ é•¿åº¦
+    // ¼ÓÈë×Ö¶ÎÃû
+    pPacker->AddField("op_branch_no", 'I', 5);  // Ãû×Ö ÀàÐÍ ³¤¶È
     pPacker->AddField("op_entrust_way", 'C', 1);
     pPacker->AddField("op_station", 'S', 255);
     pPacker->AddField("branch_no", 'I', 5);
-    pPacker->AddField("client_id", 'S', 18);//å®¢æˆ·ID
-    pPacker->AddField("fund_account", 'S', 18); // èµ„é‡‘è´¦å·
+    pPacker->AddField("client_id", 'S', 18);//¿Í»§ID
+    pPacker->AddField("fund_account", 'S', 18); // ×Ê½ðÕËºÅ
     pPacker->AddField("password", 'S', 10);
     pPacker->AddField("password_type", 'C', 1);
     pPacker->AddField("user_token", 'S', 40);
@@ -461,7 +461,7 @@ int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, do
     pPacker->AddField("stock_code", 'S', 6);
     pPacker->AddField("entrust_price", 'F', 18, 3);
 
-    // åŠ å…¥å­—æ®µå€¼
+    // ¼ÓÈë×Ö¶ÎÖµ
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());
@@ -488,45 +488,45 @@ int SecuRequestMode::ReqFunction333001(char* exchange_type, char* stock_code, do
 }
 
 
-//è¯åˆ¸æ™®é€šå§”æ‰˜
+//Ö¤È¯ÆÕÍ¨Î¯ÍÐ
 int SecuRequestMode::ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs)
 {
     int iRet = 0, hSend = 0;
-    ///èŽ·å–ç‰ˆæœ¬ä¸º2ç±»åž‹çš„packæ‰“åŒ…å™¨
+    ///»ñÈ¡°æ±¾Îª2ÀàÐÍµÄpack´ò°üÆ÷
     IF2Packer *pPacker = NewPacker(2);
     if (!pPacker)
     {
-        printf("å–æ‰“åŒ…å™¨å¤±è´¥!\r\n");
+        printf("È¡´ò°üÆ÷Ê§°Ü!\r\n");
         return -1;
     }
     pPacker->AddRef();
 
-    ///å®šä¹‰è§£åŒ…å™¨
+    ///¶¨Òå½â°üÆ÷
     //IF2UnPacker *pUnPacker = NULL;
 
     IBizMessage* lpBizMessage = NewBizMessage();
 
     lpBizMessage->AddRef();
 
-    ///åº”ç­”ä¸šåŠ¡æ¶ˆæ¯
+    ///Ó¦´ðÒµÎñÏûÏ¢
     IBizMessage* lpBizMessageRecv = NULL;
-    //åŠŸèƒ½å·
+    //¹¦ÄÜºÅ
     lpBizMessage->SetFunction(333002);
-    //è¯·æ±‚ç±»åž‹
+    //ÇëÇóÀàÐÍ
     lpBizMessage->SetPacketType(REQUEST_PACKET);
 
-    ///å…¶ä»–çš„åº”ç­”ä¿¡æ¯
+    ///ÆäËûµÄÓ¦´ðÐÅÏ¢
     LPRET_DATA pRetData = NULL;
-    ///å¼€å§‹æ‰“åŒ…
+    ///¿ªÊ¼´ò°ü
     pPacker->BeginPack();
 
-    ///åŠ å…¥å­—æ®µå
-    pPacker->AddField("op_branch_no", 'I', 5);//åå­— ç±»åž‹ é•¿åº¦
+    ///¼ÓÈë×Ö¶ÎÃû
+    pPacker->AddField("op_branch_no", 'I', 5);//Ãû×Ö ÀàÐÍ ³¤¶È
     pPacker->AddField("op_entrust_way", 'C', 1);
     pPacker->AddField("op_station", 'S', 255);
     pPacker->AddField("branch_no", 'I', 5);
-    pPacker->AddField("client_id", 'S', 18);//å®¢æˆ·ID
-    pPacker->AddField("fund_account", 'S', 18);//èµ„é‡‘è´¦å·
+    pPacker->AddField("client_id", 'S', 18);//¿Í»§ID
+    pPacker->AddField("fund_account", 'S', 18);//×Ê½ðÕËºÅ
     pPacker->AddField("password", 'S', 10);
     pPacker->AddField("password_type", 'C', 1);
     pPacker->AddField("user_token", 'S', 40);
@@ -539,7 +539,7 @@ int SecuRequestMode::ReqFunction333002(char* exchange_type, char* stock_code, do
     pPacker->AddField("entrust_prop", 'S', 3);
     pPacker->AddField("batch_no", 'I', 8);
 
-    ///åŠ å…¥å¯¹åº”çš„å­—æ®µå€¼
+    ///¼ÓÈë¶ÔÓ¦µÄ×Ö¶ÎÖµ
     pPacker->AddInt(m_op_branch_no);
     pPacker->AddChar(m_EntrustWay);
     pPacker->AddStr(m_opStation.c_str());

@@ -1,146 +1,146 @@
-ï»¿#ifndef DATA_DEF_H_
+#ifndef DATA_DEF_H_
 #define DATA_DEF_H_
 
-// 33100å•è…¿è¡Œæƒ…(å†…éƒ¨ç»“æ„ä½“->éšæ„æ”¹ï¼ï¼ï¼)
+// 33100µ¥ÍÈĞĞÇé(ÄÚ²¿½á¹¹Ìå->ËæÒâ¸Ä£¡£¡£¡)
 struct CMarketInfo_UFX
 {
-    char     quote_type;                  //è¡Œæƒ…ç±»å‹(0-å¢ƒå†…æ™®é€šè¡Œæƒ…1-å¢ƒå¤–è¡Œæƒ…)                 
-    int      quote_length;                //è¡Œæƒ…æ•°æ®é•¿åº¦ï¼ˆä»ç¬¬3å­—æ®µå¼€å§‹åˆ°æœ€åä¸€ä¸ªå­—æ®µè®¡ç®—é•¿åº¦ï¼‰
-    int      update_time;                 //æ—¶é—´æˆ³(eg:144510500,14ç‚¹45åˆ†10ç§’500æ¯«ç§’)           
-    int      quote_index;                 //è¡Œæƒ…åºå·                                           
-    char     futu_exch_type[5];           //äº¤æ˜“ç±»åˆ«                                           
-    char     commodity_type[7];           //å•†å“ä»£ç                                            
-    char     contract_code[31];           //åˆçº¦ä»£ç                                            
-    double   pre_settlement_price;        //æ˜¨æ—¥ç»“ç®—ä»·                                         
-    double   pre_close_price;             //æ˜¨æ—¥æ”¶ç›˜ä»·                                         
-    double   pre_open_interest;           //æ˜¨æ—¥ç©ºç›˜é‡                                         
-    double   pre_delta;                   //æ˜¨æ—¥è™šå®åº¦                                         
-    double   futu_open_price;             //å¼€ç›˜ä»·                                             
-    double   futu_last_price;             //æœ€æ–°ä»·æ ¼                                           
-    double   buy_high_price;              //æœ€é«˜ä¹°å…¥ä»·                                         
-    double   buy_high_amount;             //æœ€é«˜ä¹°ä»·ä¹°å…¥é‡                                     
-    double   sale_low_price;              //æœ€ä½å–ä»·ä»·æ ¼                                       
-    double   sale_low_amount;             //æœ€ä½å–ä»·å–é‡                                       
-    double   futu_high_price;             //æœ€é«˜ä»·                                             
-    double   futu_low_price;              //æœ€ä½ä»·                                             
-    double   uplimited_price;             //æ¶¨åœæ¿                                             
-    double   downlimited_price;           //è·Œåœæ¿                                             
-    double   average_price;               //å‡ä»·                                               
-    double   change_direction;            //è¶‹åŠ¿                                               
-    double   business_amount;             //æˆäº¤é‡                                             
-    double   open_interest;               //æ€»æŒé‡                                             
-    double   business_balance;            //æˆäº¤é¢                                             
-    double   futu_close_price;            //ä»Šæ—¥æ”¶ç›˜ä»·                                         
-    double   settlement_price;            //ç»“ç®—ä»·                                             
-    int      actionday;                   //å½“å‰æ—¥æœŸ(yyyymmdd)                                 
+    char     quote_type;                  //ĞĞÇéÀàĞÍ(0-¾³ÄÚÆÕÍ¨ĞĞÇé1-¾³ÍâĞĞÇé)                 
+    int      quote_length;                //ĞĞÇéÊı¾İ³¤¶È£¨´ÓµÚ3×Ö¶Î¿ªÊ¼µ½×îºóÒ»¸ö×Ö¶Î¼ÆËã³¤¶È£©
+    int      update_time;                 //Ê±¼ä´Á(eg:144510500,14µã45·Ö10Ãë500ºÁÃë)           
+    int      quote_index;                 //ĞĞÇéĞòºÅ                                           
+    char     futu_exch_type[5];           //½»Ò×Àà±ğ                                           
+    char     commodity_type[7];           //ÉÌÆ·´úÂë                                           
+    char     contract_code[31];           //ºÏÔ¼´úÂë                                           
+    double   pre_settlement_price;        //×òÈÕ½áËã¼Û                                         
+    double   pre_close_price;             //×òÈÕÊÕÅÌ¼Û                                         
+    double   pre_open_interest;           //×òÈÕ¿ÕÅÌÁ¿                                         
+    double   pre_delta;                   //×òÈÕĞéÊµ¶È                                         
+    double   futu_open_price;             //¿ªÅÌ¼Û                                             
+    double   futu_last_price;             //×îĞÂ¼Û¸ñ                                           
+    double   buy_high_price;              //×î¸ßÂòÈë¼Û                                         
+    double   buy_high_amount;             //×î¸ßÂò¼ÛÂòÈëÁ¿                                     
+    double   sale_low_price;              //×îµÍÂô¼Û¼Û¸ñ                                       
+    double   sale_low_amount;             //×îµÍÂô¼ÛÂôÁ¿                                       
+    double   futu_high_price;             //×î¸ß¼Û                                             
+    double   futu_low_price;              //×îµÍ¼Û                                             
+    double   uplimited_price;             //ÕÇÍ£°å                                             
+    double   downlimited_price;           //µøÍ£°å                                             
+    double   average_price;               //¾ù¼Û                                               
+    double   change_direction;            //Ç÷ÊÆ                                               
+    double   business_amount;             //³É½»Á¿                                             
+    double   open_interest;               //×Ü³ÖÁ¿                                             
+    double   business_balance;            //³É½»¶î                                             
+    double   futu_close_price;            //½ñÈÕÊÕÅÌ¼Û                                         
+    double   settlement_price;            //½áËã¼Û                                             
+    int      actionday;                   //µ±Ç°ÈÕÆÚ(yyyymmdd)                                 
 };
 
-// 33101å§”æ‰˜å›æŠ¥
+// 33101Î¯ÍĞ»Ø±¨
 struct COrderRspInfo_UFX
 {
-    char     entrust_no[10];               //å§”æ‰˜å·                                                
-    char     futures_account[13];          //äº¤æ˜“ç¼–ç                                  
-    char     futu_exch_type[4];            //äº¤æ˜“æ‰€ç±»åˆ«ï¼ˆF1-éƒ‘å·F2å¤§è¿-F3ä¸Šæµ·-F4ä¸­é‡‘ï¼‰
-    char     contract_code[31];            //åˆçº¦ä»£ç                                  
-    char     entrust_bs;                   //ä¹°å–æ ‡è¯†(1-ä¹°å…¥ 2-å–å‡º)                  
-    char     entrust_direction;            //å¼€å¹³æ ‡è¯†(1-å¼€ä»“2-å¹³ä»“4-å¹³ä»Šä»“ï¼Œå¢ƒå¤–ä¸ºç©º) 
-    char     hedge_type;                   //å¥—ä¿æ ‡è¯†(0-æŠ•æœº1-å¥—ä¿2-å¥—åˆ©)             
-    char     fund_account[19];             //èµ„é‡‘è´¦æˆ·                                 
-    char     futu_report_no[22];           //æœ¬åœ°å•å·                                 
-    char     firm_no[22];                  //ä¼šå‘˜å·                                   
-    char     operator_no[19];              //æ“ä½œå‘˜å·                                 
-    int      client_group;                 //å®¢æˆ·ç±»åˆ«                                 
-    double   entrust_amount;               //å§”æ‰˜æ•°é‡                                 
-    double   business_total_amount;        //æˆäº¤æ€»æ•°é‡                               
-    double   cacel_amount;                 //æ’¤å•æ•°é‡                                 
-    double   entrust_price;                //å§”æ‰˜ä»·æ ¼                                 
-    char     entrust_status;               //å§”æ‰˜çŠ¶æ€                                 
-    int      branch_no;                    //è¥ä¸šéƒ¨å·                                 
-    int      batch_no;                     //å§”æ‰˜æ‰¹å·                                 
-    char     futu_entrust_type;            //å§”æ‰˜ç±»å‹                                 
-    int      amount_per_hand;              //åˆçº¦ä¹˜æ•°                                 
-    char     forceclose_reason;            //å¼ºå¹³åŸå›                                  
-    char     init_date[9];                 //äº¤æ˜“æ—¥æœŸ                                 
-    char     curr_time[9];                 //å½“å‰æ—¶é—´                                 
-    char     confirm_no[21];               //ä¸»åœºå•å·                                 
-    char     entrust_occasion[33];         //å§”æ‰˜åœºæ™¯                                 
-    double   entrust_price2;               //å§”æ‰˜æ•°é‡(å§”æ‰˜è¾“å…¥ä»·æ ¼)     
-    char     futu_entrust_prop[4];         //æœŸè´§å§”æ‰˜å±æ€§
-    char     arbitrage_code[31];           //ç»„åˆå§”æ‰˜
-    char     entrust_reference[33];        //å§”æ‰˜å¼•ç”¨
-    char     error_message[33];            //é”™è¯¯è¯´æ˜
-    char     position_str[33];             //å®šä½ä¸²
-    //int      request_id;                   //è¯·æ±‚ç¼–å·
-    //int      session_id;                   //ä¼šè¯ç¼–å·
+    char     entrust_no[10];               //Î¯ÍĞºÅ                                                
+    char     futures_account[13];          //½»Ò×±àÂë                                 
+    char     futu_exch_type[4];            //½»Ò×ËùÀà±ğ£¨F1-Ö£ÖİF2´óÁ¬-F3ÉÏº£-F4ÖĞ½ğ£©
+    char     contract_code[31];            //ºÏÔ¼´úÂë                                 
+    char     entrust_bs;                   //ÂòÂô±êÊ¶(1-ÂòÈë 2-Âô³ö)                  
+    char     entrust_direction;            //¿ªÆ½±êÊ¶(1-¿ª²Ö2-Æ½²Ö4-Æ½½ñ²Ö£¬¾³ÍâÎª¿Õ) 
+    char     hedge_type;                   //Ì×±£±êÊ¶(0-Í¶»ú1-Ì×±£2-Ì×Àû)             
+    char     fund_account[19];             //×Ê½ğÕË»§                                 
+    char     futu_report_no[22];           //±¾µØµ¥ºÅ                                 
+    char     firm_no[22];                  //»áÔ±ºÅ                                   
+    char     operator_no[19];              //²Ù×÷Ô±ºÅ                                 
+    int      client_group;                 //¿Í»§Àà±ğ                                 
+    double   entrust_amount;               //Î¯ÍĞÊıÁ¿                                 
+    double   business_total_amount;        //³É½»×ÜÊıÁ¿                               
+    double   cacel_amount;                 //³·µ¥ÊıÁ¿                                 
+    double   entrust_price;                //Î¯ÍĞ¼Û¸ñ                                 
+    char     entrust_status;               //Î¯ÍĞ×´Ì¬                                 
+    int      branch_no;                    //ÓªÒµ²¿ºÅ                                 
+    int      batch_no;                     //Î¯ÍĞÅúºÅ                                 
+    char     futu_entrust_type;            //Î¯ÍĞÀàĞÍ                                 
+    int      amount_per_hand;              //ºÏÔ¼³ËÊı                                 
+    char     forceclose_reason;            //Ç¿Æ½Ô­Òò                                 
+    char     init_date[9];                 //½»Ò×ÈÕÆÚ                                 
+    char     curr_time[9];                 //µ±Ç°Ê±¼ä                                 
+    char     confirm_no[21];               //Ö÷³¡µ¥ºÅ                                 
+    char     entrust_occasion[33];         //Î¯ÍĞ³¡¾°                                 
+    double   entrust_price2;               //Î¯ÍĞÊıÁ¿(Î¯ÍĞÊäÈë¼Û¸ñ)     
+    char     futu_entrust_prop[4];         //ÆÚ»õÎ¯ÍĞÊôĞÔ
+    char     arbitrage_code[31];           //×éºÏÎ¯ÍĞ
+    char     entrust_reference[33];        //Î¯ÍĞÒıÓÃ
+    char     error_message[33];            //´íÎóËµÃ÷
+    char     position_str[33];             //¶¨Î»´®
+    //int      request_id;                   //ÇëÇó±àºÅ
+    //int      session_id;                   //»á»°±àºÅ
 };
 
-// 33101æˆäº¤å›æŠ¥
+// 33101³É½»»Ø±¨
 struct CRealRspInfo_UFX
 {
-    char     entrust_no[10];               //å§”æ‰˜å·                                  
-    char     futures_account[13];          //äº¤æ˜“ç¼–ç                                 
-    char     futu_exch_type[5];            //äº¤æ˜“æ‰€ç±»åˆ«                              
-    char     business_no[10];              //æˆäº¤ç¼–å·                                
-    char     contract_code[31];            //åˆçº¦ä»£ç                                 
-    char     entrust_bs;                   //ä¹°å–æ ‡è¯†(1-ä¹°å…¥ 2-å–å‡º)                 
-    char     entrust_direction;            //å¼€å¹³æ ‡è¯†(1-å¼€ä»“2-å¹³ä»“3-å¹³ä»Šä»“  å¢ƒå¤–ä¸ºç©º)
-    double   business_price;               //æˆäº¤ä»·æ ¼                                
-    double   business_amount;              //æˆäº¤æ•°é‡                                
-    char     hedge_type;                   //å¥—ä¿æ ‡è¯†(0-æŠ•æœº1-å¥—ä¿2-å¥—åˆ©)            
-    char     fund_account[19];             //èµ„é‡‘è´¦æˆ·                                
-    char     futu_report_no[22];           //æœ¬åœ°å•å·                                
-    char     firm_no[22];                  //ä¼šå‘˜å·                                  
-    char     operator_no[18];              //æ“ä½œå‘˜å·                                
-    int      client_group;                 //å®¢æˆ·ç±»åˆ«                                
-    double   entrust_amount;               //å§”æ‰˜æ•°é‡                                
-    double   business_total_amount;        //æˆäº¤æ€»æ•°é‡                              
-    double   cacel_amount;                 //æ’¤å•æ•°é‡                                
-    double   entrust_price;                //å§”æ‰˜ä»·æ ¼                                
-    char     entrust_status;               //å§”æ‰˜çŠ¶æ€                                
-    int      branch_no;                    //è¥ä¸šéƒ¨å·                                
-    int      batch_no;                     //å§”æ‰˜æ‰¹å·                                
-    char     futu_entrust_type;            //å§”æ‰˜ç±»å‹                                
-    int      amount_per_hand;              //åˆçº¦ä¹˜æ•°                                
-    char     forceclose_reason;            //å¼ºå¹³åŸå›                                 
-    char     init_date[9];                 //äº¤æ˜“æ—¥æœŸ                                
-    char     business_time[9];             //æˆäº¤æ—¶é—´                                
-    char     confirm_no[21];               //ä¸»åœºå•å·                                
-    char     entrust_occasion[33];         //å§”æ‰˜åœºæ™¯                                
-    double   entrust_price2;               //å§”æ‰˜æ•°é‡(å§”æ‰˜è¾“å…¥ä»·æ ¼)                   
-    char     futu_entrust_prop[4];         //æœŸè´§å§”æ‰˜å±æ€§
-    char     arbitrage_code[31];           //ç»„åˆå§”æ‰˜
-    char     entrust_reference[33];        //å§”æ‰˜å¼•ç”¨
-    char     position_str[33];             //å®šä½ä¸²
-    //int      request_id;                   //è¯·æ±‚ç¼–å·(æš‚æ—¶)
-    //int      session_id;                   //ä¼šè¯ç¼–å·(æš‚æ—¶)
+    char     entrust_no[10];               //Î¯ÍĞºÅ                                  
+    char     futures_account[13];          //½»Ò×±àÂë                                
+    char     futu_exch_type[5];            //½»Ò×ËùÀà±ğ                              
+    char     business_no[10];              //³É½»±àºÅ                                
+    char     contract_code[31];            //ºÏÔ¼´úÂë                                
+    char     entrust_bs;                   //ÂòÂô±êÊ¶(1-ÂòÈë 2-Âô³ö)                 
+    char     entrust_direction;            //¿ªÆ½±êÊ¶(1-¿ª²Ö2-Æ½²Ö3-Æ½½ñ²Ö  ¾³ÍâÎª¿Õ)
+    double   business_price;               //³É½»¼Û¸ñ                                
+    double   business_amount;              //³É½»ÊıÁ¿                                
+    char     hedge_type;                   //Ì×±£±êÊ¶(0-Í¶»ú1-Ì×±£2-Ì×Àû)            
+    char     fund_account[19];             //×Ê½ğÕË»§                                
+    char     futu_report_no[22];           //±¾µØµ¥ºÅ                                
+    char     firm_no[22];                  //»áÔ±ºÅ                                  
+    char     operator_no[18];              //²Ù×÷Ô±ºÅ                                
+    int      client_group;                 //¿Í»§Àà±ğ                                
+    double   entrust_amount;               //Î¯ÍĞÊıÁ¿                                
+    double   business_total_amount;        //³É½»×ÜÊıÁ¿                              
+    double   cacel_amount;                 //³·µ¥ÊıÁ¿                                
+    double   entrust_price;                //Î¯ÍĞ¼Û¸ñ                                
+    char     entrust_status;               //Î¯ÍĞ×´Ì¬                                
+    int      branch_no;                    //ÓªÒµ²¿ºÅ                                
+    int      batch_no;                     //Î¯ÍĞÅúºÅ                                
+    char     futu_entrust_type;            //Î¯ÍĞÀàĞÍ                                
+    int      amount_per_hand;              //ºÏÔ¼³ËÊı                                
+    char     forceclose_reason;            //Ç¿Æ½Ô­Òò                                
+    char     init_date[9];                 //½»Ò×ÈÕÆÚ                                
+    char     business_time[9];             //³É½»Ê±¼ä                                
+    char     confirm_no[21];               //Ö÷³¡µ¥ºÅ                                
+    char     entrust_occasion[33];         //Î¯ÍĞ³¡¾°                                
+    double   entrust_price2;               //Î¯ÍĞÊıÁ¿(Î¯ÍĞÊäÈë¼Û¸ñ)                   
+    char     futu_entrust_prop[4];         //ÆÚ»õÎ¯ÍĞÊôĞÔ
+    char     arbitrage_code[31];           //×éºÏÎ¯ÍĞ
+    char     entrust_reference[33];        //Î¯ÍĞÒıÓÃ
+    char     position_str[33];             //¶¨Î»´®
+    //int      request_id;                   //ÇëÇó±àºÅ(ÔİÊ±)
+    //int      session_id;                   //»á»°±àºÅ(ÔİÊ±)
 };
 
-// 33102ç»„åˆè¡Œæƒ…(å†…éƒ¨ç»“æ„ä½“->éšæ„æ”¹ï¼ï¼ï¼)
+// 33102×éºÏĞĞÇé(ÄÚ²¿½á¹¹Ìå->ËæÒâ¸Ä£¡£¡£¡)
 struct CArgMarketInfo_UFX
 {
-    char    arbicontract_id[31];        //å¥—åˆ©åˆçº¦å·           
-    char    futu_exch_type[5];          //äº¤æ˜“ç±»åˆ«             
-    char    first_code[31];             //ç¬¬ä¸€è…¿               
-    char    second_code[31];            //ç¬¬äºŒè…¿               
-    char    weave_type;                 //ç»„åˆç±»å‹1-SPD, 2 -IPS
-    double  buy_price;                  //æœ€é«˜ä¹°å…¥ä»·           
-    double  buy_amount;                 //æœ€é«˜ä¹°å…¥ä»·ä¹°é‡       
-    double  buy_total_amount;           //å…¨éƒ¨ä¹°é‡             
-    double  sale_price;                 //æœ€ä½å–ä»·ä»·æ ¼         
-    double  sale_amount;                //æœ€ä½å–ä»·å–é‡         
-    double  sale_total_amount;          //å…¨éƒ¨å–é‡             
-    double  futu_high_price;            //æœ€é«˜ä»·               
-    double  futu_low_price;             //æœ€ä½ä»·               
-    double  uplimited_price;            //æ¶¨åœæ¿ä»·æ ¼           
-    double  downlimited_price;          //è·Œåœæ¿ä»·æ ¼  
+    char    arbicontract_id[31];        //Ì×ÀûºÏÔ¼ºÅ           
+    char    futu_exch_type[5];          //½»Ò×Àà±ğ             
+    char    first_code[31];             //µÚÒ»ÍÈ               
+    char    second_code[31];            //µÚ¶şÍÈ               
+    char    weave_type;                 //×éºÏÀàĞÍ1-SPD, 2 -IPS
+    double  buy_price;                  //×î¸ßÂòÈë¼Û           
+    double  buy_amount;                 //×î¸ßÂòÈë¼ÛÂòÁ¿       
+    double  buy_total_amount;           //È«²¿ÂòÁ¿             
+    double  sale_price;                 //×îµÍÂô¼Û¼Û¸ñ         
+    double  sale_amount;                //×îµÍÂô¼ÛÂôÁ¿         
+    double  sale_total_amount;          //È«²¿ÂôÁ¿             
+    double  futu_high_price;            //×î¸ß¼Û               
+    double  futu_low_price;             //×îµÍ¼Û               
+    double  uplimited_price;            //ÕÇÍ£°å¼Û¸ñ           
+    double  downlimited_price;          //µøÍ£°å¼Û¸ñ  
 };
 
-// 33105äº¤æ˜“æ‰€çŠ¶æ€é€šçŸ¥
+// 33105½»Ò×Ëù×´Ì¬Í¨Öª
 struct CExchangeStatus_UFX
 {
-    char      futu_exch_type[5];       //äº¤æ˜“æ‰€ç±»åˆ«ï¼ˆF1-éƒ‘å·F2å¤§è¿-F3ä¸Šæµ·-F4ä¸­?
-    char      exch_status;             //äº¤æ˜“æ‰€çŠ¶æ€ï¼ˆ0è¿æ¥æ–­å¼€,1å¼€ç›˜å‰, 2é›†åˆæŠ¥
-    char      entrade_flag;            //æ˜¯å¦å¯äº¤æ˜“ï¼ˆ0ä¸å¯äº¤æ˜“ï¼Œ1å¯äº¤æ˜“ï¼‰      
+    char      futu_exch_type[5];       //½»Ò×ËùÀà±ğ£¨F1-Ö£ÖİF2´óÁ¬-F3ÉÏº£-F4ÖĞ?
+    char      exch_status;             //½»Ò×Ëù×´Ì¬£¨0Á¬½Ó¶Ï¿ª,1¿ªÅÌÇ°, 2¼¯ºÏ±¨
+    char      entrade_flag;            //ÊÇ·ñ¿É½»Ò×£¨0²»¿É½»Ò×£¬1¿É½»Ò×£©      
 };
 
 #endif //DATA_DEF_H_

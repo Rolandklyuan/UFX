@@ -1,4 +1,4 @@
-﻿#include "analyStr.h"
+#include "analyStr.h"
 
 bool ParseMarketInfo_UFX(CMarketInfo_UFX* marketinfo, char* qhstr)
 {

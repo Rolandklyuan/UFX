@@ -1,18 +1,18 @@
-ï»¿#include "tool.h"
+#include "tool.h"
 
 class SecuRequestMode;
-// è‡ªå®šä¹‰ç±»CCallbackï¼Œé€šè¿‡ç»§æ‰¿ï¼ˆå®ç°ï¼‰CCallbackInterfaceï¼Œæ¥è‡ªå®šä¹‰å„ç§äº‹ä»¶ï¼ˆåŒ…æ‹¬è¿æ¥æˆåŠŸã€
-// è¿æ¥æ–­å¼€ã€å‘é€å®Œæˆã€æ”¶åˆ°æ•°æ®ç­‰ï¼‰å‘ç”Ÿæ—¶çš„å›è°ƒæ–¹æ³•
+// ×Ô¶¨ÒåÀàCCallback£¬Í¨¹ı¼Ì³Ğ£¨ÊµÏÖ£©CCallbackInterface£¬À´×Ô¶¨Òå¸÷ÖÖÊÂ¼ş£¨°üÀ¨Á¬½Ó³É¹¦¡¢
+// Á¬½Ó¶Ï¿ª¡¢·¢ËÍÍê³É¡¢ÊÕµ½Êı¾İµÈ£©·¢ÉúÊ±µÄ»Øµ÷·½·¨
 class CTradeCallback : public CCallbackInterface
 {
 public:
-    // å› ä¸ºCCallbackInterfaceçš„æœ€ç»ˆçº¯è™šåŸºç±»æ˜¯IKnownï¼Œæ‰€ä»¥éœ€è¦å®ç°ä¸€ä¸‹è¿™3ä¸ªæ–¹æ³•
+    // ÒòÎªCCallbackInterfaceµÄ×îÖÕ´¿Ğé»ùÀàÊÇIKnown£¬ËùÒÔĞèÒªÊµÏÖÒ»ÏÂÕâ3¸ö·½·¨
     unsigned long  FUNCTION_CALL_MODE QueryInterface(const char* iid, IKnown** ppv);
     unsigned long  FUNCTION_CALL_MODE AddRef();
     unsigned long  FUNCTION_CALL_MODE Release();
 
-    // å„ç§äº‹ä»¶å‘ç”Ÿæ—¶çš„å›è°ƒæ–¹æ³•ï¼Œå®é™…ä½¿ç”¨æ—¶å¯ä»¥æ ¹æ®éœ€è¦æ¥é€‰æ‹©å®ç°ï¼Œå¯¹äºä¸éœ€è¦çš„äº‹ä»¶å›è°ƒæ–¹æ³•ï¼Œå¯ç›´æ¥return
-    // Reserved?ä¸ºä¿ç•™æ–¹æ³•ï¼Œä¸ºä»¥åæ‰©å±•åšå‡†å¤‡ï¼Œå®ç°æ—¶å¯ç›´æ¥returnæˆ–return 0ã€‚
+    // ¸÷ÖÖÊÂ¼ş·¢ÉúÊ±µÄ»Øµ÷·½·¨£¬Êµ¼ÊÊ¹ÓÃÊ±¿ÉÒÔ¸ù¾İĞèÒªÀ´Ñ¡ÔñÊµÏÖ£¬¶ÔÓÚ²»ĞèÒªµÄÊÂ¼ş»Øµ÷·½·¨£¬¿ÉÖ±½Óreturn
+    // Reserved?Îª±£Áô·½·¨£¬ÎªÒÔºóÀ©Õ¹×ö×¼±¸£¬ÊµÏÖÊ±¿ÉÖ±½Óreturn»òreturn 0¡£
     void FUNCTION_CALL_MODE OnConnect(CConnectionInterface*     lpConnection);
     void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface* lpConnection);
     void FUNCTION_CALL_MODE OnRegister(CConnectionInterface*    lpConnection);
@@ -30,7 +30,7 @@ public:
     void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend, IBizMessage* lpMsg);
 public:
     void SetRequestMode(SecuRequestMode* lpMode);
-    // 331100ç™»å…¥
+    // 331100µÇÈë
     void OnResponse_331100(IF2UnPacker* lpUnPacker);
 
 private:
@@ -75,17 +75,17 @@ public:
     int    iSystemNo;
     int    m_op_branch_no;
 
-    // 331100ç™»å…¥
+    // 331100µÇÈë
     int ReqFunction331100();
-    // 400è¯åˆ¸è¡Œæƒ…æŸ¥è¯¢
+    // 400Ö¤È¯ĞĞÇé²éÑ¯
     int ReqFunction400(char* exchange_type, char* stock_code);
-    // 330300è¯åˆ¸ä»£ç ä¿¡æ¯æŸ¥è¯¢
+    // 330300Ö¤È¯´úÂëĞÅÏ¢²éÑ¯
     int ReqFunction330300();
-    // 333000è¯åˆ¸ä»£ç è¾“å…¥ç¡®è®¤
+    // 333000Ö¤È¯´úÂëÊäÈëÈ·ÈÏ
     int ReqFunction333000(char* stock_code);
-    // 333001å¤§çº¦å¯ä¹°è·å–
+    // 333001´óÔ¼¿ÉÂò»ñÈ¡
     int ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price);
-    // 333002æ™®é€šå§”æ‰˜ 
+    // 333002ÆÕÍ¨Î¯ÍĞ 
     int ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs);
 
 private:
