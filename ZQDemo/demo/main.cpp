@@ -12,9 +12,9 @@ int TestSecuTrade()
     char entrust_bs = '\0';
     int chose = 0;
     SecuRequestMode* lp_SecuRequestMode = new SecuRequestMode();
-    //lp_SecuRequestMode->InitConn("demo", "license.dat", "218.108.19.190:18002");
+    // lp_SecuRequestMode->InitConn("demo", "license.dat", "218.108.19.190:18002");
     lp_SecuRequestMode->InitConn();
-    //lp_SecuRequestMode->InitConn("demo", "license.dat", "10.139.103.211:9339");
+    // lp_SecuRequestMode->InitConn("demo", "license.dat", "10.139.103.211:9339");
     cerr << "------------------------------------------------" << endl;
     cerr << " [1]  331100 请求登录                           " << endl;
     cerr << " [2]  400 证券行情查询                          " << endl;
@@ -29,52 +29,52 @@ int TestSecuTrade()
         cin >> chose;
         switch (chose)
         {
-        case 1:
-            // lp_SecuRequestMode->ReqFunction331100("100100003","123456",'7');
-            // lp_SecuRequestMode->ReqFunction331100("70001558","111111",'7');
-            lp_SecuRequestMode->ReqFunction331100();
-            // lp_SecuRequestMode->ReqFunction331100("70960060","111111",'7');
-            break;
-        case 2:
-            cout << "---------证券行情查询----------" << endl;
-            cout << "Enter exchange_type:"; cin >> exchange_type;
-            cout << "Enter stock_code:"; cin >> stock_code;
-            lp_SecuRequestMode->ReqFunction400(exchange_type, stock_code);
-            break;
-        case 3:
-            lp_SecuRequestMode->ReqFunction330300();
-            break;
-        case 4:
-            cout << "---------证券代码输入确认----------" << endl;
-            cout << "Enter stock_code:"; cin >> stock_code;
-            lp_SecuRequestMode->ReqFunction333000(stock_code);
-            break;
-        case 5:
-            cout << "---------大约可买获取----------" << endl;
-            cout << "Enter exchange_type:";
-            cin >> exchange_type;
-            cout << "Enter stock_code:";
-            cin >> stock_code;
-            cout << "Enter entrust_price:";
-            cin >> entrust_price;
-            lp_SecuRequestMode->ReqFunction333001(exchange_type, stock_code, entrust_price);
-            break;
-        case 6:
-            cout << "---------证券普通委托----------" << endl;
-            cout << "exchange_type:";
-            cin >> exchange_type;
-            cout << "stock_code:";
-            cin >> stock_code;
-            cout << "entrust_amount:";
-            cin >> entrust_amount;
-            cout << "entrust_price:";
-            cin >> entrust_price;
-            cout << "entrust_bs:";
-            cin >> entrust_bs;
-            lp_SecuRequestMode->ReqFunction333002(exchange_type, stock_code, entrust_amount, entrust_price, entrust_bs);
-            break;
-        case 0:
-            exit(0);
+            case 1:
+                // lp_SecuRequestMode->ReqFunction331100("100100003","123456",'7');
+                // lp_SecuRequestMode->ReqFunction331100("70001558","111111",'7');
+                lp_SecuRequestMode->ReqFunction331100();
+                // lp_SecuRequestMode->ReqFunction331100("70960060","111111",'7');
+                break;
+            case 2:
+                cout << "---------证券行情查询----------" << endl;
+                cout << "Enter exchange_type:"; cin >> exchange_type;
+                cout << "Enter stock_code:"; cin >> stock_code;
+                lp_SecuRequestMode->ReqFunction400(exchange_type, stock_code);
+                break;
+            case 3:
+                lp_SecuRequestMode->ReqFunction330300();
+                break;
+            case 4:
+                cout << "---------证券代码输入确认----------" << endl;
+                cout << "Enter stock_code:"; cin >> stock_code;
+                lp_SecuRequestMode->ReqFunction333000(stock_code);
+                break;
+            case 5:
+                cout << "---------大约可买获取----------" << endl;
+                cout << "Enter exchange_type:";
+                cin >> exchange_type;
+                cout << "Enter stock_code:";
+                cin >> stock_code;
+                cout << "Enter entrust_price:";
+                cin >> entrust_price;
+                lp_SecuRequestMode->ReqFunction333001(exchange_type, stock_code, entrust_price);
+                break;
+            case 6:
+                cout << "---------证券普通委托----------" << endl;
+                cout << "exchange_type:";
+                cin >> exchange_type;
+                cout << "stock_code:";
+                cin >> stock_code;
+                cout << "entrust_amount:";
+                cin >> entrust_amount;
+                cout << "entrust_price:";
+                cin >> entrust_price;
+                cout << "entrust_bs:";
+                cin >> entrust_bs;
+                lp_SecuRequestMode->ReqFunction333002(exchange_type, stock_code, entrust_amount, entrust_price, entrust_bs);
+                break;
+            case 0:
+                exit(0);
         }
     }
     delete lp_SecuRequestMode;
@@ -150,7 +150,7 @@ int main()
             exit(0);
         }
     }
-    //通过getchar阻塞线程，等待服务端应答包到达
+    // 通过getchar阻塞线程，等待服务端应答包到达
     getchar();
     return 0;
 }
