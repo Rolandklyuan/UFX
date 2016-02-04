@@ -223,7 +223,6 @@ bool GetIpAddressByUrl(char* ip, const char* inurl)
 bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
 {
 
-    // bool bfind = false;
     char szDestIp[64];
     if (GetIpAddressByUrl(szDestIp, desturl) == false)
     {
@@ -232,6 +231,7 @@ bool GetLocalMACIP(char* macAddress, char* Ip, const char* desturl)
         return false;
     }
 #ifdef WIN32
+    bool bfind = false;
 #define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
 #define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
     // GetBestInterface取得最佳路由IP的index,szDestIp一般为登陆服务器的IP
