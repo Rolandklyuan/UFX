@@ -3,7 +3,8 @@ INCLUDE = Include -I Common
 all : ZQDemo
 
 ZQDemo : SecuMD.o SecuTrade.o main.o tool.o analyStr.o
-	g++ -o ZQDemo -g -Wall -D LINUX demo/libt2sdk.so SecuMD.o SecuTrade.o main.o tool.o -lrt
+#g++ -o ZQDemo -g -Wall -D LINUX demo/libt2sdk.so SecuMD.o SecuTrade.o main.o tool.o -lrt
+	g++ -o ZQDemo -g -Wall -D LINUX SecuMD.o SecuTrade.o main.o tool.o -lrt -L demo -lt2sdk
 main.o : demo/main.cpp
 	g++ $(CFLAGS) demo/main.cpp -I $(INCLUDE)
 SecuMD.o : demo/SecuMD.cpp
