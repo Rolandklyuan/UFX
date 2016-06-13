@@ -1,3 +1,13 @@
+// 此C++ Demo使用异步发送接收模式
+//Demo连接的是恒生证券 的仿真环境，如果要对接券商环境，需要修改配置文件的ip端口，以及license文件，用户名密码
+//不同环境的验证信息可能不一样，更换连接环境时，包头字段设置需要确认
+//接口字段说明请参考接口文档"恒生统一接入平台_周边接口规范(股票期权).xls"
+//T2函数技术说明参考开发文档“T2SDK 外部版开发指南.docx"
+//如有t2技术疑问可联系UFX支持组张宗彪(大金融群 恒生-张宗彪 qq 740658023)
+//optTrade.h&optTrade.cpp用来测试普通交易
+//optMD.h&optMD.cpp 用来测试订阅成交回报主推委托主推
+//demo仅供参考
+
 #include "tool.h"
 
 class SecuRequestMode;
@@ -7,31 +17,33 @@ class CTradeCallback : public CCallbackInterface
 {
 public:
     // 因为CCallbackInterface的最终纯虚基类是IKnown，所以需要实现一下这3个方法
-    unsigned long  FUNCTION_CALL_MODE QueryInterface(const char* iid, IKnown** ppv);
+    unsigned long  FUNCTION_CALL_MODE QueryInterface(const char *iid, IKnown **ppv);
     unsigned long  FUNCTION_CALL_MODE AddRef();
     unsigned long  FUNCTION_CALL_MODE Release();
 
     // 各种事件发生时的回调方法，实际使用时可以根据需要来选择实现，对于不需要的事件回调方法，可直接return
     // Reserved?为保留方法，为以后扩展做准备，实现时可直接return或return 0。
-    void FUNCTION_CALL_MODE OnConnect(CConnectionInterface*     lpConnection);
-    void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface* lpConnection);
-    void FUNCTION_CALL_MODE OnRegister(CConnectionInterface*    lpConnection);
-    void FUNCTION_CALL_MODE OnClose(CConnectionInterface*       lpConnection);
-    void FUNCTION_CALL_MODE OnSent(CConnectionInterface*        lpConnection, int hSend, void* reserved1, void* reserved2, int nQueuingData);
-    void FUNCTION_CALL_MODE Reserved1(void* a, void* b, void* c, void* d);
-    void FUNCTION_CALL_MODE Reserved2(void* a, void* b, void* c, void* d);
+    void FUNCTION_CALL_MODE OnConnect(CConnectionInterface *lpConnection);
+    void FUNCTION_CALL_MODE OnSafeConnect(CConnectionInterface *lpConnection);
+    void FUNCTION_CALL_MODE OnRegister(CConnectionInterface *lpConnection);
+    void FUNCTION_CALL_MODE OnClose(CConnectionInterface *lpConnection);
+    void FUNCTION_CALL_MODE OnSent(CConnectionInterface *lpConnection, int hSend, void *reserved1, void *reserved2, int nQueuingData);
+    void FUNCTION_CALL_MODE Reserved1(void *a, void *b, void *c, void *d);
+    void FUNCTION_CALL_MODE Reserved2(void *a, void *b, void *c, void *d);
     int  FUNCTION_CALL_MODE Reserved3();
     void FUNCTION_CALL_MODE Reserved4();
     void FUNCTION_CALL_MODE Reserved5();
     void FUNCTION_CALL_MODE Reserved6();
     void FUNCTION_CALL_MODE Reserved7();
-    void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface*    lpConnection, int hSend, const void* lpUnPackerOrStr, int nResult);
-    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface*  lpConnection, int hSend, LPRET_DATA lpRetData, const void* lpUnpackerOrStr, int nResult);
-    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface* lpConnection, int hSend, IBizMessage* lpMsg);
+    void FUNCTION_CALL_MODE OnReceivedBiz(CConnectionInterface *lpConnection, int hSend, const void *lpUnPackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizEx(CConnectionInterface *lpConnection, int hSend, LPRET_DATA lpRetData, const void *lpUnpackerOrStr, int nResult);
+    void FUNCTION_CALL_MODE OnReceivedBizMsg(CConnectionInterface *lpConnection, int hSend, IBizMessage* lpMsg);
+    //int FUNCTION_CALL_MODE EncodeEx(const char *pIn, char *pOut);
 public:
     void SetRequestMode(SecuRequestMode* lpMode);
-    // 331100登入
-    void OnResponse_331100(IF2UnPacker* lpUnPacker);
+    //331100 登入
+    void OnResponse_331100(IF2UnPacker *lpUnPacker);
+    void OnResponse_333104(IF2UnPacker *lpUnPacker);
 
 private:
     SecuRequestMode* lpReqMode;
@@ -42,22 +54,23 @@ class SecuRequestMode
 public:
     SecuRequestMode()
     {
-        lpConfig     = NULL;
+        lpConfig = NULL;
         lpConnection = NULL;
         callback.SetRequestMode(this);
 
         lpConfig = NewConfig();
         lpConfig->AddRef();
-        m_opUserToken = "0";
-        m_BranchNo = 0;
-        memset(m_client_id, 0, sizeof(m_client_id));
-        iSystemNo = 0;
-        m_op_branch_no = 0;
-        memset(m_AccountName, 0, sizeof(m_AccountName));
-        memset(m_Password,    0, sizeof(m_Password));
-        m_EntrustWay = '\0';
-        m_FuturesAccount = "0";
-        m_opStation = "0";
+        memset(m_opUserToken,0,sizeof(m_opUserToken));
+        m_BranchNo=0;
+        memset(m_client_id,0,sizeof(m_client_id));
+        iSystemNo=0;
+        m_op_branch_no=0;
+        memset(m_AccountName,0,sizeof(m_AccountName));
+        memset(m_Password,0,sizeof(m_Password));
+        memset(pout,0,sizeof(pout));
+        m_EntrustWay='\0';
+        m_FuturesAccount="0";
+        m_opStation="0";
     };
 
     ~SecuRequestMode()
@@ -69,30 +82,37 @@ public:
     int InitConn();
     unsigned long Release();
 public:
-    string m_opUserToken;
-    int    m_BranchNo;
-    char   m_client_id[18];
-    int    iSystemNo;
-    int    m_op_branch_no;
+    char m_opUserToken[512];
+    int m_BranchNo;
+    char m_client_id[18];
+    int iSystemNo;
+    int m_op_branch_no;
 
-    // 331100登入
+    //331100 登入
     int ReqFunction331100();
-    // 400证券行情查询
+    //400 证券行情查询
     int ReqFunction400(char* exchange_type, char* stock_code);
-    // 330300证券代码信息查询
-    int ReqFunction330300();
-    // 333000证券代码输入确认
-    int ReqFunction333000(char* stock_code);
-    // 333001大约可买获取
-    int ReqFunction333001(char* exchange_type, char* stock_code, double entrust_price);
-    // 333002普通委托 
-    int ReqFunction333002(char* exchange_type, char* stock_code, double entrust_amount, double entrust_price, char entrust_bs);
+    //333002 普通委托 
+    int ReqFunction333002(char* exchange_type,char* stock_code, double entrust_amount,double entrust_price,char entrust_bs);
+    //333104 证券持仓查询
+    int ReqFunction333104(const char* position_str);
+    //331101 用户修改密码借口
+    int ReqFunction331101();
+    //331300证券股东信息查询
+    int ReqFunction331300();
+    //33017证券委托撤单
+    int ReqFunction333017();
+    //333101证券委托查询
+    int ReqFunction333101();
+    //333102证券成交查询
+    int ReqFunction333102();	
+    //333101证券委托查询
 
 private:
-    CConfigInterface*     lpConfig;
-    CConnectionInterface* lpConnection;
+    CConfigInterface* lpConfig;
+    CConnectionInterface *lpConnection;
     CTradeCallback callback;
-
+    char pout[255];
     char m_AccountName[12];
     char m_Password[8];
     char m_EntrustWay;
@@ -100,3 +120,4 @@ private:
     string m_opStation;
 
 };
+
